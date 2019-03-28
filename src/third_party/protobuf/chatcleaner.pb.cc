@@ -94,7 +94,7 @@ CleanerInitMessage::CleanerInitMessage(const CleanerInitMessage& from)
 void CleanerInitMessage::SharedCtor() {
   _cached_size_ = 0;
   requestedversion_ = 0u;
-  clientsecret_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  clientsecret_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyString());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -103,7 +103,7 @@ CleanerInitMessage::~CleanerInitMessage() {
 }
 
 void CleanerInitMessage::SharedDtor() {
-  if (clientsecret_ != &::google::protobuf::internal::kEmptyString) {
+  if (clientsecret_ != &::google::protobuf::internal::GetEmptyString()) {
     delete clientsecret_;
   }
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -138,7 +138,7 @@ void CleanerInitMessage::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     requestedversion_ = 0u;
     if (has_clientsecret()) {
-      if (clientsecret_ != &::google::protobuf::internal::kEmptyString) {
+      if (clientsecret_ != &::google::protobuf::internal::GetEmptyString()) {
         clientsecret_->clear();
       }
     }
@@ -303,7 +303,7 @@ CleanerInitAckMessage::CleanerInitAckMessage(const CleanerInitAckMessage& from)
 void CleanerInitAckMessage::SharedCtor() {
   _cached_size_ = 0;
   serverversion_ = 0u;
-  serversecret_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  serversecret_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyString());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -312,7 +312,7 @@ CleanerInitAckMessage::~CleanerInitAckMessage() {
 }
 
 void CleanerInitAckMessage::SharedDtor() {
-  if (serversecret_ != &::google::protobuf::internal::kEmptyString) {
+  if (serversecret_ != &::google::protobuf::internal::GetEmptyString()) {
     delete serversecret_;
   }
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -347,7 +347,7 @@ void CleanerInitAckMessage::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     serverversion_ = 0u;
     if (has_serversecret()) {
-      if (serversecret_ != &::google::protobuf::internal::kEmptyString) {
+      if (serversecret_ != &::google::protobuf::internal::GetEmptyString()) {
         serversecret_->clear();
       }
     }
@@ -519,8 +519,8 @@ void CleanerChatRequestMessage::SharedCtor() {
   cleanerchattype_ = 0;
   gameid_ = 0u;
   playerid_ = 0u;
-  playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  chatmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyString());
+  chatmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyString());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -529,10 +529,10 @@ CleanerChatRequestMessage::~CleanerChatRequestMessage() {
 }
 
 void CleanerChatRequestMessage::SharedDtor() {
-  if (playername_ != &::google::protobuf::internal::kEmptyString) {
+  if (playername_ != &::google::protobuf::internal::GetEmptyString()) {
     delete playername_;
   }
-  if (chatmessage_ != &::google::protobuf::internal::kEmptyString) {
+  if (chatmessage_ != &::google::protobuf::internal::GetEmptyString()) {
     delete chatmessage_;
   }
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -570,12 +570,12 @@ void CleanerChatRequestMessage::Clear() {
     gameid_ = 0u;
     playerid_ = 0u;
     if (has_playername()) {
-      if (playername_ != &::google::protobuf::internal::kEmptyString) {
+      if (playername_ != &::google::protobuf::internal::GetEmptyString()) {
         playername_->clear();
       }
     }
     if (has_chatmessage()) {
-      if (chatmessage_ != &::google::protobuf::internal::kEmptyString) {
+      if (chatmessage_ != &::google::protobuf::internal::GetEmptyString()) {
         chatmessage_->clear();
       }
     }
@@ -901,7 +901,7 @@ void CleanerChatReplyMessage::SharedCtor() {
   gameid_ = 0u;
   playerid_ = 0u;
   cleaneractiontype_ = 0;
-  cleanertext_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  cleanertext_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyString());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -910,7 +910,7 @@ CleanerChatReplyMessage::~CleanerChatReplyMessage() {
 }
 
 void CleanerChatReplyMessage::SharedDtor() {
-  if (cleanertext_ != &::google::protobuf::internal::kEmptyString) {
+  if (cleanertext_ != &::google::protobuf::internal::GetEmptyString()) {
     delete cleanertext_;
   }
   #ifdef GOOGLE_PROTOBUF_NO_STATIC_INITIALIZER
@@ -949,7 +949,7 @@ void CleanerChatReplyMessage::Clear() {
     playerid_ = 0u;
     cleaneractiontype_ = 0;
     if (has_cleanertext()) {
-      if (cleanertext_ != &::google::protobuf::internal::kEmptyString) {
+      if (cleanertext_ != &::google::protobuf::internal::GetEmptyString()) {
         cleanertext_->clear();
       }
     }
