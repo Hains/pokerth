@@ -91,7 +91,7 @@ namespace lib {
     }
 
     // See above definition for more details on what this is and why it exists
-    #define _WEBSOCKETPP_REF(x) boost::ref(x)
+    #define _WEBSOCKETPP_REF(x) x
 
     template <typename T>
     void clear_function(T & x) {
