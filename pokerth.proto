@@ -681,7 +681,7 @@ message ReportGameAckMessage {
 
 message ErrorMessage {
 	enum ErrorReason {
-		reserved = 0;
+		custReserved = 0;
 		initVersionNotSupported = 1;
 		initServerFull = 2;
 		initAuthFailure = 3;
