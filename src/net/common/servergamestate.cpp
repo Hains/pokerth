@@ -46,7 +46,7 @@
 #include <playerinterface.h>
 #include <handinterface.h>
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 #include <sstream>
 
@@ -963,7 +963,7 @@ ServerGameStateHand::EngineLoop(boost::shared_ptr<ServerGame> server)
 
 		// Retrieve non-fold players. If only one player is left, no cards are shown.
 		list<boost::shared_ptr<PlayerInterface> > nonFoldPlayers = *curGame.getActivePlayerList();
-		nonFoldPlayers.remove_if(boost::bind(&PlayerInterface::getMyAction, _1) == PLAYER_ACTION_FOLD);
+		nonFoldPlayers.remove_if(boost::bind(&PlayerInterface::getMyAction, boost::placeholders::_1) == PLAYER_ACTION_FOLD);
 
 		if (curGame.getCurrentHand()->getAllInCondition()
 				&& !curGame.getCurrentHand()->getCardsShown()
@@ -1062,7 +1062,7 @@ ServerGameStateHand::EngineLoop(boost::shared_ptr<ServerGame> server)
 
 			// Retrieve non-fold players. If only one player is left, no cards are shown.
 			list<boost::shared_ptr<PlayerInterface> > nonFoldPlayers = *curGame.getActivePlayerList();
-			nonFoldPlayers.remove_if(boost::bind(&PlayerInterface::getMyAction, _1) == PLAYER_ACTION_FOLD);
+			nonFoldPlayers.remove_if(boost::bind(&PlayerInterface::getMyAction, boost::placeholders::_1) == PLAYER_ACTION_FOLD);
 
 			if (nonFoldPlayers.size() == 1) {
 				// End of Hand, but keep cards hidden.
@@ -1113,7 +1113,7 @@ ServerGameStateHand::EngineLoop(boost::shared_ptr<ServerGame> server)
 
 			// Start next hand - if enough players are left.
 			list<boost::shared_ptr<PlayerInterface> > playersWithCash = *curGame.getActivePlayerList();
-			playersWithCash.remove_if(boost::bind(&PlayerInterface::getMyCash, _1) < 1);
+			playersWithCash.remove_if(boost::bind(&PlayerInterface::getMyCash, boost::placeholders::_1) < 1);
 
 			if (playersWithCash.empty()) {
 				// No more players left - restart.

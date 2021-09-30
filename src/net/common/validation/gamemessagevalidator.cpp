@@ -34,14 +34,14 @@
 #include <net/validation/gameenginemessagevalidator.h>
 #include <net/validation/validationhelper.h>
 #include <boost/mem_fn.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 using namespace std;
 
 GameMessageValidator::GameMessageValidator()
 {
-	m_validationMap.insert(make_pair(GameMessage_GameMessageType_Type_GameManagementMessage, boost::bind(boost::mem_fn(&GameMessageValidator::ValidateGameManagementMessage), this, _1)));
-	m_validationMap.insert(make_pair(GameMessage_GameMessageType_Type_GameEngineMessage, boost::bind(boost::mem_fn(&GameMessageValidator::ValidateGameEngineMessage), this, _1)));
+	m_validationMap.insert(make_pair(GameMessage_GameMessageType_Type_GameManagementMessage, boost::bind(boost::mem_fn(&GameMessageValidator::ValidateGameManagementMessage), this, boost::placeholders::_1)));
+	m_validationMap.insert(make_pair(GameMessage_GameMessageType_Type_GameEngineMessage, boost::bind(boost::mem_fn(&GameMessageValidator::ValidateGameEngineMessage), this, boost::placeholders::_1)));
 	m_managementValidator.reset(new GameManagementMessageValidator);
 	m_engineValidator.reset(new GameEngineMessageValidator);
 }

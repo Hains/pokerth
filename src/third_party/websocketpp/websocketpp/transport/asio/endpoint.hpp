@@ -38,7 +38,7 @@
 #include <websocketpp/common/functional.hpp>
 
 #include <boost/asio.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/system/error_code.hpp>
 
 #include <sstream>

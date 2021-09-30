@@ -30,7 +30,7 @@
  *****************************************************************************/
 
 #include <boost/asio.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 #include <net/asiosendbuffer.h>
 #include <net/sessiondata.h>

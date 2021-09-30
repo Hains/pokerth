@@ -39,7 +39,7 @@
 #include <core/loghelper.h>
 
 #include <boost/filesystem.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
 #define SERVER_RESTART_IRC_BOT_INTERVAL_SEC			86400	// 1 day

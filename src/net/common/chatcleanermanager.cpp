@@ -31,7 +31,7 @@
 
 #include <net/chatcleanermanager.h>
 #include <net/asiosendbuffer.h>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <core/loghelper.h>
 #include <third_party/protobuf/chatcleaner.pb.h>
 

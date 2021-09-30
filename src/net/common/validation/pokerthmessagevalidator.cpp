@@ -35,7 +35,7 @@
 #include <net/validation/gamemessagevalidator.h>
 #include <net/validation/validationhelper.h>
 #include <boost/mem_fn.hpp>
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 
 using namespace std;
 
@@ -43,9 +43,9 @@ using namespace std;
 PokerTHMessageValidator::PokerTHMessageValidator()
 {
 	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_AnnounceMessage, ValidateAnnounceMessage));
-	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_AuthMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateAuthMessage), this, _1)));
-	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_LobbyMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateLobbyMessage), this, _1)));
-	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_GameMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateGameMessage), this, _1)));
+	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_AuthMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateAuthMessage), this, boost::placeholders::_1)));
+	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_LobbyMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateLobbyMessage), this, boost::placeholders::_1)));
+	m_validationMap.insert(make_pair(PokerTHMessage_PokerTHMessageType_Type_GameMessage, boost::bind(boost::mem_fn(&PokerTHMessageValidator::ValidateGameMessage), this, boost::placeholders::_1)));
 
 	m_authValidator.reset(new AuthMessageValidator);
 	m_lobbyValidator.reset(new LobbyMessageValidator);

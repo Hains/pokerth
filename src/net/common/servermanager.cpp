@@ -41,7 +41,7 @@
 #include <net/serverircbotcallback.h>
 #include <core/loghelper.h>
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
 using namespace std;

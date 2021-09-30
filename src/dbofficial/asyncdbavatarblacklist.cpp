@@ -29,7 +29,7 @@
  * as that of the covered work.                                              *
  *****************************************************************************/
 
-#include <boost/bind.hpp>
+#include <boost/bind/bind.hpp>
 #include <dbofficial/asyncdbavatarblacklist.h>
 
 
