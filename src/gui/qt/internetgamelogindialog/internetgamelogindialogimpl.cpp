@@ -141,7 +141,7 @@ void internetGameLoginDialogImpl::accept()
 		QString guestName;
 		int guestId;
 		Tools::GetRand(1, 99999, 1, &guestId);
-		guestName.sprintf("Guest%05d", guestId);
+		guestName.asprintf("Guest%05d", guestId);
 		myConfig->writeConfigString("MyName", guestName.toUtf8().constData());
 	}
 
