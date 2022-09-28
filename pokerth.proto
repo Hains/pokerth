@@ -33,7 +33,6 @@ syntax = "proto2";
 
 option java_package = "de.pokerth.protocol";
 option java_outer_classname = "ProtoBuf";
-option optimize_for = LITE_RUNTIME;
 
 // Enumerations used by several messages.
 

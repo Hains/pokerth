@@ -33,7 +33,6 @@ syntax = "proto2";
 
 option java_package = "de.chatcleaner.protocol";
 option java_outer_classname = "ProtoBuf";
-option optimize_for = LITE_RUNTIME;
 
 message CleanerInitMessage {
 	required	uint32			requestedVersion = 1;
