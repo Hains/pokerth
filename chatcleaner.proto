@@ -29,6 +29,8 @@
  * as that of the covered work.                                              *
  *****************************************************************************/
 
+syntax = "proto2";
+
 option java_package = "de.chatcleaner.protocol";
 option java_outer_classname = "ProtoBuf";
 option optimize_for = LITE_RUNTIME;
