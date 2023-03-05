@@ -8,107 +8,251 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/io/zero_copy_stream_impl_lite.h>
+#include <google/protobuf/descriptor.h>
+#include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/reflection_ops.h>
+#include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
-extern PROTOBUF_INTERNAL_EXPORT_chatcleaner_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerChatReplyMessage_chatcleaner_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_chatcleaner_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerChatRequestMessage_chatcleaner_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_chatcleaner_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerInitAckMessage_chatcleaner_2eproto;
-extern PROTOBUF_INTERNAL_EXPORT_chatcleaner_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerInitMessage_chatcleaner_2eproto;
-class CleanerInitMessageDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CleanerInitMessage> _instance;
-} _CleanerInitMessage_default_instance_;
-class CleanerInitAckMessageDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CleanerInitAckMessage> _instance;
-} _CleanerInitAckMessage_default_instance_;
-class CleanerChatRequestMessageDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CleanerChatRequestMessage> _instance;
-} _CleanerChatRequestMessage_default_instance_;
-class CleanerChatReplyMessageDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<CleanerChatReplyMessage> _instance;
-} _CleanerChatReplyMessage_default_instance_;
-class ChatCleanerMessageDefaultTypeInternal {
- public:
-  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<ChatCleanerMessage> _instance;
-} _ChatCleanerMessage_default_instance_;
-static void InitDefaultsscc_info_ChatCleanerMessage_chatcleaner_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  {
-    void* ptr = &::_ChatCleanerMessage_default_instance_;
-    new (ptr) ::ChatCleanerMessage();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::ChatCleanerMessage::InitAsDefaultInstance();
+PROTOBUF_PRAGMA_INIT_SEG
+
+namespace _pb = ::PROTOBUF_NAMESPACE_ID;
+namespace _pbi = _pb::internal;
+
+PROTOBUF_CONSTEXPR CleanerInitMessage::CleanerInitMessage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.clientsecret_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.requestedversion_)*/0u} {}
+struct CleanerInitMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanerInitMessageDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanerInitMessageDefaultTypeInternal() {}
+  union {
+    CleanerInitMessage _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanerInitMessageDefaultTypeInternal _CleanerInitMessage_default_instance_;
+PROTOBUF_CONSTEXPR CleanerInitAckMessage::CleanerInitAckMessage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.serversecret_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.serverversion_)*/0u} {}
+struct CleanerInitAckMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanerInitAckMessageDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanerInitAckMessageDefaultTypeInternal() {}
+  union {
+    CleanerInitAckMessage _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanerInitAckMessageDefaultTypeInternal _CleanerInitAckMessage_default_instance_;
+PROTOBUF_CONSTEXPR CleanerChatRequestMessage::CleanerChatRequestMessage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.playername_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.chatmessage_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.requestid_)*/0u
+  , /*decltype(_impl_.cleanerchattype_)*/0
+  , /*decltype(_impl_.gameid_)*/0u
+  , /*decltype(_impl_.playerid_)*/0u} {}
+struct CleanerChatRequestMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanerChatRequestMessageDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanerChatRequestMessageDefaultTypeInternal() {}
+  union {
+    CleanerChatRequestMessage _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanerChatRequestMessageDefaultTypeInternal _CleanerChatRequestMessage_default_instance_;
+PROTOBUF_CONSTEXPR CleanerChatReplyMessage::CleanerChatReplyMessage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.cleanertext_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.requestid_)*/0u
+  , /*decltype(_impl_.cleanerchattype_)*/0
+  , /*decltype(_impl_.gameid_)*/0u
+  , /*decltype(_impl_.playerid_)*/0u
+  , /*decltype(_impl_.cleaneractiontype_)*/0} {}
+struct CleanerChatReplyMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CleanerChatReplyMessageDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CleanerChatReplyMessageDefaultTypeInternal() {}
+  union {
+    CleanerChatReplyMessage _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CleanerChatReplyMessageDefaultTypeInternal _CleanerChatReplyMessage_default_instance_;
+PROTOBUF_CONSTEXPR ChatCleanerMessage::ChatCleanerMessage(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.cleanerinitmessage_)*/nullptr
+  , /*decltype(_impl_.cleanerinitackmessage_)*/nullptr
+  , /*decltype(_impl_.cleanerchatrequestmessage_)*/nullptr
+  , /*decltype(_impl_.cleanerchatreplymessage_)*/nullptr
+  , /*decltype(_impl_.messagetype_)*/1} {}
+struct ChatCleanerMessageDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ChatCleanerMessageDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ChatCleanerMessageDefaultTypeInternal() {}
+  union {
+    ChatCleanerMessage _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ChatCleanerMessageDefaultTypeInternal _ChatCleanerMessage_default_instance_;
+static ::_pb::Metadata file_level_metadata_chatcleaner_2eproto[5];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_chatcleaner_2eproto[3];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_chatcleaner_2eproto = nullptr;
+
+const uint32_t TableStruct_chatcleaner_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::CleanerInitMessage, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CleanerInitMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::CleanerInitMessage, _impl_.requestedversion_),
+  PROTOBUF_FIELD_OFFSET(::CleanerInitMessage, _impl_.clientsecret_),
+  1,
+  0,
+  PROTOBUF_FIELD_OFFSET(::CleanerInitAckMessage, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CleanerInitAckMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::CleanerInitAckMessage, _impl_.serverversion_),
+  PROTOBUF_FIELD_OFFSET(::CleanerInitAckMessage, _impl_.serversecret_),
+  1,
+  0,
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.requestid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.cleanerchattype_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.gameid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.playername_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatRequestMessage, _impl_.chatmessage_),
+  2,
+  3,
+  4,
+  5,
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.requestid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.cleanerchattype_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.gameid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.playerid_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.cleaneractiontype_),
+  PROTOBUF_FIELD_OFFSET(::CleanerChatReplyMessage, _impl_.cleanertext_),
+  1,
+  2,
+  3,
+  4,
+  5,
+  0,
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_.messagetype_),
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_.cleanerinitmessage_),
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_.cleanerinitackmessage_),
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_.cleanerchatrequestmessage_),
+  PROTOBUF_FIELD_OFFSET(::ChatCleanerMessage, _impl_.cleanerchatreplymessage_),
+  4,
+  0,
+  1,
+  2,
+  3,
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, 8, -1, sizeof(::CleanerInitMessage)},
+  { 10, 18, -1, sizeof(::CleanerInitAckMessage)},
+  { 20, 32, -1, sizeof(::CleanerChatRequestMessage)},
+  { 38, 50, -1, sizeof(::CleanerChatReplyMessage)},
+  { 56, 67, -1, sizeof(::ChatCleanerMessage)},
+};
+
+static const ::_pb::Message* const file_default_instances[] = {
+  &::_CleanerInitMessage_default_instance_._instance,
+  &::_CleanerInitAckMessage_default_instance_._instance,
+  &::_CleanerChatRequestMessage_default_instance_._instance,
+  &::_CleanerChatReplyMessage_default_instance_._instance,
+  &::_ChatCleanerMessage_default_instance_._instance,
+};
+
+const char descriptor_table_protodef_chatcleaner_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+  "\n\021chatcleaner.proto\"D\n\022CleanerInitMessag"
+  "e\022\030\n\020requestedVersion\030\001 \002(\r\022\024\n\014clientSec"
+  "ret\030\002 \002(\t\"D\n\025CleanerInitAckMessage\022\025\n\rse"
+  "rverVersion\030\001 \002(\r\022\024\n\014serverSecret\030\002 \002(\t\""
+  "\247\001\n\031CleanerChatRequestMessage\022\021\n\trequest"
+  "Id\030\001 \002(\r\022)\n\017cleanerChatType\030\002 \002(\0162\020.Clea"
+  "nerChatType\022\021\n\006gameId\030\003 \001(\r:\0010\022\020\n\010player"
+  "Id\030\004 \002(\r\022\022\n\nplayerName\030\005 \002(\t\022\023\n\013chatMess"
+  "age\030\006 \002(\t\"\345\002\n\027CleanerChatReplyMessage\022\021\n"
+  "\trequestId\030\001 \002(\r\022)\n\017cleanerChatType\030\002 \002("
+  "\0162\020.CleanerChatType\022\021\n\006gameId\030\003 \001(\r:\0010\022\020"
+  "\n\010playerId\030\004 \002(\r\022E\n\021cleanerActionType\030\005 "
+  "\002(\0162*.CleanerChatReplyMessage.CleanerAct"
+  "ionType\022\025\n\013cleanerText\030\006 \001(\t:\000\"\210\001\n\021Clean"
+  "erActionType\022\025\n\021cleanerActionNone\020\000\022\030\n\024c"
+  "leanerActionWarning\020\001\022\025\n\021cleanerActionKi"
+  "ck\020\002\022\024\n\020cleanerActionBan\020\003\022\025\n\021cleanerAct"
+  "ionMute\020\004\"\325\003\n\022ChatCleanerMessage\022\?\n\013mess"
+  "ageType\030\001 \002(\0162*.ChatCleanerMessage.ChatC"
+  "leanerMessageType\022/\n\022cleanerInitMessage\030"
+  "\002 \001(\0132\023.CleanerInitMessage\0225\n\025cleanerIni"
+  "tAckMessage\030\003 \001(\0132\026.CleanerInitAckMessag"
+  "e\022=\n\031cleanerChatRequestMessage\030\004 \001(\0132\032.C"
+  "leanerChatRequestMessage\0229\n\027cleanerChatR"
+  "eplyMessage\030\005 \001(\0132\030.CleanerChatReplyMess"
+  "age\"\233\001\n\026ChatCleanerMessageType\022\033\n\027Type_C"
+  "leanerInitMessage\020\001\022\036\n\032Type_CleanerInitA"
+  "ckMessage\020\002\022\"\n\036Type_CleanerChatRequestMe"
+  "ssage\020\003\022 \n\034Type_CleanerChatReplyMessage\020"
+  "\004*D\n\017CleanerChatType\022\030\n\024cleanerChatTypeL"
+  "obby\020\000\022\027\n\023cleanerChatTypeGame\020\001B#\n\027de.ch"
+  "atcleaner.protocolB\010ProtoBuf"
+  ;
+static ::_pbi::once_flag descriptor_table_chatcleaner_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_chatcleaner_2eproto = {
+    false, false, 1268, descriptor_table_protodef_chatcleaner_2eproto,
+    "chatcleaner.proto",
+    &descriptor_table_chatcleaner_2eproto_once, nullptr, 0, 5,
+    schemas, file_default_instances, TableStruct_chatcleaner_2eproto::offsets,
+    file_level_metadata_chatcleaner_2eproto, file_level_enum_descriptors_chatcleaner_2eproto,
+    file_level_service_descriptors_chatcleaner_2eproto,
+};
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_chatcleaner_2eproto_getter() {
+  return &descriptor_table_chatcleaner_2eproto;
 }
 
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_ChatCleanerMessage_chatcleaner_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_ChatCleanerMessage_chatcleaner_2eproto}, {
-      &scc_info_CleanerInitMessage_chatcleaner_2eproto.base,
-      &scc_info_CleanerInitAckMessage_chatcleaner_2eproto.base,
-      &scc_info_CleanerChatRequestMessage_chatcleaner_2eproto.base,
-      &scc_info_CleanerChatReplyMessage_chatcleaner_2eproto.base,}};
-
-static void InitDefaultsscc_info_CleanerChatReplyMessage_chatcleaner_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_CleanerChatReplyMessage_default_instance_;
-    new (ptr) ::CleanerChatReplyMessage();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CleanerChatReplyMessage::InitAsDefaultInstance();
+// Force running AddDescriptors() at dynamic initialization time.
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_chatcleaner_2eproto(&descriptor_table_chatcleaner_2eproto);
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CleanerChatReplyMessage_CleanerActionType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_chatcleaner_2eproto);
+  return file_level_enum_descriptors_chatcleaner_2eproto[0];
 }
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerChatReplyMessage_chatcleaner_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CleanerChatReplyMessage_chatcleaner_2eproto}, {}};
-
-static void InitDefaultsscc_info_CleanerChatRequestMessage_chatcleaner_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_CleanerChatRequestMessage_default_instance_;
-    new (ptr) ::CleanerChatRequestMessage();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CleanerChatRequestMessage::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerChatRequestMessage_chatcleaner_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CleanerChatRequestMessage_chatcleaner_2eproto}, {}};
-
-static void InitDefaultsscc_info_CleanerInitAckMessage_chatcleaner_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_CleanerInitAckMessage_default_instance_;
-    new (ptr) ::CleanerInitAckMessage();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CleanerInitAckMessage::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerInitAckMessage_chatcleaner_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CleanerInitAckMessage_chatcleaner_2eproto}, {}};
-
-static void InitDefaultsscc_info_CleanerInitMessage_chatcleaner_2eproto() {
-  GOOGLE_PROTOBUF_VERIFY_VERSION;
-
-  {
-    void* ptr = &::_CleanerInitMessage_default_instance_;
-    new (ptr) ::CleanerInitMessage();
-    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
-  }
-  ::CleanerInitMessage::InitAsDefaultInstance();
-}
-
-::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_CleanerInitMessage_chatcleaner_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_CleanerInitMessage_chatcleaner_2eproto}, {}};
-
 bool CleanerChatReplyMessage_CleanerActionType_IsValid(int value) {
   switch (value) {
     case 0:
@@ -122,57 +266,7 @@ bool CleanerChatReplyMessage_CleanerActionType_IsValid(int value) {
   }
 }
 
-static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> CleanerChatReplyMessage_CleanerActionType_strings[5] = {};
-
-static const char CleanerChatReplyMessage_CleanerActionType_names[] =
-  "cleanerActionBan"
-  "cleanerActionKick"
-  "cleanerActionMute"
-  "cleanerActionNone"
-  "cleanerActionWarning";
-
-static const ::PROTOBUF_NAMESPACE_ID::internal::EnumEntry CleanerChatReplyMessage_CleanerActionType_entries[] = {
-  { {CleanerChatReplyMessage_CleanerActionType_names + 0, 16}, 3 },
-  { {CleanerChatReplyMessage_CleanerActionType_names + 16, 17}, 2 },
-  { {CleanerChatReplyMessage_CleanerActionType_names + 33, 17}, 4 },
-  { {CleanerChatReplyMessage_CleanerActionType_names + 50, 17}, 0 },
-  { {CleanerChatReplyMessage_CleanerActionType_names + 67, 20}, 1 },
-};
-
-static const int CleanerChatReplyMessage_CleanerActionType_entries_by_number[] = {
-  3, // 0 -> cleanerActionNone
-  4, // 1 -> cleanerActionWarning
-  1, // 2 -> cleanerActionKick
-  0, // 3 -> cleanerActionBan
-  2, // 4 -> cleanerActionMute
-};
-
-const std::string& CleanerChatReplyMessage_CleanerActionType_Name(
-    CleanerChatReplyMessage_CleanerActionType value) {
-  static const bool dummy =
-      ::PROTOBUF_NAMESPACE_ID::internal::InitializeEnumStrings(
-          CleanerChatReplyMessage_CleanerActionType_entries,
-          CleanerChatReplyMessage_CleanerActionType_entries_by_number,
-          5, CleanerChatReplyMessage_CleanerActionType_strings);
-  (void) dummy;
-  int idx = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumName(
-      CleanerChatReplyMessage_CleanerActionType_entries,
-      CleanerChatReplyMessage_CleanerActionType_entries_by_number,
-      5, value);
-  return idx == -1 ? ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString() :
-                     CleanerChatReplyMessage_CleanerActionType_strings[idx].get();
-}
-bool CleanerChatReplyMessage_CleanerActionType_Parse(
-    const std::string& name, CleanerChatReplyMessage_CleanerActionType* value) {
-  int int_value;
-  bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
-      CleanerChatReplyMessage_CleanerActionType_entries, 5, name, &int_value);
-  if (success) {
-    *value = static_cast<CleanerChatReplyMessage_CleanerActionType>(int_value);
-  }
-  return success;
-}
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::cleanerActionNone;
 constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::cleanerActionWarning;
 constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::cleanerActionKick;
@@ -181,7 +275,11 @@ constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::cle
 constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::CleanerActionType_MIN;
 constexpr CleanerChatReplyMessage_CleanerActionType CleanerChatReplyMessage::CleanerActionType_MAX;
 constexpr int CleanerChatReplyMessage::CleanerActionType_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ChatCleanerMessage_ChatCleanerMessageType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_chatcleaner_2eproto);
+  return file_level_enum_descriptors_chatcleaner_2eproto[1];
+}
 bool ChatCleanerMessage_ChatCleanerMessageType_IsValid(int value) {
   switch (value) {
     case 1:
@@ -194,54 +292,7 @@ bool ChatCleanerMessage_ChatCleanerMessageType_IsValid(int value) {
   }
 }
 
-static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> ChatCleanerMessage_ChatCleanerMessageType_strings[4] = {};
-
-static const char ChatCleanerMessage_ChatCleanerMessageType_names[] =
-  "Type_CleanerChatReplyMessage"
-  "Type_CleanerChatRequestMessage"
-  "Type_CleanerInitAckMessage"
-  "Type_CleanerInitMessage";
-
-static const ::PROTOBUF_NAMESPACE_ID::internal::EnumEntry ChatCleanerMessage_ChatCleanerMessageType_entries[] = {
-  { {ChatCleanerMessage_ChatCleanerMessageType_names + 0, 28}, 4 },
-  { {ChatCleanerMessage_ChatCleanerMessageType_names + 28, 30}, 3 },
-  { {ChatCleanerMessage_ChatCleanerMessageType_names + 58, 26}, 2 },
-  { {ChatCleanerMessage_ChatCleanerMessageType_names + 84, 23}, 1 },
-};
-
-static const int ChatCleanerMessage_ChatCleanerMessageType_entries_by_number[] = {
-  3, // 1 -> Type_CleanerInitMessage
-  2, // 2 -> Type_CleanerInitAckMessage
-  1, // 3 -> Type_CleanerChatRequestMessage
-  0, // 4 -> Type_CleanerChatReplyMessage
-};
-
-const std::string& ChatCleanerMessage_ChatCleanerMessageType_Name(
-    ChatCleanerMessage_ChatCleanerMessageType value) {
-  static const bool dummy =
-      ::PROTOBUF_NAMESPACE_ID::internal::InitializeEnumStrings(
-          ChatCleanerMessage_ChatCleanerMessageType_entries,
-          ChatCleanerMessage_ChatCleanerMessageType_entries_by_number,
-          4, ChatCleanerMessage_ChatCleanerMessageType_strings);
-  (void) dummy;
-  int idx = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumName(
-      ChatCleanerMessage_ChatCleanerMessageType_entries,
-      ChatCleanerMessage_ChatCleanerMessageType_entries_by_number,
-      4, value);
-  return idx == -1 ? ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString() :
-                     ChatCleanerMessage_ChatCleanerMessageType_strings[idx].get();
-}
-bool ChatCleanerMessage_ChatCleanerMessageType_Parse(
-    const std::string& name, ChatCleanerMessage_ChatCleanerMessageType* value) {
-  int int_value;
-  bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
-      ChatCleanerMessage_ChatCleanerMessageType_entries, 4, name, &int_value);
-  if (success) {
-    *value = static_cast<ChatCleanerMessage_ChatCleanerMessageType>(int_value);
-  }
-  return success;
-}
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
 constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::Type_CleanerInitMessage;
 constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::Type_CleanerInitAckMessage;
 constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::Type_CleanerChatRequestMessage;
@@ -249,7 +300,11 @@ constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::Type_Cle
 constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::ChatCleanerMessageType_MIN;
 constexpr ChatCleanerMessage_ChatCleanerMessageType ChatCleanerMessage::ChatCleanerMessageType_MAX;
 constexpr int ChatCleanerMessage::ChatCleanerMessageType_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* CleanerChatType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_chatcleaner_2eproto);
+  return file_level_enum_descriptors_chatcleaner_2eproto[2];
+}
 bool CleanerChatType_IsValid(int value) {
   switch (value) {
     case 0:
@@ -260,55 +315,12 @@ bool CleanerChatType_IsValid(int value) {
   }
 }
 
-static ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<std::string> CleanerChatType_strings[2] = {};
-
-static const char CleanerChatType_names[] =
-  "cleanerChatTypeGame"
-  "cleanerChatTypeLobby";
-
-static const ::PROTOBUF_NAMESPACE_ID::internal::EnumEntry CleanerChatType_entries[] = {
-  { {CleanerChatType_names + 0, 19}, 1 },
-  { {CleanerChatType_names + 19, 20}, 0 },
-};
-
-static const int CleanerChatType_entries_by_number[] = {
-  1, // 0 -> cleanerChatTypeLobby
-  0, // 1 -> cleanerChatTypeGame
-};
-
-const std::string& CleanerChatType_Name(
-    CleanerChatType value) {
-  static const bool dummy =
-      ::PROTOBUF_NAMESPACE_ID::internal::InitializeEnumStrings(
-          CleanerChatType_entries,
-          CleanerChatType_entries_by_number,
-          2, CleanerChatType_strings);
-  (void) dummy;
-  int idx = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumName(
-      CleanerChatType_entries,
-      CleanerChatType_entries_by_number,
-      2, value);
-  return idx == -1 ? ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString() :
-                     CleanerChatType_strings[idx].get();
-}
-bool CleanerChatType_Parse(
-    const std::string& name, CleanerChatType* value) {
-  int int_value;
-  bool success = ::PROTOBUF_NAMESPACE_ID::internal::LookUpEnumValue(
-      CleanerChatType_entries, 2, name, &int_value);
-  if (success) {
-    *value = static_cast<CleanerChatType>(int_value);
-  }
-  return success;
-}
 
 // ===================================================================
 
-void CleanerInitMessage::InitAsDefaultInstance() {
-}
 class CleanerInitMessage::_Internal {
  public:
-  using HasBits = decltype(std::declval<CleanerInitMessage>()._has_bits_);
+  using HasBits = decltype(std::declval<CleanerInitMessage>()._impl_._has_bits_);
   static void set_has_requestedversion(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -320,142 +332,161 @@ class CleanerInitMessage::_Internal {
   }
 };
 
-CleanerInitMessage::CleanerInitMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+CleanerInitMessage::CleanerInitMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CleanerInitMessage)
 }
 CleanerInitMessage::CleanerInitMessage(const CleanerInitMessage& from)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  clientsecret_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CleanerInitMessage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.clientsecret_){}
+    , decltype(_impl_.requestedversion_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.clientsecret_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.clientsecret_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_clientsecret()) {
-    clientsecret_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_clientsecret(),
-      GetArena());
+    _this->_impl_.clientsecret_.Set(from._internal_clientsecret(), 
+      _this->GetArenaForAllocation());
   }
-  requestedversion_ = from.requestedversion_;
+  _this->_impl_.requestedversion_ = from._impl_.requestedversion_;
   // @@protoc_insertion_point(copy_constructor:CleanerInitMessage)
 }
 
-void CleanerInitMessage::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CleanerInitMessage_chatcleaner_2eproto.base);
-  clientsecret_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  requestedversion_ = 0u;
+inline void CleanerInitMessage::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.clientsecret_){}
+    , decltype(_impl_.requestedversion_){0u}
+  };
+  _impl_.clientsecret_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.clientsecret_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CleanerInitMessage::~CleanerInitMessage() {
   // @@protoc_insertion_point(destructor:CleanerInitMessage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<std::string>();
 }
 
-void CleanerInitMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  clientsecret_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void CleanerInitMessage::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.clientsecret_.Destroy();
 }
 
-void CleanerInitMessage::ArenaDtor(void* object) {
-  CleanerInitMessage* _this = reinterpret_cast< CleanerInitMessage* >(object);
-  (void)_this;
-}
-void CleanerInitMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CleanerInitMessage::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const CleanerInitMessage& CleanerInitMessage::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CleanerInitMessage_chatcleaner_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void CleanerInitMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:CleanerInitMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    clientsecret_.ClearNonDefaultToEmpty();
+    _impl_.clientsecret_.ClearNonDefaultToEmpty();
   }
-  requestedversion_ = 0u;
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<std::string>();
+  _impl_.requestedversion_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CleanerInitMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CleanerInitMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 requestedVersion = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_requestedversion(&has_bits);
-          requestedversion_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.requestedversion_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required string clientSecret = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_clientsecret();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "CleanerInitMessage.clientSecret");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<std::string>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
-  _has_bits_.Or(has_bits);
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CleanerInitMessage::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* CleanerInitMessage::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:CleanerInitMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 requestedVersion = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestedversion(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestedversion(), target);
   }
 
   // required string clientSecret = 2;
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_clientsecret().data(), static_cast<int>(this->_internal_clientsecret().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "CleanerInitMessage.clientSecret");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_clientsecret(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
-        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CleanerInitMessage)
   return target;
@@ -474,9 +505,7 @@ size_t CleanerInitMessage::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_requestedversion()) {
     // required uint32 requestedVersion = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestedversion());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestedversion());
   }
 
   return total_size;
@@ -485,55 +514,51 @@ size_t CleanerInitMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:CleanerInitMessage)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required string clientSecret = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_clientsecret());
 
     // required uint32 requestedVersion = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestedversion());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestedversion());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void CleanerInitMessage::CheckTypeAndMergeFrom(
-    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const CleanerInitMessage*>(
-      &from));
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CleanerInitMessage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CleanerInitMessage::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CleanerInitMessage::GetClassData() const { return &_class_data_; }
 
-void CleanerInitMessage::MergeFrom(const CleanerInitMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CleanerInitMessage)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void CleanerInitMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CleanerInitMessage*>(&to_msg);
+  auto& from = static_cast<const CleanerInitMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:CleanerInitMessage)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_clientsecret(from._internal_clientsecret());
+      _this->_internal_set_clientsecret(from._internal_clientsecret());
     }
     if (cached_has_bits & 0x00000002u) {
-      requestedversion_ = from.requestedversion_;
+      _this->_impl_.requestedversion_ = from._impl_.requestedversion_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CleanerInitMessage::CopyFrom(const CleanerInitMessage& from) {
@@ -544,30 +569,34 @@ void CleanerInitMessage::CopyFrom(const CleanerInitMessage& from) {
 }
 
 bool CleanerInitMessage::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void CleanerInitMessage::InternalSwap(CleanerInitMessage* other) {
   using std::swap;
-  _internal_metadata_.Swap<std::string>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  clientsecret_.Swap(&other->clientsecret_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(requestedversion_, other->requestedversion_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.clientsecret_, lhs_arena,
+      &other->_impl_.clientsecret_, rhs_arena
+  );
+  swap(_impl_.requestedversion_, other->_impl_.requestedversion_);
 }
 
-std::string CleanerInitMessage::GetTypeName() const {
-  return "CleanerInitMessage";
+::PROTOBUF_NAMESPACE_ID::Metadata CleanerInitMessage::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_chatcleaner_2eproto_getter, &descriptor_table_chatcleaner_2eproto_once,
+      file_level_metadata_chatcleaner_2eproto[0]);
 }
-
 
 // ===================================================================
 
-void CleanerInitAckMessage::InitAsDefaultInstance() {
-}
 class CleanerInitAckMessage::_Internal {
  public:
-  using HasBits = decltype(std::declval<CleanerInitAckMessage>()._has_bits_);
+  using HasBits = decltype(std::declval<CleanerInitAckMessage>()._impl_._has_bits_);
   static void set_has_serverversion(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -579,142 +608,161 @@ class CleanerInitAckMessage::_Internal {
   }
 };
 
-CleanerInitAckMessage::CleanerInitAckMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+CleanerInitAckMessage::CleanerInitAckMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CleanerInitAckMessage)
 }
 CleanerInitAckMessage::CleanerInitAckMessage(const CleanerInitAckMessage& from)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  serversecret_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CleanerInitAckMessage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.serversecret_){}
+    , decltype(_impl_.serverversion_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.serversecret_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.serversecret_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_serversecret()) {
-    serversecret_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_serversecret(),
-      GetArena());
+    _this->_impl_.serversecret_.Set(from._internal_serversecret(), 
+      _this->GetArenaForAllocation());
   }
-  serverversion_ = from.serverversion_;
+  _this->_impl_.serverversion_ = from._impl_.serverversion_;
   // @@protoc_insertion_point(copy_constructor:CleanerInitAckMessage)
 }
 
-void CleanerInitAckMessage::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CleanerInitAckMessage_chatcleaner_2eproto.base);
-  serversecret_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  serverversion_ = 0u;
+inline void CleanerInitAckMessage::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.serversecret_){}
+    , decltype(_impl_.serverversion_){0u}
+  };
+  _impl_.serversecret_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.serversecret_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CleanerInitAckMessage::~CleanerInitAckMessage() {
   // @@protoc_insertion_point(destructor:CleanerInitAckMessage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<std::string>();
 }
 
-void CleanerInitAckMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  serversecret_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void CleanerInitAckMessage::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.serversecret_.Destroy();
 }
 
-void CleanerInitAckMessage::ArenaDtor(void* object) {
-  CleanerInitAckMessage* _this = reinterpret_cast< CleanerInitAckMessage* >(object);
-  (void)_this;
-}
-void CleanerInitAckMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CleanerInitAckMessage::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const CleanerInitAckMessage& CleanerInitAckMessage::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CleanerInitAckMessage_chatcleaner_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void CleanerInitAckMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:CleanerInitAckMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    serversecret_.ClearNonDefaultToEmpty();
+    _impl_.serversecret_.ClearNonDefaultToEmpty();
   }
-  serverversion_ = 0u;
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<std::string>();
+  _impl_.serverversion_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CleanerInitAckMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CleanerInitAckMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 serverVersion = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_serverversion(&has_bits);
-          serverversion_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.serverversion_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required string serverSecret = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           auto str = _internal_mutable_serversecret();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "CleanerInitAckMessage.serverSecret");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<std::string>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
-  _has_bits_.Or(has_bits);
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CleanerInitAckMessage::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* CleanerInitAckMessage::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:CleanerInitAckMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 serverVersion = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_serverversion(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_serverversion(), target);
   }
 
   // required string serverSecret = 2;
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_serversecret().data(), static_cast<int>(this->_internal_serversecret().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "CleanerInitAckMessage.serverSecret");
     target = stream->WriteStringMaybeAliased(
         2, this->_internal_serversecret(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
-        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CleanerInitAckMessage)
   return target;
@@ -733,9 +781,7 @@ size_t CleanerInitAckMessage::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_serverversion()) {
     // required uint32 serverVersion = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_serverversion());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_serverversion());
   }
 
   return total_size;
@@ -744,55 +790,51 @@ size_t CleanerInitAckMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:CleanerInitAckMessage)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required string serverSecret = 2;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_serversecret());
 
     // required uint32 serverVersion = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_serverversion());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_serverversion());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void CleanerInitAckMessage::CheckTypeAndMergeFrom(
-    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const CleanerInitAckMessage*>(
-      &from));
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CleanerInitAckMessage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CleanerInitAckMessage::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CleanerInitAckMessage::GetClassData() const { return &_class_data_; }
 
-void CleanerInitAckMessage::MergeFrom(const CleanerInitAckMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CleanerInitAckMessage)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void CleanerInitAckMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CleanerInitAckMessage*>(&to_msg);
+  auto& from = static_cast<const CleanerInitAckMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:CleanerInitAckMessage)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_serversecret(from._internal_serversecret());
+      _this->_internal_set_serversecret(from._internal_serversecret());
     }
     if (cached_has_bits & 0x00000002u) {
-      serverversion_ = from.serverversion_;
+      _this->_impl_.serverversion_ = from._impl_.serverversion_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CleanerInitAckMessage::CopyFrom(const CleanerInitAckMessage& from) {
@@ -803,30 +845,34 @@ void CleanerInitAckMessage::CopyFrom(const CleanerInitAckMessage& from) {
 }
 
 bool CleanerInitAckMessage::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void CleanerInitAckMessage::InternalSwap(CleanerInitAckMessage* other) {
   using std::swap;
-  _internal_metadata_.Swap<std::string>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  serversecret_.Swap(&other->serversecret_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  swap(serverversion_, other->serverversion_);
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.serversecret_, lhs_arena,
+      &other->_impl_.serversecret_, rhs_arena
+  );
+  swap(_impl_.serverversion_, other->_impl_.serverversion_);
 }
 
-std::string CleanerInitAckMessage::GetTypeName() const {
-  return "CleanerInitAckMessage";
+::PROTOBUF_NAMESPACE_ID::Metadata CleanerInitAckMessage::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_chatcleaner_2eproto_getter, &descriptor_table_chatcleaner_2eproto_once,
+      file_level_metadata_chatcleaner_2eproto[1]);
 }
-
 
 // ===================================================================
 
-void CleanerChatRequestMessage::InitAsDefaultInstance() {
-}
 class CleanerChatRequestMessage::_Internal {
  public:
-  using HasBits = decltype(std::declval<CleanerChatRequestMessage>()._has_bits_);
+  using HasBits = decltype(std::declval<CleanerChatRequestMessage>()._impl_._has_bits_);
   static void set_has_requestid(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
@@ -850,223 +896,265 @@ class CleanerChatRequestMessage::_Internal {
   }
 };
 
-CleanerChatRequestMessage::CleanerChatRequestMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+CleanerChatRequestMessage::CleanerChatRequestMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CleanerChatRequestMessage)
 }
 CleanerChatRequestMessage::CleanerChatRequestMessage(const CleanerChatRequestMessage& from)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  playername_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CleanerChatRequestMessage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.playername_){}
+    , decltype(_impl_.chatmessage_){}
+    , decltype(_impl_.requestid_){}
+    , decltype(_impl_.cleanerchattype_){}
+    , decltype(_impl_.gameid_){}
+    , decltype(_impl_.playerid_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.playername_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.playername_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_playername()) {
-    playername_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_playername(),
-      GetArena());
+    _this->_impl_.playername_.Set(from._internal_playername(), 
+      _this->GetArenaForAllocation());
   }
-  chatmessage_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.chatmessage_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.chatmessage_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_chatmessage()) {
-    chatmessage_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_chatmessage(),
-      GetArena());
+    _this->_impl_.chatmessage_.Set(from._internal_chatmessage(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&requestid_, &from.requestid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&playerid_) -
-    reinterpret_cast<char*>(&requestid_)) + sizeof(playerid_));
+  ::memcpy(&_impl_.requestid_, &from._impl_.requestid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.playerid_) -
+    reinterpret_cast<char*>(&_impl_.requestid_)) + sizeof(_impl_.playerid_));
   // @@protoc_insertion_point(copy_constructor:CleanerChatRequestMessage)
 }
 
-void CleanerChatRequestMessage::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CleanerChatRequestMessage_chatcleaner_2eproto.base);
-  playername_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  chatmessage_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&requestid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&playerid_) -
-      reinterpret_cast<char*>(&requestid_)) + sizeof(playerid_));
+inline void CleanerChatRequestMessage::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.playername_){}
+    , decltype(_impl_.chatmessage_){}
+    , decltype(_impl_.requestid_){0u}
+    , decltype(_impl_.cleanerchattype_){0}
+    , decltype(_impl_.gameid_){0u}
+    , decltype(_impl_.playerid_){0u}
+  };
+  _impl_.playername_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.playername_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.chatmessage_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.chatmessage_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CleanerChatRequestMessage::~CleanerChatRequestMessage() {
   // @@protoc_insertion_point(destructor:CleanerChatRequestMessage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<std::string>();
 }
 
-void CleanerChatRequestMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  playername_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  chatmessage_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void CleanerChatRequestMessage::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.playername_.Destroy();
+  _impl_.chatmessage_.Destroy();
 }
 
-void CleanerChatRequestMessage::ArenaDtor(void* object) {
-  CleanerChatRequestMessage* _this = reinterpret_cast< CleanerChatRequestMessage* >(object);
-  (void)_this;
-}
-void CleanerChatRequestMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CleanerChatRequestMessage::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const CleanerChatRequestMessage& CleanerChatRequestMessage::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CleanerChatRequestMessage_chatcleaner_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void CleanerChatRequestMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:CleanerChatRequestMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
     if (cached_has_bits & 0x00000001u) {
-      playername_.ClearNonDefaultToEmpty();
+      _impl_.playername_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
-      chatmessage_.ClearNonDefaultToEmpty();
+      _impl_.chatmessage_.ClearNonDefaultToEmpty();
     }
   }
   if (cached_has_bits & 0x0000003cu) {
-    ::memset(&requestid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&playerid_) -
-        reinterpret_cast<char*>(&requestid_)) + sizeof(playerid_));
+    ::memset(&_impl_.requestid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.playerid_) -
+        reinterpret_cast<char*>(&_impl_.requestid_)) + sizeof(_impl_.playerid_));
   }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<std::string>();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CleanerChatRequestMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CleanerChatRequestMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 requestId = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_requestid(&has_bits);
-          requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required .CleanerChatType cleanerChatType = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           if (PROTOBUF_PREDICT_TRUE(::CleanerChatType_IsValid(val))) {
             _internal_set_cleanerchattype(static_cast<::CleanerChatType>(val));
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(2, val, mutable_unknown_fields());
           }
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional uint32 gameId = 3 [default = 0];
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _Internal::set_has_gameid(&has_bits);
-          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required uint32 playerId = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _Internal::set_has_playerid(&has_bits);
-          playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required string playerName = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           auto str = _internal_mutable_playername();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "CleanerChatRequestMessage.playerName");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
         continue;
       // required string chatMessage = 6;
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           auto str = _internal_mutable_chatmessage();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "CleanerChatRequestMessage.chatMessage");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<std::string>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
-  _has_bits_.Or(has_bits);
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CleanerChatRequestMessage::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* CleanerChatRequestMessage::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:CleanerChatRequestMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 requestId = 1;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestid(), target);
   }
 
   // required .CleanerChatType cleanerChatType = 2;
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_cleanerchattype(), target);
   }
 
   // optional uint32 gameId = 3 [default = 0];
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_gameid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_gameid(), target);
   }
 
   // required uint32 playerId = 4;
   if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_playerid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_playerid(), target);
   }
 
   // required string playerName = 5;
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_playername().data(), static_cast<int>(this->_internal_playername().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "CleanerChatRequestMessage.playerName");
     target = stream->WriteStringMaybeAliased(
         5, this->_internal_playername(), target);
   }
 
   // required string chatMessage = 6;
   if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_chatmessage().data(), static_cast<int>(this->_internal_chatmessage().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "CleanerChatRequestMessage.chatMessage");
     target = stream->WriteStringMaybeAliased(
         6, this->_internal_chatmessage(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
-        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CleanerChatRequestMessage)
   return target;
@@ -1092,22 +1180,18 @@ size_t CleanerChatRequestMessage::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_requestid()) {
     // required uint32 requestId = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestid());
   }
 
   if (_internal_has_cleanerchattype()) {
     // required .CleanerChatType cleanerChatType = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
   }
 
   if (_internal_has_playerid()) {
     // required uint32 playerId = 4;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_playerid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
   return total_size;
@@ -1116,7 +1200,7 @@ size_t CleanerChatRequestMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:CleanerChatRequestMessage)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000002f) ^ 0x0000002f) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x0000002f) ^ 0x0000002f) == 0) {  // All required fields are present.
     // required string playerName = 5;
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1128,77 +1212,69 @@ size_t CleanerChatRequestMessage::ByteSizeLong() const {
         this->_internal_chatmessage());
 
     // required uint32 requestId = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestid());
 
     // required .CleanerChatType cleanerChatType = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
 
     // required uint32 playerId = 4;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_playerid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // optional uint32 gameId = 3 [default = 0];
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000010u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_gameid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_gameid());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void CleanerChatRequestMessage::CheckTypeAndMergeFrom(
-    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const CleanerChatRequestMessage*>(
-      &from));
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CleanerChatRequestMessage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CleanerChatRequestMessage::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CleanerChatRequestMessage::GetClassData() const { return &_class_data_; }
 
-void CleanerChatRequestMessage::MergeFrom(const CleanerChatRequestMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CleanerChatRequestMessage)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void CleanerChatRequestMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CleanerChatRequestMessage*>(&to_msg);
+  auto& from = static_cast<const CleanerChatRequestMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:CleanerChatRequestMessage)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_playername(from._internal_playername());
+      _this->_internal_set_playername(from._internal_playername());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_set_chatmessage(from._internal_chatmessage());
+      _this->_internal_set_chatmessage(from._internal_chatmessage());
     }
     if (cached_has_bits & 0x00000004u) {
-      requestid_ = from.requestid_;
+      _this->_impl_.requestid_ = from._impl_.requestid_;
     }
     if (cached_has_bits & 0x00000008u) {
-      cleanerchattype_ = from.cleanerchattype_;
+      _this->_impl_.cleanerchattype_ = from._impl_.cleanerchattype_;
     }
     if (cached_has_bits & 0x00000010u) {
-      gameid_ = from.gameid_;
+      _this->_impl_.gameid_ = from._impl_.gameid_;
     }
     if (cached_has_bits & 0x00000020u) {
-      playerid_ = from.playerid_;
+      _this->_impl_.playerid_ = from._impl_.playerid_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CleanerChatRequestMessage::CopyFrom(const CleanerChatRequestMessage& from) {
@@ -1209,36 +1285,43 @@ void CleanerChatRequestMessage::CopyFrom(const CleanerChatRequestMessage& from) 
 }
 
 bool CleanerChatRequestMessage::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void CleanerChatRequestMessage::InternalSwap(CleanerChatRequestMessage* other) {
   using std::swap;
-  _internal_metadata_.Swap<std::string>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  playername_.Swap(&other->playername_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  chatmessage_.Swap(&other->chatmessage_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.playername_, lhs_arena,
+      &other->_impl_.playername_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.chatmessage_, lhs_arena,
+      &other->_impl_.chatmessage_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CleanerChatRequestMessage, playerid_)
-      + sizeof(CleanerChatRequestMessage::playerid_)
-      - PROTOBUF_FIELD_OFFSET(CleanerChatRequestMessage, requestid_)>(
-          reinterpret_cast<char*>(&requestid_),
-          reinterpret_cast<char*>(&other->requestid_));
+      PROTOBUF_FIELD_OFFSET(CleanerChatRequestMessage, _impl_.playerid_)
+      + sizeof(CleanerChatRequestMessage::_impl_.playerid_)
+      - PROTOBUF_FIELD_OFFSET(CleanerChatRequestMessage, _impl_.requestid_)>(
+          reinterpret_cast<char*>(&_impl_.requestid_),
+          reinterpret_cast<char*>(&other->_impl_.requestid_));
 }
 
-std::string CleanerChatRequestMessage::GetTypeName() const {
-  return "CleanerChatRequestMessage";
+::PROTOBUF_NAMESPACE_ID::Metadata CleanerChatRequestMessage::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_chatcleaner_2eproto_getter, &descriptor_table_chatcleaner_2eproto_once,
+      file_level_metadata_chatcleaner_2eproto[2]);
 }
-
 
 // ===================================================================
 
-void CleanerChatReplyMessage::InitAsDefaultInstance() {
-}
 class CleanerChatReplyMessage::_Internal {
  public:
-  using HasBits = decltype(std::declval<CleanerChatReplyMessage>()._has_bits_);
+  using HasBits = decltype(std::declval<CleanerChatReplyMessage>()._impl_._has_bits_);
   static void set_has_requestid(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -1262,216 +1345,245 @@ class CleanerChatReplyMessage::_Internal {
   }
 };
 
-CleanerChatReplyMessage::CleanerChatReplyMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+CleanerChatReplyMessage::CleanerChatReplyMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:CleanerChatReplyMessage)
 }
 CleanerChatReplyMessage::CleanerChatReplyMessage(const CleanerChatReplyMessage& from)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  cleanertext_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CleanerChatReplyMessage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.cleanertext_){}
+    , decltype(_impl_.requestid_){}
+    , decltype(_impl_.cleanerchattype_){}
+    , decltype(_impl_.gameid_){}
+    , decltype(_impl_.playerid_){}
+    , decltype(_impl_.cleaneractiontype_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.cleanertext_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cleanertext_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (from._internal_has_cleanertext()) {
-    cleanertext_.SetLite(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_cleanertext(),
-      GetArena());
+    _this->_impl_.cleanertext_.Set(from._internal_cleanertext(), 
+      _this->GetArenaForAllocation());
   }
-  ::memcpy(&requestid_, &from.requestid_,
-    static_cast<size_t>(reinterpret_cast<char*>(&cleaneractiontype_) -
-    reinterpret_cast<char*>(&requestid_)) + sizeof(cleaneractiontype_));
+  ::memcpy(&_impl_.requestid_, &from._impl_.requestid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.cleaneractiontype_) -
+    reinterpret_cast<char*>(&_impl_.requestid_)) + sizeof(_impl_.cleaneractiontype_));
   // @@protoc_insertion_point(copy_constructor:CleanerChatReplyMessage)
 }
 
-void CleanerChatReplyMessage::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CleanerChatReplyMessage_chatcleaner_2eproto.base);
-  cleanertext_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  ::memset(&requestid_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&cleaneractiontype_) -
-      reinterpret_cast<char*>(&requestid_)) + sizeof(cleaneractiontype_));
+inline void CleanerChatReplyMessage::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.cleanertext_){}
+    , decltype(_impl_.requestid_){0u}
+    , decltype(_impl_.cleanerchattype_){0}
+    , decltype(_impl_.gameid_){0u}
+    , decltype(_impl_.playerid_){0u}
+    , decltype(_impl_.cleaneractiontype_){0}
+  };
+  _impl_.cleanertext_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cleanertext_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 CleanerChatReplyMessage::~CleanerChatReplyMessage() {
   // @@protoc_insertion_point(destructor:CleanerChatReplyMessage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<std::string>();
 }
 
-void CleanerChatReplyMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  cleanertext_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void CleanerChatReplyMessage::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.cleanertext_.Destroy();
 }
 
-void CleanerChatReplyMessage::ArenaDtor(void* object) {
-  CleanerChatReplyMessage* _this = reinterpret_cast< CleanerChatReplyMessage* >(object);
-  (void)_this;
-}
-void CleanerChatReplyMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void CleanerChatReplyMessage::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const CleanerChatReplyMessage& CleanerChatReplyMessage::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_CleanerChatReplyMessage_chatcleaner_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void CleanerChatReplyMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:CleanerChatReplyMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    cleanertext_.ClearNonDefaultToEmpty();
+    _impl_.cleanertext_.ClearNonDefaultToEmpty();
   }
   if (cached_has_bits & 0x0000003eu) {
-    ::memset(&requestid_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&cleaneractiontype_) -
-        reinterpret_cast<char*>(&requestid_)) + sizeof(cleaneractiontype_));
+    ::memset(&_impl_.requestid_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.cleaneractiontype_) -
+        reinterpret_cast<char*>(&_impl_.requestid_)) + sizeof(_impl_.cleaneractiontype_));
   }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<std::string>();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* CleanerChatReplyMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* CleanerChatReplyMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required uint32 requestId = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           _Internal::set_has_requestid(&has_bits);
-          requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.requestid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required .CleanerChatType cleanerChatType = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           if (PROTOBUF_PREDICT_TRUE(::CleanerChatType_IsValid(val))) {
             _internal_set_cleanerchattype(static_cast<::CleanerChatType>(val));
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(2, val, mutable_unknown_fields());
           }
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional uint32 gameId = 3 [default = 0];
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _Internal::set_has_gameid(&has_bits);
-          gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.gameid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required uint32 playerId = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
           _Internal::set_has_playerid(&has_bits);
-          playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.playerid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // required .CleanerChatReplyMessage.CleanerActionType cleanerActionType = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           if (PROTOBUF_PREDICT_TRUE(::CleanerChatReplyMessage_CleanerActionType_IsValid(val))) {
             _internal_set_cleaneractiontype(static_cast<::CleanerChatReplyMessage_CleanerActionType>(val));
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(5, val, mutable_unknown_fields());
           }
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional string cleanerText = 6 [default = ""];
       case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 50)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
           auto str = _internal_mutable_cleanertext();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else goto handle_unusual;
+          #ifndef NDEBUG
+          ::_pbi::VerifyUTF8(str, "CleanerChatReplyMessage.cleanerText");
+          #endif  // !NDEBUG
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<std::string>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
-  _has_bits_.Or(has_bits);
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* CleanerChatReplyMessage::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* CleanerChatReplyMessage::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:CleanerChatReplyMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required uint32 requestId = 1;
   if (cached_has_bits & 0x00000002u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_requestid(), target);
   }
 
   // required .CleanerChatType cleanerChatType = 2;
   if (cached_has_bits & 0x00000004u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       2, this->_internal_cleanerchattype(), target);
   }
 
   // optional uint32 gameId = 3 [default = 0];
   if (cached_has_bits & 0x00000008u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->_internal_gameid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_gameid(), target);
   }
 
   // required uint32 playerId = 4;
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_playerid(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_playerid(), target);
   }
 
   // required .CleanerChatReplyMessage.CleanerActionType cleanerActionType = 5;
   if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       5, this->_internal_cleaneractiontype(), target);
   }
 
   // optional string cleanerText = 6 [default = ""];
   if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->_internal_cleanertext().data(), static_cast<int>(this->_internal_cleanertext().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "CleanerChatReplyMessage.cleanerText");
     target = stream->WriteStringMaybeAliased(
         6, this->_internal_cleanertext(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
-        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:CleanerChatReplyMessage)
   return target;
@@ -1483,28 +1595,24 @@ size_t CleanerChatReplyMessage::RequiredFieldsByteSizeFallback() const {
 
   if (_internal_has_requestid()) {
     // required uint32 requestId = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestid());
   }
 
   if (_internal_has_cleanerchattype()) {
     // required .CleanerChatType cleanerChatType = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
   }
 
   if (_internal_has_playerid()) {
     // required uint32 playerId = 4;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_playerid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
   }
 
   if (_internal_has_cleaneractiontype()) {
     // required .CleanerChatReplyMessage.CleanerActionType cleanerActionType = 5;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleaneractiontype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleaneractiontype());
   }
 
   return total_size;
@@ -1513,34 +1621,30 @@ size_t CleanerChatReplyMessage::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:CleanerChatReplyMessage)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x00000036) ^ 0x00000036) == 0) {  // All required fields are present.
+  if (((_impl_._has_bits_[0] & 0x00000036) ^ 0x00000036) == 0) {  // All required fields are present.
     // required uint32 requestId = 1;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_requestid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_requestid());
 
     // required .CleanerChatType cleanerChatType = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleanerchattype());
 
     // required uint32 playerId = 4;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_playerid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_playerid());
 
     // required .CleanerChatReplyMessage.CleanerActionType cleanerActionType = 5;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_cleaneractiontype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_cleaneractiontype());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // optional string cleanerText = 6 [default = ""];
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
@@ -1549,54 +1653,50 @@ size_t CleanerChatReplyMessage::ByteSizeLong() const {
 
   // optional uint32 gameId = 3 [default = 0];
   if (cached_has_bits & 0x00000008u) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->_internal_gameid());
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_gameid());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void CleanerChatReplyMessage::CheckTypeAndMergeFrom(
-    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const CleanerChatReplyMessage*>(
-      &from));
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CleanerChatReplyMessage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CleanerChatReplyMessage::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CleanerChatReplyMessage::GetClassData() const { return &_class_data_; }
 
-void CleanerChatReplyMessage::MergeFrom(const CleanerChatReplyMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:CleanerChatReplyMessage)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void CleanerChatReplyMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CleanerChatReplyMessage*>(&to_msg);
+  auto& from = static_cast<const CleanerChatReplyMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:CleanerChatReplyMessage)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_set_cleanertext(from._internal_cleanertext());
+      _this->_internal_set_cleanertext(from._internal_cleanertext());
     }
     if (cached_has_bits & 0x00000002u) {
-      requestid_ = from.requestid_;
+      _this->_impl_.requestid_ = from._impl_.requestid_;
     }
     if (cached_has_bits & 0x00000004u) {
-      cleanerchattype_ = from.cleanerchattype_;
+      _this->_impl_.cleanerchattype_ = from._impl_.cleanerchattype_;
     }
     if (cached_has_bits & 0x00000008u) {
-      gameid_ = from.gameid_;
+      _this->_impl_.gameid_ = from._impl_.gameid_;
     }
     if (cached_has_bits & 0x00000010u) {
-      playerid_ = from.playerid_;
+      _this->_impl_.playerid_ = from._impl_.playerid_;
     }
     if (cached_has_bits & 0x00000020u) {
-      cleaneractiontype_ = from.cleaneractiontype_;
+      _this->_impl_.cleaneractiontype_ = from._impl_.cleaneractiontype_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void CleanerChatReplyMessage::CopyFrom(const CleanerChatReplyMessage& from) {
@@ -1607,43 +1707,39 @@ void CleanerChatReplyMessage::CopyFrom(const CleanerChatReplyMessage& from) {
 }
 
 bool CleanerChatReplyMessage::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   return true;
 }
 
 void CleanerChatReplyMessage::InternalSwap(CleanerChatReplyMessage* other) {
   using std::swap;
-  _internal_metadata_.Swap<std::string>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
-  cleanertext_.Swap(&other->cleanertext_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.cleanertext_, lhs_arena,
+      &other->_impl_.cleanertext_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CleanerChatReplyMessage, cleaneractiontype_)
-      + sizeof(CleanerChatReplyMessage::cleaneractiontype_)
-      - PROTOBUF_FIELD_OFFSET(CleanerChatReplyMessage, requestid_)>(
-          reinterpret_cast<char*>(&requestid_),
-          reinterpret_cast<char*>(&other->requestid_));
+      PROTOBUF_FIELD_OFFSET(CleanerChatReplyMessage, _impl_.cleaneractiontype_)
+      + sizeof(CleanerChatReplyMessage::_impl_.cleaneractiontype_)
+      - PROTOBUF_FIELD_OFFSET(CleanerChatReplyMessage, _impl_.requestid_)>(
+          reinterpret_cast<char*>(&_impl_.requestid_),
+          reinterpret_cast<char*>(&other->_impl_.requestid_));
 }
 
-std::string CleanerChatReplyMessage::GetTypeName() const {
-  return "CleanerChatReplyMessage";
+::PROTOBUF_NAMESPACE_ID::Metadata CleanerChatReplyMessage::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_chatcleaner_2eproto_getter, &descriptor_table_chatcleaner_2eproto_once,
+      file_level_metadata_chatcleaner_2eproto[3]);
 }
-
 
 // ===================================================================
 
-void ChatCleanerMessage::InitAsDefaultInstance() {
-  ::_ChatCleanerMessage_default_instance_._instance.get_mutable()->cleanerinitmessage_ = const_cast< ::CleanerInitMessage*>(
-      ::CleanerInitMessage::internal_default_instance());
-  ::_ChatCleanerMessage_default_instance_._instance.get_mutable()->cleanerinitackmessage_ = const_cast< ::CleanerInitAckMessage*>(
-      ::CleanerInitAckMessage::internal_default_instance());
-  ::_ChatCleanerMessage_default_instance_._instance.get_mutable()->cleanerchatrequestmessage_ = const_cast< ::CleanerChatRequestMessage*>(
-      ::CleanerChatRequestMessage::internal_default_instance());
-  ::_ChatCleanerMessage_default_instance_._instance.get_mutable()->cleanerchatreplymessage_ = const_cast< ::CleanerChatReplyMessage*>(
-      ::CleanerChatReplyMessage::internal_default_instance());
-}
 class ChatCleanerMessage::_Internal {
  public:
-  using HasBits = decltype(std::declval<ChatCleanerMessage>()._has_bits_);
+  using HasBits = decltype(std::declval<ChatCleanerMessage>()._impl_._has_bits_);
   static void set_has_messagetype(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
@@ -1670,242 +1766,242 @@ class ChatCleanerMessage::_Internal {
 
 const ::CleanerInitMessage&
 ChatCleanerMessage::_Internal::cleanerinitmessage(const ChatCleanerMessage* msg) {
-  return *msg->cleanerinitmessage_;
+  return *msg->_impl_.cleanerinitmessage_;
 }
 const ::CleanerInitAckMessage&
 ChatCleanerMessage::_Internal::cleanerinitackmessage(const ChatCleanerMessage* msg) {
-  return *msg->cleanerinitackmessage_;
+  return *msg->_impl_.cleanerinitackmessage_;
 }
 const ::CleanerChatRequestMessage&
 ChatCleanerMessage::_Internal::cleanerchatrequestmessage(const ChatCleanerMessage* msg) {
-  return *msg->cleanerchatrequestmessage_;
+  return *msg->_impl_.cleanerchatrequestmessage_;
 }
 const ::CleanerChatReplyMessage&
 ChatCleanerMessage::_Internal::cleanerchatreplymessage(const ChatCleanerMessage* msg) {
-  return *msg->cleanerchatreplymessage_;
+  return *msg->_impl_.cleanerchatreplymessage_;
 }
-ChatCleanerMessage::ChatCleanerMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(arena) {
-  SharedCtor();
-  RegisterArenaDtor(arena);
+ChatCleanerMessage::ChatCleanerMessage(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
   // @@protoc_insertion_point(arena_constructor:ChatCleanerMessage)
 }
 ChatCleanerMessage::ChatCleanerMessage(const ChatCleanerMessage& from)
-  : ::PROTOBUF_NAMESPACE_ID::MessageLite(),
-      _has_bits_(from._has_bits_) {
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ChatCleanerMessage* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.cleanerinitmessage_){nullptr}
+    , decltype(_impl_.cleanerinitackmessage_){nullptr}
+    , decltype(_impl_.cleanerchatrequestmessage_){nullptr}
+    , decltype(_impl_.cleanerchatreplymessage_){nullptr}
+    , decltype(_impl_.messagetype_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_cleanerinitmessage()) {
-    cleanerinitmessage_ = new ::CleanerInitMessage(*from.cleanerinitmessage_);
-  } else {
-    cleanerinitmessage_ = nullptr;
+    _this->_impl_.cleanerinitmessage_ = new ::CleanerInitMessage(*from._impl_.cleanerinitmessage_);
   }
   if (from._internal_has_cleanerinitackmessage()) {
-    cleanerinitackmessage_ = new ::CleanerInitAckMessage(*from.cleanerinitackmessage_);
-  } else {
-    cleanerinitackmessage_ = nullptr;
+    _this->_impl_.cleanerinitackmessage_ = new ::CleanerInitAckMessage(*from._impl_.cleanerinitackmessage_);
   }
   if (from._internal_has_cleanerchatrequestmessage()) {
-    cleanerchatrequestmessage_ = new ::CleanerChatRequestMessage(*from.cleanerchatrequestmessage_);
-  } else {
-    cleanerchatrequestmessage_ = nullptr;
+    _this->_impl_.cleanerchatrequestmessage_ = new ::CleanerChatRequestMessage(*from._impl_.cleanerchatrequestmessage_);
   }
   if (from._internal_has_cleanerchatreplymessage()) {
-    cleanerchatreplymessage_ = new ::CleanerChatReplyMessage(*from.cleanerchatreplymessage_);
-  } else {
-    cleanerchatreplymessage_ = nullptr;
+    _this->_impl_.cleanerchatreplymessage_ = new ::CleanerChatReplyMessage(*from._impl_.cleanerchatreplymessage_);
   }
-  messagetype_ = from.messagetype_;
+  _this->_impl_.messagetype_ = from._impl_.messagetype_;
   // @@protoc_insertion_point(copy_constructor:ChatCleanerMessage)
 }
 
-void ChatCleanerMessage::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_ChatCleanerMessage_chatcleaner_2eproto.base);
-  ::memset(&cleanerinitmessage_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&cleanerchatreplymessage_) -
-      reinterpret_cast<char*>(&cleanerinitmessage_)) + sizeof(cleanerchatreplymessage_));
-  messagetype_ = 1;
+inline void ChatCleanerMessage::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.cleanerinitmessage_){nullptr}
+    , decltype(_impl_.cleanerinitackmessage_){nullptr}
+    , decltype(_impl_.cleanerchatrequestmessage_){nullptr}
+    , decltype(_impl_.cleanerchatreplymessage_){nullptr}
+    , decltype(_impl_.messagetype_){1}
+  };
 }
 
 ChatCleanerMessage::~ChatCleanerMessage() {
   // @@protoc_insertion_point(destructor:ChatCleanerMessage)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
   SharedDtor();
-  _internal_metadata_.Delete<std::string>();
 }
 
-void ChatCleanerMessage::SharedDtor() {
-  GOOGLE_DCHECK(GetArena() == nullptr);
-  if (this != internal_default_instance()) delete cleanerinitmessage_;
-  if (this != internal_default_instance()) delete cleanerinitackmessage_;
-  if (this != internal_default_instance()) delete cleanerchatrequestmessage_;
-  if (this != internal_default_instance()) delete cleanerchatreplymessage_;
+inline void ChatCleanerMessage::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.cleanerinitmessage_;
+  if (this != internal_default_instance()) delete _impl_.cleanerinitackmessage_;
+  if (this != internal_default_instance()) delete _impl_.cleanerchatrequestmessage_;
+  if (this != internal_default_instance()) delete _impl_.cleanerchatreplymessage_;
 }
 
-void ChatCleanerMessage::ArenaDtor(void* object) {
-  ChatCleanerMessage* _this = reinterpret_cast< ChatCleanerMessage* >(object);
-  (void)_this;
-}
-void ChatCleanerMessage::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
-}
 void ChatCleanerMessage::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
-const ChatCleanerMessage& ChatCleanerMessage::default_instance() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_ChatCleanerMessage_chatcleaner_2eproto.base);
-  return *internal_default_instance();
-}
-
 
 void ChatCleanerMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:ChatCleanerMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
-      GOOGLE_DCHECK(cleanerinitmessage_ != nullptr);
-      cleanerinitmessage_->Clear();
+      GOOGLE_DCHECK(_impl_.cleanerinitmessage_ != nullptr);
+      _impl_.cleanerinitmessage_->Clear();
     }
     if (cached_has_bits & 0x00000002u) {
-      GOOGLE_DCHECK(cleanerinitackmessage_ != nullptr);
-      cleanerinitackmessage_->Clear();
+      GOOGLE_DCHECK(_impl_.cleanerinitackmessage_ != nullptr);
+      _impl_.cleanerinitackmessage_->Clear();
     }
     if (cached_has_bits & 0x00000004u) {
-      GOOGLE_DCHECK(cleanerchatrequestmessage_ != nullptr);
-      cleanerchatrequestmessage_->Clear();
+      GOOGLE_DCHECK(_impl_.cleanerchatrequestmessage_ != nullptr);
+      _impl_.cleanerchatrequestmessage_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
-      GOOGLE_DCHECK(cleanerchatreplymessage_ != nullptr);
-      cleanerchatreplymessage_->Clear();
+      GOOGLE_DCHECK(_impl_.cleanerchatreplymessage_ != nullptr);
+      _impl_.cleanerchatreplymessage_->Clear();
     }
-    messagetype_ = 1;
+    _impl_.messagetype_ = 1;
   }
-  _has_bits_.Clear();
-  _internal_metadata_.Clear<std::string>();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* ChatCleanerMessage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+const char* ChatCleanerMessage::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   _Internal::HasBits has_bits{};
-  ::PROTOBUF_NAMESPACE_ID::Arena* arena = GetArena(); (void)arena;
   while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    CHK_(ptr);
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
       // required .ChatCleanerMessage.ChatCleanerMessageType messageType = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
           if (PROTOBUF_PREDICT_TRUE(::ChatCleanerMessage_ChatCleanerMessageType_IsValid(val))) {
             _internal_set_messagetype(static_cast<::ChatCleanerMessage_ChatCleanerMessageType>(val));
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(1, val, mutable_unknown_fields());
           }
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional .CleanerInitMessage cleanerInitMessage = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
           ptr = ctx->ParseMessage(_internal_mutable_cleanerinitmessage(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional .CleanerInitAckMessage cleanerInitAckMessage = 3;
       case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           ptr = ctx->ParseMessage(_internal_mutable_cleanerinitackmessage(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional .CleanerChatRequestMessage cleanerChatRequestMessage = 4;
       case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr = ctx->ParseMessage(_internal_mutable_cleanerchatrequestmessage(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
       // optional .CleanerChatReplyMessage cleanerChatReplyMessage = 5;
       case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr = ctx->ParseMessage(_internal_mutable_cleanerchatreplymessage(), ptr);
           CHK_(ptr);
-        } else goto handle_unusual;
+        } else
+          goto handle_unusual;
         continue;
-      default: {
-      handle_unusual:
-        if ((tag & 7) == 4 || tag == 0) {
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<std::string>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
+      default:
+        goto handle_unusual;
     }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
   }  // while
-success:
-  _has_bits_.Or(has_bits);
+message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
-  goto success;
+  goto message_done;
 #undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ChatCleanerMessage::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+uint8_t* ChatCleanerMessage::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:ChatCleanerMessage)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   // required .ChatCleanerMessage.ChatCleanerMessageType messageType = 1;
   if (cached_has_bits & 0x00000010u) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
       1, this->_internal_messagetype(), target);
   }
 
   // optional .CleanerInitMessage cleanerInitMessage = 2;
   if (cached_has_bits & 0x00000001u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        2, _Internal::cleanerinitmessage(this), target, stream);
+      InternalWriteMessage(2, _Internal::cleanerinitmessage(this),
+        _Internal::cleanerinitmessage(this).GetCachedSize(), target, stream);
   }
 
   // optional .CleanerInitAckMessage cleanerInitAckMessage = 3;
   if (cached_has_bits & 0x00000002u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::cleanerinitackmessage(this), target, stream);
+      InternalWriteMessage(3, _Internal::cleanerinitackmessage(this),
+        _Internal::cleanerinitackmessage(this).GetCachedSize(), target, stream);
   }
 
   // optional .CleanerChatRequestMessage cleanerChatRequestMessage = 4;
   if (cached_has_bits & 0x00000004u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        4, _Internal::cleanerchatrequestmessage(this), target, stream);
+      InternalWriteMessage(4, _Internal::cleanerchatrequestmessage(this),
+        _Internal::cleanerchatrequestmessage(this).GetCachedSize(), target, stream);
   }
 
   // optional .CleanerChatReplyMessage cleanerChatReplyMessage = 5;
   if (cached_has_bits & 0x00000008u) {
-    target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        5, _Internal::cleanerchatreplymessage(this), target, stream);
+      InternalWriteMessage(5, _Internal::cleanerchatreplymessage(this),
+        _Internal::cleanerchatreplymessage(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = stream->WriteRaw(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).data(),
-        static_cast<int>(_internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size()), target);
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ChatCleanerMessage)
   return target;
@@ -1918,83 +2014,85 @@ size_t ChatCleanerMessage::ByteSizeLong() const {
   // required .ChatCleanerMessage.ChatCleanerMessageType messageType = 1;
   if (_internal_has_messagetype()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_messagetype());
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_messagetype());
   }
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
+  cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000000fu) {
     // optional .CleanerInitMessage cleanerInitMessage = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *cleanerinitmessage_);
+          *_impl_.cleanerinitmessage_);
     }
 
     // optional .CleanerInitAckMessage cleanerInitAckMessage = 3;
     if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *cleanerinitackmessage_);
+          *_impl_.cleanerinitackmessage_);
     }
 
     // optional .CleanerChatRequestMessage cleanerChatRequestMessage = 4;
     if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *cleanerchatrequestmessage_);
+          *_impl_.cleanerchatrequestmessage_);
     }
 
     // optional .CleanerChatReplyMessage cleanerChatReplyMessage = 5;
     if (cached_has_bits & 0x00000008u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *cleanerchatreplymessage_);
+          *_impl_.cleanerchatreplymessage_);
     }
 
   }
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    total_size += _internal_metadata_.unknown_fields<std::string>(::PROTOBUF_NAMESPACE_ID::internal::GetEmptyString).size();
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void ChatCleanerMessage::CheckTypeAndMergeFrom(
-    const ::PROTOBUF_NAMESPACE_ID::MessageLite& from) {
-  MergeFrom(*::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ChatCleanerMessage*>(
-      &from));
-}
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ChatCleanerMessage::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ChatCleanerMessage::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ChatCleanerMessage::GetClassData() const { return &_class_data_; }
 
-void ChatCleanerMessage::MergeFrom(const ChatCleanerMessage& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ChatCleanerMessage)
-  GOOGLE_DCHECK_NE(&from, this);
-  _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+
+void ChatCleanerMessage::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ChatCleanerMessage*>(&to_msg);
+  auto& from = static_cast<const ChatCleanerMessage&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:ChatCleanerMessage)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = from._has_bits_[0];
+  cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000001fu) {
     if (cached_has_bits & 0x00000001u) {
-      _internal_mutable_cleanerinitmessage()->::CleanerInitMessage::MergeFrom(from._internal_cleanerinitmessage());
+      _this->_internal_mutable_cleanerinitmessage()->::CleanerInitMessage::MergeFrom(
+          from._internal_cleanerinitmessage());
     }
     if (cached_has_bits & 0x00000002u) {
-      _internal_mutable_cleanerinitackmessage()->::CleanerInitAckMessage::MergeFrom(from._internal_cleanerinitackmessage());
+      _this->_internal_mutable_cleanerinitackmessage()->::CleanerInitAckMessage::MergeFrom(
+          from._internal_cleanerinitackmessage());
     }
     if (cached_has_bits & 0x00000004u) {
-      _internal_mutable_cleanerchatrequestmessage()->::CleanerChatRequestMessage::MergeFrom(from._internal_cleanerchatrequestmessage());
+      _this->_internal_mutable_cleanerchatrequestmessage()->::CleanerChatRequestMessage::MergeFrom(
+          from._internal_cleanerchatrequestmessage());
     }
     if (cached_has_bits & 0x00000008u) {
-      _internal_mutable_cleanerchatreplymessage()->::CleanerChatReplyMessage::MergeFrom(from._internal_cleanerchatreplymessage());
+      _this->_internal_mutable_cleanerchatreplymessage()->::CleanerChatReplyMessage::MergeFrom(
+          from._internal_cleanerchatreplymessage());
     }
     if (cached_has_bits & 0x00000010u) {
-      messagetype_ = from.messagetype_;
+      _this->_impl_.messagetype_ = from._impl_.messagetype_;
     }
-    _has_bits_[0] |= cached_has_bits;
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ChatCleanerMessage::CopyFrom(const ChatCleanerMessage& from) {
@@ -2005,55 +2103,61 @@ void ChatCleanerMessage::CopyFrom(const ChatCleanerMessage& from) {
 }
 
 bool ChatCleanerMessage::IsInitialized() const {
-  if (_Internal::MissingRequiredFields(_has_bits_)) return false;
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
   if (_internal_has_cleanerinitmessage()) {
-    if (!cleanerinitmessage_->IsInitialized()) return false;
+    if (!_impl_.cleanerinitmessage_->IsInitialized()) return false;
   }
   if (_internal_has_cleanerinitackmessage()) {
-    if (!cleanerinitackmessage_->IsInitialized()) return false;
+    if (!_impl_.cleanerinitackmessage_->IsInitialized()) return false;
   }
   if (_internal_has_cleanerchatrequestmessage()) {
-    if (!cleanerchatrequestmessage_->IsInitialized()) return false;
+    if (!_impl_.cleanerchatrequestmessage_->IsInitialized()) return false;
   }
   if (_internal_has_cleanerchatreplymessage()) {
-    if (!cleanerchatreplymessage_->IsInitialized()) return false;
+    if (!_impl_.cleanerchatreplymessage_->IsInitialized()) return false;
   }
   return true;
 }
 
 void ChatCleanerMessage::InternalSwap(ChatCleanerMessage* other) {
   using std::swap;
-  _internal_metadata_.Swap<std::string>(&other->_internal_metadata_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ChatCleanerMessage, cleanerchatreplymessage_)
-      + sizeof(ChatCleanerMessage::cleanerchatreplymessage_)
-      - PROTOBUF_FIELD_OFFSET(ChatCleanerMessage, cleanerinitmessage_)>(
-          reinterpret_cast<char*>(&cleanerinitmessage_),
-          reinterpret_cast<char*>(&other->cleanerinitmessage_));
-  swap(messagetype_, other->messagetype_);
+      PROTOBUF_FIELD_OFFSET(ChatCleanerMessage, _impl_.cleanerchatreplymessage_)
+      + sizeof(ChatCleanerMessage::_impl_.cleanerchatreplymessage_)
+      - PROTOBUF_FIELD_OFFSET(ChatCleanerMessage, _impl_.cleanerinitmessage_)>(
+          reinterpret_cast<char*>(&_impl_.cleanerinitmessage_),
+          reinterpret_cast<char*>(&other->_impl_.cleanerinitmessage_));
+  swap(_impl_.messagetype_, other->_impl_.messagetype_);
 }
 
-std::string ChatCleanerMessage::GetTypeName() const {
-  return "ChatCleanerMessage";
+::PROTOBUF_NAMESPACE_ID::Metadata ChatCleanerMessage::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_chatcleaner_2eproto_getter, &descriptor_table_chatcleaner_2eproto_once,
+      file_level_metadata_chatcleaner_2eproto[4]);
 }
-
 
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::CleanerInitMessage* Arena::CreateMaybeMessage< ::CleanerInitMessage >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::CleanerInitMessage*
+Arena::CreateMaybeMessage< ::CleanerInitMessage >(Arena* arena) {
   return Arena::CreateMessageInternal< ::CleanerInitMessage >(arena);
 }
-template<> PROTOBUF_NOINLINE ::CleanerInitAckMessage* Arena::CreateMaybeMessage< ::CleanerInitAckMessage >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::CleanerInitAckMessage*
+Arena::CreateMaybeMessage< ::CleanerInitAckMessage >(Arena* arena) {
   return Arena::CreateMessageInternal< ::CleanerInitAckMessage >(arena);
 }
-template<> PROTOBUF_NOINLINE ::CleanerChatRequestMessage* Arena::CreateMaybeMessage< ::CleanerChatRequestMessage >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::CleanerChatRequestMessage*
+Arena::CreateMaybeMessage< ::CleanerChatRequestMessage >(Arena* arena) {
   return Arena::CreateMessageInternal< ::CleanerChatRequestMessage >(arena);
 }
-template<> PROTOBUF_NOINLINE ::CleanerChatReplyMessage* Arena::CreateMaybeMessage< ::CleanerChatReplyMessage >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::CleanerChatReplyMessage*
+Arena::CreateMaybeMessage< ::CleanerChatReplyMessage >(Arena* arena) {
   return Arena::CreateMessageInternal< ::CleanerChatReplyMessage >(arena);
 }
-template<> PROTOBUF_NOINLINE ::ChatCleanerMessage* Arena::CreateMaybeMessage< ::ChatCleanerMessage >(Arena* arena) {
+template<> PROTOBUF_NOINLINE ::ChatCleanerMessage*
+Arena::CreateMaybeMessage< ::ChatCleanerMessage >(Arena* arena) {
   return Arena::CreateMessageInternal< ::ChatCleanerMessage >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
