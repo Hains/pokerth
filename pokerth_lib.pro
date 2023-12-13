@@ -229,7 +229,8 @@ SOURCES += \
     src/net/common/validation/lobbymessagevalidator.cpp \
     src/net/common/validation/pokerthmessagevalidator.cpp \
     src/net/common/validation/gameenginemessagevalidator.cpp \
-    src/net/common/validation/gamemanagementmessagevalidator.cpp
+    src/net/common/validation/gamemanagementmessagevalidator.cpp \
+    src/core/common/loghelper_client.cpp
 
 !android:!android_test{
 	SOURCES += src/engine/local_engine/tools.cpp
