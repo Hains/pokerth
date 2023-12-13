@@ -38,7 +38,10 @@ LIBPATH += lib
 LIBS += -lpokerth_lib \
 	-lpokerth_protocol \
 	-lprotobuf \
-	-ltinyxml
+	-ltinyxml \
+	-lgcrypt \
+	-lsqlite3 \
+	-lboost_filesystem
 
 win32 {
 	LIBPATH += ../boost/stage/lib
