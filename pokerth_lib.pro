@@ -14,7 +14,7 @@ QMAKE_CLEAN += ./lib/libpokerth_lib.a
 MOC_DIR = mocs
 OBJECTS_DIR = obj
 DEFINES += ENABLE_IPV6 TIXML_USE_STL BOOST_FILESYSTEM_DEPRECATED
-QT -= core gui
+QT -= gui
 #PRECOMPILED_HEADER = src/pch_lib.h
 
 INCLUDEPATH += . \
@@ -230,7 +230,9 @@ SOURCES += \
     src/net/common/validation/pokerthmessagevalidator.cpp \
     src/net/common/validation/gameenginemessagevalidator.cpp \
     src/net/common/validation/gamemanagementmessagevalidator.cpp \
-    src/core/common/loghelper_client.cpp
+    src/core/common/loghelper_client.cpp \
+    src/core/common/qttools/qttoolswrapper.cpp \
+    src/core/common/qttools/qthelper/qthelper.cpp
 
 !android:!android_test{
 	SOURCES += src/engine/local_engine/tools.cpp
