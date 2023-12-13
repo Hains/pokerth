@@ -259,7 +259,7 @@ win32{
 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
 	INCLUDEPATH += $${PREFIX}/include /opt/gsasl/include
         DEFINES += _WEBSOCKETPP_CPP11_STL_
-        QMAKE_CXXFLAGS += -std=gnu++17
+        QMAKE_CXXFLAGS += -std=gnu++20
 }
 
 mac{
