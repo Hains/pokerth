@@ -1684,14 +1684,10 @@ void GameTableStyleReader::setSliderStyle(QSlider *s)
 	height = " height: 3px;";
 #endif
 
-#if QT_VERSION >= 0x040700
 #ifdef GUI_800x480
 	s->setStyleSheet("QSlider::groove:horizontal { border: 2px solid #"+BetSpeedSliderGrooveBorderColor+";"+height+" background: #"+BetSpeedSliderGrooveBgColor+"; margin: 2px 0; border-radius: 2px; } QSlider::handle:horizontal { background: #"+BetSpeedSliderHandleBgColor+"; border: 2px solid #"+BetSpeedSliderHandleBorderColor+"; width: 58px; margin: -24px 0; border-radius: 4px;}");
 #else
 	s->setStyleSheet("QSlider::groove:horizontal { border: 1px solid #"+BetSpeedSliderGrooveBorderColor+";"+height+" background: #"+BetSpeedSliderGrooveBgColor+"; margin: 4px 0; border-radius: 2px; } QSlider::handle:horizontal { background: #"+BetSpeedSliderHandleBgColor+"; border: 1px solid #"+BetSpeedSliderHandleBorderColor+"; width: 12px; margin: -7px 0; border-radius: 4px;}");
-#endif
-#else
-	s->setStyleSheet("QSlider::groove:horizontal { border: 1px solid #"+BetSpeedSliderGrooveBorderColor+";"+height+" background: #"+BetSpeedSliderGrooveBgColor+"; margin: 4px 0; border-radius: 2px; } QSlider::handle:horizontal { background: #"+BetSpeedSliderHandleBgColor+"; border: 1px solid #"+BetSpeedSliderHandleBorderColor+"; width: 12px; margin: -2px 0; border-radius: 4px;}");
 #endif
 
 }

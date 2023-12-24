@@ -59,17 +59,9 @@ int main(int argc, char *argv[])
 #include <ctime>
 #include <qapplication.h>
 
-#if QT_VERSION >= 0x050000
 #include <QtWidgets>
-#endif
 #include <QtGui>
 #include <QtCore>
-
-#ifdef __APPLE__
-#if QT_VERSION < 0x050000
-#include <QMacStyle>
-#endif
-#endif
 
 #include <curl/curl.h>
 
@@ -146,9 +138,6 @@ int main( int argc, char **argv )
 	Log *myLog = new Log(myConfig);
 
 	// set PlastiqueStyle even for mac-version to prevent artefacts on styled widgets
-#if QT_VERSION < 0x050000
-	a.setStyle(new QPlastiqueStyle);
-#endif
 
 	QString	myAppDataPath = QString::fromUtf8(myConfig->readConfigString("AppDataDir").c_str());
 	//set QApplication default font

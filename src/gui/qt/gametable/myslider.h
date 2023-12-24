@@ -32,9 +32,7 @@
 #define MYSLIDER_H
 
 #include <QtGui>
-#if QT_VERSION >= 0x050000
 #include <QtWidgets>
-#endif
 
 /*
 * This QSlider Extension was sponsored by: AZEVEDO Filipe aka Nox P@sNox <pasnox@gmail.com>

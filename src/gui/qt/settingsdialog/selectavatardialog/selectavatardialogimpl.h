@@ -36,9 +36,7 @@
 #else
 #include "ui_selectavatardialog.h"
 #endif
-#if QT_VERSION >= 0x050000
 #include <QtWidgets>
-#endif
 #include <QtCore>
 #include <QtGui>
 
