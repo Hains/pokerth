@@ -77,8 +77,8 @@ int joinNetworkGameDialogImpl::exec()
 	spinBox_port->setValue(QString::fromUtf8(myConfig->readConfigString("ServerPort").c_str()).toInt(&toIntTrue, 10));
 
 	//Profile Name darf nicht mit einer Zahl beginnen --> XML konform
-	QRegExp rx("[A-Z|a-z]+[A-Z|a-z|\\d]*");
-	QValidator *validator = new QRegExpValidator(rx, this);
+	QRegularExpression rx("[A-Z|a-z]+[A-Z|a-z|\\d]*");
+	QValidator *validator = new QRegularExpressionValidator(rx, this);
 	lineEdit_profileName->setValidator(validator);
 
 	pushButton_delete->setDisabled(true);

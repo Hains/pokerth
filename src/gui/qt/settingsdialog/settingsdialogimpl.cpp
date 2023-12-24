@@ -689,7 +689,7 @@ void settingsDialogImpl::isAccepted()
 
 		// 		QUrl serverList;
 		// 		serverList.setUrl(lineEdit_InternetServerListAddress->text(),QUrl::StrictMode);
-		// 		QRegExp rx("^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?");
+		// 		(QRegularExpression rx("^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?");
 		// 		if(lineEdit_InternetServerListAddress->text().contains(rx)) {
 		if(lineEdit_InternetServerListAddress->text().contains("/") && lineEdit_InternetServerListAddress->text().contains(".") ) {
 

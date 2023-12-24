@@ -1838,7 +1838,7 @@ void gameTableImpl::provideMyActions(int mode)
 
 
 		//if value changed on bet/raise button --> uncheck to prevent unwanted actions
-		int lastBetValue = lastPushButtonBetRaiseString.simplified().remove(QRegExp("[^0-9]")).toInt();
+		int lastBetValue = lastPushButtonBetRaiseString.simplified().remove(QRegularExpression("[^0-9]")).toInt();
 
 		if((lastBetValue < horizontalSlider_bet->minimum() && pushButton_BetRaise->isChecked())) {
 
@@ -2065,7 +2065,7 @@ int gameTableImpl::getMyCallAmount()
 int gameTableImpl::getBetRaisePushButtonValue()
 {
 
-	int betValue = pushButton_BetRaise->text().simplified().remove(QRegExp("[^0-9]")).toInt();
+	int betValue = pushButton_BetRaise->text().simplified().remove(QRegularExpression("[^0-9]")).toInt();
 	return betValue;
 }
 
