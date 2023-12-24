@@ -114,8 +114,8 @@ void LogFileDialog::refreshLogFileList()
 #endif
 		item->setData(0, Qt::UserRole, dbFilesList.at(i).absoluteFilePath());
 		if(currentSqliteLogFile.fileName() == dbFilesList.at(i).fileName()) {
-			item->setData(0, Qt::BackgroundColorRole, QColor(Qt::red));
-			item->setData(0, Qt::TextColorRole, QColor(Qt::white));
+			item->setData(0, Qt::BackgroundRole, QColor(Qt::red));
+			item->setData(0, Qt::ForegroundRole, QColor(Qt::white));
 			item->setData(0, Qt::UserRole+1, "current");
 		}
 		ui->treeWidget_logFiles->addTopLevelItem(item);

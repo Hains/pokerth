@@ -122,7 +122,7 @@ gameLobbyDialogImpl::gameLobbyDialogImpl(startWindowImpl *parent, ConfigFile *c)
 	autoStartTimerOverlay->setAutoFillBackground(true);
 	autoStartTimerOverlay->setFrameStyle(QFrame::StyledPanel);
 	QPalette p;
-	p.setColor(QPalette::Background, QColor(255, 255, 255, 210));
+	p.setColor(QPalette::Window, QColor(255, 255, 255, 210));
 	autoStartTimerOverlay->setPalette(p);
 
 
@@ -422,7 +422,7 @@ void gameLobbyDialogImpl::refresh(int actionID)
 		myGameListModel->clear();
 		myGameListSelectionModel->clear();
 		myGameListSelectionModel->clearSelection();
-		myGameListSortFilterProxyModel->clear();
+		myGameListSortFilterProxyModel->invalidate();
 		myNickListModel->clear();
 		myNickListSelectionModel->clear();
 		myNickListSelectionModel->clearSelection();;
@@ -870,7 +870,7 @@ void gameLobbyDialogImpl::clearDialog()
 	myGameListModel->clear();
 	myGameListSelectionModel->clear();
 	myGameListSelectionModel->clearSelection();
-	myGameListSortFilterProxyModel->clear();
+	myGameListSortFilterProxyModel->invalidate();
 	treeView_GameList->show();
 	treeWidget_connectedPlayers->clear();
 	treeWidget_connectedSpectators->clear();

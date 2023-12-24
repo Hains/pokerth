@@ -104,8 +104,8 @@ startWindowImpl::startWindowImpl(ConfigFile *c, Log *l)
 	//check if custom background picture for the resolution is there. Otherwise create it!
 	QString UserDataDir = QString::fromUtf8(myConfig->readConfigString("UserDataDir").c_str());
 	QDesktopWidget dw;
-	int screenWidth = dw.screenGeometry().width();
-	int screenHeight = dw.screenGeometry().height();
+	int screenWidth = dw.setGeometry().width();
+	int screenHeight = dw.setGeometry().height();
 	QString customStartWindowBgFileString(UserDataDir+"/startwindowbg10_"+QString::number(screenWidth)+"x"+QString::number(screenHeight)+".png");
 	QFile customStartWindowBgFile(customStartWindowBgFileString);
 	if(customStartWindowBgFile.exists()) {

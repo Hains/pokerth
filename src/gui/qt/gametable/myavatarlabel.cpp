@@ -147,7 +147,7 @@ void MyAvatarLabel::showContextMenu(const QPoint &pos)
 void MyAvatarLabel::setPlayerRating(QString playerInfo)
 {
 	int found=0;
-	QStringList playerInfoList=playerInfo.split("\"", QString::KeepEmptyParts, Qt::CaseSensitive), tipInfo;
+	QStringList playerInfoList=playerInfo.split("\"", Qt::KeepEmptyParts, Qt::CaseSensitive), tipInfo;
 	boost::shared_ptr<Game> currentGame = myW->myStartWindow->getSession()->getCurrentGame();
 	PlayerList seatsList = currentGame->getSeatsList();
 	std::list<std::string> tipsList = myW->getMyConfig()->readConfigStringList("PlayerTooltips");
@@ -155,7 +155,7 @@ void MyAvatarLabel::setPlayerRating(QString playerInfo)
 	std::string separator="(!#$%)";
 	std::list<std::string>::iterator iterator;
 	for(iterator = tipsList.begin(); iterator != tipsList.end(); ++iterator) {
-		tipInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", QString::KeepEmptyParts, Qt::CaseSensitive);
+		tipInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", Qt::KeepEmptyParts, Qt::CaseSensitive);
 		if(tipInfo.at(0)==playerInfoList.at(0)) {
 			result.push_back(tipInfo.at(0).toUtf8().constData()+separator+tipInfo.at(1).toUtf8().constData()+separator+playerInfoList.at(1).toUtf8().constData()+separator);
 			found=1;
@@ -274,7 +274,7 @@ int MyAvatarLabel::getPlayerRating(QString playerName)
 	QStringList playerInfo;
 	QString result="0";
 	for(iterator = tipsList.begin(); iterator != tipsList.end(); ++iterator) {
-		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", QString::KeepEmptyParts, Qt::CaseSensitive);
+		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", Qt::KeepEmptyParts, Qt::CaseSensitive);
 		if(playerInfo.at(0)==playerName) {
 			result=playerInfo.at(2);
 			break;
@@ -290,7 +290,7 @@ QString MyAvatarLabel::getPlayerTip(QString playerName)
 	std::list<std::string>::iterator iterator;
 	QStringList playerInfo;
 	for(iterator = tipsList.begin(); iterator != tipsList.end(); ++iterator) {
-		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", QString::KeepEmptyParts, Qt::CaseSensitive);
+		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", Qt::KeepEmptyParts, Qt::CaseSensitive);
 		if(playerInfo.at(0)==playerName)return playerInfo.at(1);
 	}
 	return QString("");
@@ -317,7 +317,7 @@ void MyAvatarLabel::setPlayerTip()
 	std::list<std::string> result;
 	std::list<std::string>::iterator iterator;
 	for(iterator = tipsList.begin(); iterator != tipsList.end(); ++iterator) {
-		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", QString::KeepEmptyParts, Qt::CaseSensitive);
+		playerInfo=QString::fromUtf8(iterator->c_str()).split("(!#$%)", Qt::KeepEmptyParts, Qt::CaseSensitive);
 		if(QString::fromUtf8(playerName.c_str())==playerInfo.at(0)) {
 			result.push_back(playerName+separator+QString::fromUtf8(tip.c_str()).toUtf8().constData()+separator+playerInfo.at(2).toStdString()+separator);
 			found=1;
