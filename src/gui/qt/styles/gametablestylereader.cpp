@@ -1636,9 +1636,9 @@ void GameTableStyleReader::setWindowsGeometry(gameTableImpl *gt)
 {
 	if(IfFixedWindowSize.toInt()) {
 #ifndef GUI_800x480
-		QDesktopWidget dw;
-		int availableWidth = dw.screenGeometry().width();
-		int availableHeight = dw.screenGeometry().height();
+		const QScreen *dw = QGuiApplication::primaryScreen();
+		int availableWidth = dw->geometry().width();
+		int availableHeight = dw->geometry().height();
 		if(availableWidth == FixedWindowWidth.toInt() && availableHeight == FixedWindowHeight.toInt()) {
 			gt->actionFullScreen->setEnabled(true);
 		} else {
@@ -1654,9 +1654,9 @@ void GameTableStyleReader::setWindowsGeometry(gameTableImpl *gt)
 #endif
 	} else {
 #ifndef GUI_800x480
-		QDesktopWidget dw;
-		int availableWidth = dw.screenGeometry().width();
-		int availableHeight = dw.screenGeometry().height();
+		const QScreen *dw = QGuiApplication::primaryScreen();
+		int availableWidth = dw->geometry().width();
+		int availableHeight = dw->geometry().height();
 		if(availableWidth <= MaximumWindowWidth.toInt() && availableHeight <= MaximumWindowHeight.toInt()) {
 			gt->actionFullScreen->setEnabled(true);
 		} else {
