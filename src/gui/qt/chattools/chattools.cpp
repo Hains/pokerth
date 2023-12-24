@@ -84,7 +84,7 @@ void ChatTools::receiveMessage(QString playerName, QString message, bool pm)
 		message = message.replace("<","&lt;");
 		message = message.replace(">","&gt;");
 		//doing the links
-		message = message.replace(QRegExp("((?:https?)://\\S+)"), "<a href=\"\\1\">\\1</a>");
+		message = message.replace(QRegularExpression("((?:https?)://\\S+)"), "<a href=\"\\1\">\\1</a>");
 
 		//refresh myNick if it was changed during runtime
 		myNick = QString::fromUtf8(myConfig->readConfigString("MyName").c_str());

@@ -40,9 +40,9 @@ LetterRepeatingCheck::LetterRepeatingCheck()
 bool LetterRepeatingCheck::run(QString msg)
 {
 	msg = msg.simplified().remove(" ");
-	QRegExp e(QString(".*(.)\\1{%1,}.*").arg(letterNumberToTrigger-1));
+	QRegularExpression e(QString(".*(.)\\1{%1,}.*").arg(letterNumberToTrigger-1));
 	if(e.isValid()) {
-		if(e.exactMatch(msg)) {
+		if(e.match(msg).hasMatch() ) {
 			return true;
 		} else {
 			return false;

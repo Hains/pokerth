@@ -71,23 +71,23 @@ std::string QtHelper::getDataPathStdString(const char * /*argv0*/)
 	path += "/data/";
 #else
 #ifdef __APPLE__
-	if (QRegExp("Contents/MacOS/?$").indexIn(path) != -1) {
+	if ((QRegularExpression("Contents/MacOS/?$").match(path).hasMatch()) {
 		// pointing into an macosx application bundle
 		path += "/../Resources/data/";
 	} else {
 		path += "/data/";
 	}
 #else //Unix
-	if (QRegExp("pokerth/?$").indexIn(path) != -1) {
+	if (QRegularExpression("pokerth/?$").match(path).hasMatch()) {
 		// there is an own application directory
 		path += "/data/";
-	} else if (QRegExp("usr/games/bin/?$").indexIn(path) != -1) {
+	} else if (QRegularExpression("usr/games/bin/?$").match(path).hasMatch()) {
 		// we are in /usr/games/bin (like gentoo linux does)
 		path += "/../../share/games/pokerth/data/";
-	} else if (QRegExp("usr/games/?$").indexIn(path) != -1) {
+	} else if (QRegularExpression("usr/games/?$").match(path).hasMatch()) {
 		// we are in /usr/games (like Debian linux does)
 		path += "/../share/games/pokerth/";
-	} else if (QRegExp("bin/?$").indexIn(path) != -1) {
+	} else if (QRegularExpression("bin/?$").match(path).hasMatch()) {
 		// we are in a bin directory. e.g. /usr/bin
 		path += "/../share/pokerth/data/";
 
