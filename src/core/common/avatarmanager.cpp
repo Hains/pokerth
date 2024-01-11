@@ -113,7 +113,7 @@ AvatarManager::AddSingleAvatar(const std::string &fileName)
 {
 	bool retVal = false;
 	path filePath(fileName);
-	string tmpFileName(filePath.file_string());
+	string tmpFileName(filePath.string());
 
 	if (!fileName.empty() && !tmpFileName.empty()) {
 		unsigned outFileSize = 0;
@@ -370,7 +370,7 @@ AvatarManager::StoreAvatarInCache(const MD5Buf &md5buf, AvatarFileType avatarFil
 			if (IsValidAvatarFileType(avatarFileType, data, size)) {
 				path tmpPath(cacheDir);
 				tmpPath /= (md5buf.ToString() + ext);
-				string fileName(tmpPath.file_string());
+				string fileName(tmpPath.string());
 				std::ofstream o(fileName.c_str(), ios_base::out | ios_base::binary | ios_base::trunc);
 				if (!o.fail()) {
 					o.write((const char *)data, size);
@@ -449,7 +449,7 @@ AvatarManager::RemoveOldAvatarCacheEntries()
 				while (i != end) {
 					bool keepFile = false;
 					path filePath(i->second);
-					string fileString(filePath.file_string());
+					string fileString(filePath.string());
 					// Only consider files which are definitely in the cache dir.
 					if (fileString.size() > cacheDir.size() && fileString.substr(0, cacheDir.size()) == cacheDir) {
 						// Only consider files with MD5 as file name.
@@ -531,7 +531,7 @@ AvatarManager::InternalReadDirectory(const std::string &dir, AvatarMap &avatars)
 				if (is_regular(i->status())) {
 					string md5sum(basename(i->path()));
 					MD5Buf md5buf;
-					string fileName(i->path().file_string());
+					string fileName(i->path().string());
 					if (md5buf.FromString(md5sum)) {
 						// Only consider files with md5sum as name.
 						avatars.insert(AvatarMap::value_type(md5buf, fileName));
