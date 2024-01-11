@@ -15,7 +15,6 @@ TARGET = bin/zlib_compress
 MOC_DIR = mocs
 OBJECTS_DIR = obj
 DEFINES += PREFIX=\"$${PREFIX}\"
-DEFINES += BOOST_FILESYSTEM_DEPRECATED
 QT -= core gui
 
 INCLUDEPATH += . \

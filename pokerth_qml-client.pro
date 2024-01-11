@@ -9,7 +9,7 @@ TEMPLATE = app
 CODECFORSRC = UTF-8
 QT += core qml quick widgets svg sql
 CONFIG += qt thread embed_manifest_exe exceptions rtti stl warn_on
-DEFINES += ENABLE_IPV6 TIXML_USE_STL BOOST_FILESYSTEM_DEPRECATED
+DEFINES += ENABLE_IPV6 TIXML_USE_STL
 
 DEFINES += QML_CLIENT
 RESOURCES += src/gui/qml/qml.qrc
