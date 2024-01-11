@@ -87,20 +87,20 @@ AvatarManager::Init(const string &dataDir, const string &cacheDir)
 	path tmpDataPath(dataDir);
 	{
 		boost::mutex::scoped_lock lock(m_cacheDirMutex);
-		m_cacheDir = tmpCachePath.directory_string();
+		m_cacheDir = tmpCachePath.string();
 	}
 	{
 		boost::mutex::scoped_lock lock(m_avatarsMutex);
-		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").directory_string(), m_avatars);
+		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/people/").string(), m_avatars);
 		retVal = retVal && tmpRet;
-		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").directory_string(), m_avatars);
+		tmpRet = InternalReadDirectory((tmpDataPath / "gfx/avatars/default/misc/").string(), m_avatars);
 		retVal = retVal && tmpRet;
 	}
 	if (cacheDir.empty() || tmpCachePath.empty())
 		LOG_ERROR("Cache directory was not set!");
 	else {
 		boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);
-		tmpRet = InternalReadDirectory(tmpCachePath.directory_string(), m_cachedAvatars);
+		tmpRet = InternalReadDirectory(tmpCachePath.string(), m_cachedAvatars);
 		retVal = retVal && tmpRet;
 	}
 
@@ -434,7 +434,7 @@ AvatarManager::RemoveOldAvatarCacheEntries()
 	}
 	try {
 		path cachePath(cacheDir);
-		cacheDir = cachePath.directory_string();
+		cacheDir = cachePath.string();
 		// Never delete anything if we do not have a special cache dir set.
 		if (!cacheDir.empty()) {
 			boost::mutex::scoped_lock lock(m_cachedAvatarsMutex);

@@ -275,7 +275,7 @@ ServerLobbyThread::Init(const string &logDir)
 		boost::filesystem::path logPath(logDir);
 		if (!logDir.empty()) {
 			logPath /= SERVER_STATISTICS_FILE_NAME;
-			m_statisticsFileName = logPath.directory_string();
+			m_statisticsFileName = logPath.string();
 			ReadStatisticsFile();
 		}
 	}

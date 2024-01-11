@@ -211,7 +211,7 @@ ClientStateStartServerListDownload::Enter(boost::shared_ptr<ClientThread> client
 	} else {
 		// Download the server list.
 		boost::shared_ptr<DownloadHelper> downloader(new DownloadHelper);
-		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.directory_string());
+		downloader->Init(client->GetContext().GetServerListUrl(), tmpServerListPath.string());
 		ClientStateDownloadingServerList::Instance().SetDownloadHelper(downloader);
 		client->SetState(ClientStateDownloadingServerList::Instance());
 	}
@@ -308,8 +308,8 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
 
 		// Unzip the file using zlib.
 		try {
-			std::ifstream inFile(zippedServerListPath.directory_string().c_str(), ios_base::in | ios_base::binary);
-			std::ofstream outFile(xmlServerListPath.directory_string().c_str(), ios_base::out | ios_base::trunc);
+			std::ifstream inFile(zippedServerListPath.string().c_str(), ios_base::in | ios_base::binary);
+			std::ofstream outFile(xmlServerListPath.string().c_str(), ios_base::out | ios_base::trunc);
 			boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
 			in.push(boost::iostreams::zlib_decompressor());
 			in.push(inFile);
@@ -321,7 +321,7 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
 		xmlServerListPath = zippedServerListPath;
 
 	// Parse the server address.
-	TiXmlDocument doc(xmlServerListPath.directory_string());
+	TiXmlDocument doc(xmlServerListPath.string());
 
 	if (doc.LoadFile()) {
 		client->ClearServerInfoMap();
