@@ -33,10 +33,8 @@
 // If we've determined that we're in full C++11 mode and the user hasn't
 // explicitly disabled the use of C++11 memory header, then prefer it to
 // boost.
-#if defined _WEBSOCKETPP_CPP11_INTERNAL_ && !defined _WEBSOCKETPP_NO_CPP11_MEMORY_
-    #ifndef _WEBSOCKETPP_CPP11_MEMORY_
-        #define _WEBSOCKETPP_CPP11_MEMORY_
-    #endif
+#ifndef _WEBSOCKETPP_CPP11_MEMORY_
+    #define _WEBSOCKETPP_CPP11_MEMORY_
 #endif
 
 // If we're on Visual Studio 2010 or higher and haven't explicitly disabled

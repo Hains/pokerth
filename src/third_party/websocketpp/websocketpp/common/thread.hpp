@@ -33,13 +33,11 @@
 // If we autodetect C++11 and haven't been explicitly instructed to not use
 // C++11 threads, then set the defines that instructs the rest of this header
 // to use C++11 <thread> and <mutex>
-#if defined _WEBSOCKETPP_CPP11_INTERNAL_ && !defined _WEBSOCKETPP_NO_CPP11_THREAD_
-    // MinGW by default does not support C++11 thread/mutex so even if the
-    // internal check for C++11 passes, ignore it if we are on MinGW
-    #if (!defined(__MINGW32__) && !defined(__MINGW64__))
-        #ifndef _WEBSOCKETPP_CPP11_THREAD_
-            #define _WEBSOCKETPP_CPP11_THREAD_
-        #endif
+// MinGW by default does not support C++11 thread/mutex so even if the
+// internal check for C++11 passes, ignore it if we are on MinGW
+#if (!defined(__MINGW32__) && !defined(__MINGW64__))
+    #ifndef _WEBSOCKETPP_CPP11_THREAD_
+        #define _WEBSOCKETPP_CPP11_THREAD_
     #endif
 #endif
 
