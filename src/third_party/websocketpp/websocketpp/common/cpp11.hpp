@@ -56,11 +56,5 @@
 #ifndef _WEBSOCKETPP_NULLPTR_TOKEN_
     #define _WEBSOCKETPP_NULLPTR_TOKEN_ nullptr
 #endif
-    
-#ifndef __GNUC__
-    // GCC as of version 4.9 (latest) does not support std::put_time yet.
-    // so ignore it
-    #define _WEBSOCKETPP_PUTTIME_
-#endif
 
 #endif // WEBSOCKETPP_COMMON_CPP11_HPP
