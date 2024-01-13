@@ -38,6 +38,7 @@
 #include "tools.h"
 #include <core/loghelper.h>
 #include <core/openssl_wrapper.h>
+#include <random>
 
 #include <boost/thread.hpp>
 #include <boost/nondet_random.hpp>
@@ -49,15 +50,6 @@ using namespace std;
 
 boost::thread_specific_ptr<boost::random_device> g_rand_state;
 
-struct nondet_rng {
-	boost::random_device &_state;
-	unsigned operator()(unsigned i) {
-		boost::uniform_int<> rng(0, i - 1);
-		return rng(_state);
-	}
-	nondet_rng(boost::random_device &state) : _state(state) {}
-};
-
 static inline void InitRandState()
 {
 	if (!g_rand_state.get()) {
@@ -68,8 +60,8 @@ static inline void InitRandState()
 void Tools::ShuffleArrayNonDeterministic(int *inout, unsigned count)
 {
 	InitRandState();
-	nondet_rng rand(*g_rand_state);
-	random_shuffle(&inout[0], &inout[count], rand);
+	mt19937 rand(*g_rand_state);
+	shuffle(&inout[0], &inout[count], rand);
 }
 
 void Tools::GetRand(int minValue, int maxValue, unsigned count, int *out)

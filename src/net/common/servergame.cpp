@@ -46,6 +46,7 @@
 #include <localenginefactory.h>
 #include <tools.h>
 #include <configfile.h>
+#include <random>
 
 
 #define SERVER_CHECK_VOTE_KICK_INTERVAL_MSEC	500
@@ -310,7 +311,9 @@ ServerGame::InternalStartGame()
 		// Note: This does not use a cryptographically strong
 		// random number generator.
 		vector<boost::shared_ptr<PlayerData> > tmpData(playerData.begin(), playerData.end());
-		random_shuffle(tmpData.begin(), tmpData.end());
+		std::random_device rd;
+		mt19937 rng(rd());
+		shuffle(tmpData.begin(), tmpData.end(), rng);
 		copy(tmpData.begin(), tmpData.end(), playerData.begin());
 
 		// Set order of players.

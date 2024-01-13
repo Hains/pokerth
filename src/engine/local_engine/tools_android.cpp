@@ -38,6 +38,7 @@
 #include "tools.h"
 #include <core/loghelper.h>
 #include <core/openssl_wrapper.h>
+#include <random>
 
 #include <boost/thread.hpp>
 #include <boost/random/mersenne_twister.hpp>
@@ -47,15 +48,6 @@
 using namespace std;
 
 boost::thread_specific_ptr<boost::mt19937> g_rand_state;
-
-struct det_rng {
-	boost::mt19937 &_state;
-	unsigned operator()(unsigned i) {
-		boost::uniform_int<> rng(0, i - 1);
-		return rng(_state);
-	}
-	det_rng(boost::mt19937 &state) : _state(state) {}
-};
 
 static inline void InitRandState()
 {
@@ -68,8 +60,8 @@ void Tools::ShuffleArrayNonDeterministic(int *inout, unsigned count)
 {
 	// On android, a deterministic rng is used (for now).
 	InitRandState();
-	det_rng rand(*g_rand_state);
-	random_shuffle(&inout[0], &inout[count], rand);
+	mt19937 rand(*g_rand_state);
+	shuffle(&inout[0], &inout[count], rand);
 }
 
 void Tools::GetRand(int minValue, int maxValue, unsigned count, int *out)
