@@ -248,7 +248,7 @@ AvatarManager::GetAvatarFileType(const string &fileName)
 	AvatarFileType fileType;
 
 	path filePath(fileName);
-	string ext(extension(filePath));
+	string ext(filePath.extension().string());
 	if (boost::algorithm::iequals(ext, ".png"))
 		fileType = AVATAR_FILE_TYPE_PNG;
 	else if (boost::algorithm::iequals(ext, ".jpg") || boost::algorithm::iequals(ext, ".jpeg"))
