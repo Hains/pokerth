@@ -59,6 +59,7 @@ class myMessageDialogImpl: public QDialog, public Ui::myMessageDialog
 {
 	Q_OBJECT
 public:
+	using QDialog::exec;
 
 	myMessageDialogImpl(ConfigFile *, QWidget *parent = 0);
 

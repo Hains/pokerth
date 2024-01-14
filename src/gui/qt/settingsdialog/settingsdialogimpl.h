@@ -58,6 +58,8 @@ class settingsDialogImpl: public QDialog, public Ui::settingsDialog
 {
 	Q_OBJECT
 public:
+	using QDialog::exec;
+
 	settingsDialogImpl(QWidget *parent = 0, ConfigFile *c = 0, selectAvatarDialogImpl *s = 0);
 
 	~settingsDialogImpl();

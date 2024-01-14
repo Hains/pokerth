@@ -48,6 +48,8 @@ class createInternetGameDialogImpl: public QDialog, public Ui::createInternetGam
 {
 	Q_OBJECT
 public:
+	using QDialog::exec;
+
 	createInternetGameDialogImpl(QWidget *parent = 0, ConfigFile *c = 0);
 
 	void exec(bool guestMode, QString playerName);
