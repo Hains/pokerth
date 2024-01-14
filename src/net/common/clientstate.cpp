@@ -303,7 +303,7 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
 	path zippedServerListPath(context.GetCacheDir());
 	zippedServerListPath /= context.GetServerListUrl().substr(context.GetServerListUrl().find_last_of('/') + 1);
 	path xmlServerListPath;
-	if (extension(zippedServerListPath) == ".z") {
+	if (zippedServerListPath.extension() == ".z") {
 		xmlServerListPath = change_extension(zippedServerListPath, "");
 
 		// Unzip the file using zlib.
