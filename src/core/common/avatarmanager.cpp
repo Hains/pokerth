@@ -528,7 +528,7 @@ AvatarManager::InternalReadDirectory(const std::string &dir, AvatarMap &avatars)
 			directory_iterator end;
 
 			while (i != end) {
-				if (is_regular(i->status())) {
+				if (is_regular_file(i->status())) {
 					string md5sum(i->path().stem().string());
 					MD5Buf md5buf;
 					string fileName(i->path().string());
