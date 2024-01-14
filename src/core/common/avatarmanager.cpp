@@ -454,7 +454,7 @@ AvatarManager::RemoveOldAvatarCacheEntries()
 					if (fileString.size() > cacheDir.size() && fileString.substr(0, cacheDir.size()) == cacheDir) {
 						// Only consider files with MD5 as file name.
 						MD5Buf tmpBuf;
-						if (exists(filePath) && tmpBuf.FromString(basename(filePath))) {
+						if (exists(filePath) && tmpBuf.FromString(filePath.stem().string())) {
 							timeMap.insert(TimeAvatarMap::value_type(last_write_time(filePath), i->first));
 							keepFile = true;
 						}
@@ -529,7 +529,7 @@ AvatarManager::InternalReadDirectory(const std::string &dir, AvatarMap &avatars)
 
 			while (i != end) {
 				if (is_regular(i->status())) {
-					string md5sum(basename(i->path()));
+					string md5sum(i->path().stem().string());
 					MD5Buf md5buf;
 					string fileName(i->path().string());
 					if (md5buf.FromString(md5sum)) {
