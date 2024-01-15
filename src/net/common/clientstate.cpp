@@ -304,7 +304,8 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
 	zippedServerListPath /= context.GetServerListUrl().substr(context.GetServerListUrl().find_last_of('/') + 1);
 	path xmlServerListPath;
 	if (zippedServerListPath.extension() == ".z") {
-		xmlServerListPath = change_extension(zippedServerListPath, "");
+		path zippedServerListPath2 = zippedServerListPath;
+		xmlServerListPath = zippedServerListPath2.replace_extension("");
 
 		// Unzip the file using zlib.
 		try {
