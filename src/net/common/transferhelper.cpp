@@ -142,7 +142,7 @@ void
 TransferHelper::Cleanup()
 {
 	if (m_data->post) {
-		curl_formfree(m_data->post);
+		curl_mime_init(m_data->post);
 		m_data->post = NULL;
 	}
 	if (m_data->curlMultiHandle) {
