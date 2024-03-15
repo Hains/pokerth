@@ -260,7 +260,7 @@ win32{
 	##### My release static build options
 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
 	INCLUDEPATH += $${PREFIX}/include /opt/gsasl/include
-        QMAKE_CXXFLAGS += -std=gnu++20
+        QMAKE_CXXFLAGS += -std=gnu++23
 }
 
 mac{
