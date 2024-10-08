@@ -17,4 +17,4 @@ QObject::connect(horizontalSlider_soundVolume, &QSlider::valueChanged, label_sou
 
 to
 
-QObject::connect(horizontalSlider_soundVolume, &QSlider::valueChanged, label_soundVolume, qOverload``<int``>(&QLabel::setNum));
+QObject::connect(horizontalSlider_soundVolume, &QSlider::valueChanged, label_soundVolume, qOverload``<int>``(&QLabel::setNum));
