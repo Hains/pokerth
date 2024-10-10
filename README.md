@@ -7,7 +7,7 @@ uics/ui_settingsdialog.h:2442:25: error: no matching function for call to ‘QOb
 In file included from /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h:22,
 
 
-ui_settingsdialog.h is an automatically generated file.
+ui_settingsdialog.h is an automatic generated header file during compilation.
 
 Change line 2442
 
