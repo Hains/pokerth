@@ -426,6 +426,15 @@ void MyAvatarLabel::paintEvent(QPaintEvent*)
 		if(mySession->isNetworkClientRunning() && myId == 0) {
 			QColor pingColor;
 			if(myAvgPing >= 0 && myAvgPing <= 1000) {
+#if QT_VERSION >= 0x060600
+				pingColor.fromString("green");
+			} else if(myAvgPing > 1000 && myAvgPing <= 2000 ) {
+				pingColor.fromString("yellow");
+			} else if(myAvgPing > 2000) {
+				pingColor.fromString("red");
+			} else {
+				pingColor.fromString("white");
+#else
 				pingColor.setNamedColor("green");
 			} else if(myAvgPing > 1000 && myAvgPing <= 2000 ) {
 				pingColor.setNamedColor("yellow");
@@ -433,6 +442,7 @@ void MyAvatarLabel::paintEvent(QPaintEvent*)
 				pingColor.setNamedColor("red");
 			} else {
 				pingColor.setNamedColor("white");
+#endif
 			}
 			QColor pen = pingColor.darker(200);
 			//		pen.setAlpha(130);
