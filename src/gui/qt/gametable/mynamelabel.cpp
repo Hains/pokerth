@@ -50,7 +50,11 @@ void MyNameLabel::setText ( const QString &t, bool trans, bool guest, bool compu
 
 	QString text;
 	QColor transColor;
+#if QT_VERSION >= 0x060600
+	transColor.fromString("#"+myW->getMyGameTableStyle()->getPlayerNickTextColor());
+#else
 	transColor.setNamedColor("#"+myW->getMyGameTableStyle()->getPlayerNickTextColor());
+#endif
 	QString red = QString::number(transColor.red());
 	QString green = QString::number(transColor.green());
 	QString blue = QString::number(transColor.blue());
