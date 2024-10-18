@@ -7,7 +7,7 @@ uics/ui_settingsdialog.h:2442:25: error: no matching function for call to ‘QOb
 In file included from /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h:22,
 
 
-ui_settingsdialog.h is an automatic generated header file during compilation.
+ui_settingsdialog.h is an automatically generated header file during compilation.
 
 Change line 2442
 
@@ -18,3 +18,6 @@ QObject::connect(horizontalSlider_soundVolume, &QSlider::valueChanged, label_sou
 to
 
 QObject::connect(horizontalSlider_soundVolume, &QSlider::valueChanged, label_soundVolume, qOverload``<int>``(&QLabel::setNum));
+
+
+Fixed with Qt 6.8.0 (not tested with Qt 6.7.x). 
