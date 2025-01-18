@@ -29,7 +29,12 @@ RUN sed -i 's/buster/bullseye/g' /etc/apt/sources.list # revert repos to bullsey
 RUN apt update # not reallyy necessary as we do not need any further apt usage
 RUN apt clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* # common final deb based container cleanup
 
+# the following will compile the client:
 RUN cd /opt && git clone https://github.com/pokerth/pokerth.git && cd pokerth && git checkout stable && \
     qmake CONFIG+="client c++11" QMAKE_CFLAGS_ISYSTEM="" -spec linux-g++ pokerth.pro && make
+
+# the following will compile the server:
+# RUN cd /opt && git clone https://github.com/pokerth/pokerth.git && cd pokerth && git checkout stable && \
+#    qmake CONFIG+="official_server c++11" QMAKE_CFLAGS_ISYSTEM="" -spec linux-g++ pokerth.pro && make
 
 ENTRYPOINT ["/bin/bash"]
