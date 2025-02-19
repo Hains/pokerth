@@ -479,8 +479,7 @@ public:
     {
         using boost::asio::ip::tcp;
         tcp::resolver r(*m_io_service);
-        tcp::resolver::query query(host, service);
-        tcp::resolver::iterator endpoint_iterator = r.resolve(query);
+        tcp::resolver::iterator endpoint_iterator = r.resolve(host, service);
         tcp::resolver::iterator end;
         if (endpoint_iterator == end) {
             m_elog->write(log::elevel::library,
@@ -802,8 +801,6 @@ protected:
             port = pu->get_port_str();
         }
 
-        tcp::resolver::query query(host,port);
-
         if (m_alog->static_test(log::alevel::devel)) {
             m_alog->write(log::alevel::devel,
                 "starting async DNS resolve for "+host+":"+port);
@@ -824,7 +821,8 @@ protected:
 
         if (config::enable_multithreading) {
             m_resolver->async_resolve(
-                query,
+                host,
+                port,
                 tcon->get_strand()->wrap(lib::bind(
                     &type::handle_resolve,
                     this,
@@ -837,7 +835,8 @@ protected:
             );
         } else {
             m_resolver->async_resolve(
-                query,
+                host,
+                port,
                 lib::bind(
                     &type::handle_resolve,
                     this,
