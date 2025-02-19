@@ -967,18 +967,18 @@ protected:
      */
     lib::error_code interrupt(interrupt_handler handler) {
         if (config::enable_multithreading) {
-            m_io_service->post(m_strand->wrap(handler));
+            boost::asio::post(*m_io_service, m_strand->wrap(handler));
         } else {
-            m_io_service->post(handler);
+            boost::asio::post(*m_io_service, handler);
         }
         return lib::error_code();
     }
 
     lib::error_code dispatch(dispatch_handler handler) {
         if (config::enable_multithreading) {
-            m_io_service->post(m_strand->wrap(handler));
+            boost::asio::post(*m_io_service, m_strand->wrap(handler));
         } else {
-            m_io_service->post(handler);
+            boost::asio::post(*m_io_service, handler);
         }
         return lib::error_code();
     }

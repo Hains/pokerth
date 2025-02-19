@@ -136,7 +136,7 @@ ClientThread::SendKickPlayer(unsigned playerId)
 	netManage->set_messagetype(GameManagementMessage::Type_KickPlayerRequestMessage);
 	KickPlayerRequestMessage *netKick = netManage->mutable_kickplayerrequestmessage();
 	netKick->set_playerid(playerId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -150,7 +150,7 @@ ClientThread::SendLeaveCurrentGame()
 	GameManagementMessage *netManage = netGame->mutable_gamemanagementmessage();
 	netManage->set_messagetype(GameManagementMessage::Type_LeaveGameRequestMessage);
 	/*LeaveGameRequestMessage *netLeave = */netManage->mutable_leavegamerequestmessage();
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -168,7 +168,7 @@ ClientThread::SendStartEvent(bool fillUpWithCpuPlayers)
 	StartEventMessage *netStartEvent = netManage->mutable_starteventmessage();
 	netStartEvent->set_starteventtype(StartEventMessage::startEvent);
 	netStartEvent->set_fillwithcomputerplayers(fillUpWithCpuPlayers);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -198,7 +198,7 @@ ClientThread::SendPlayerAction()
 	else
 		netMyAction->set_myrelativebet(0);
 	// Just dump the packet.
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -217,7 +217,7 @@ ClientThread::SendGameChatMessage(const std::string &msg)
 	netChat->set_chattext(msg);
 
 	// Just dump the packet.
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -233,7 +233,7 @@ ClientThread::SendLobbyChatMessage(const std::string &msg)
 	netChat->set_chattext(msg);
 
 	// Just dump the packet.
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -250,7 +250,7 @@ ClientThread::SendPrivateChatMessage(unsigned targetPlayerId, const std::string 
 	netChat->set_chattext(msg);
 
 	// Just dump the packet.
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -269,7 +269,7 @@ ClientThread::SendJoinFirstGame(const std::string &password, bool autoLeave)
 	if (!password.empty()) {
 		netJoinGame->set_password(password);
 	}
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -288,7 +288,7 @@ ClientThread::SendJoinGame(unsigned gameId, const std::string &password, bool au
 	if (!password.empty()) {
 		netJoinGame->set_password(password);
 	}
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -304,7 +304,7 @@ ClientThread::SendRejoinGame(unsigned gameId, bool autoLeave)
 	netJoinGame->set_gameid(gameId);
 	netJoinGame->set_autoleave(autoLeave);
 
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -326,7 +326,7 @@ ClientThread::SendCreateGame(const GameData &gameData, const std::string &name, 
 	if (!password.empty()) {
 		netCreateGame->set_password(password);
 	}
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -337,7 +337,7 @@ ClientThread::SendResetTimeout()
 	LobbyMessage *netLobby = packet->GetMsg()->mutable_lobbymessage();
 	netLobby->set_messagetype(LobbyMessage::Type_ResetTimeoutMessage);
 	netLobby->mutable_resettimeoutmessage();
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -352,7 +352,7 @@ ClientThread::SendAskKickPlayer(unsigned playerId)
 	netManage->set_messagetype(GameManagementMessage::Type_AskKickPlayerMessage);
 	AskKickPlayerMessage *netAsk = netManage->mutable_askkickplayermessage();
 	netAsk->set_playerid(playerId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -371,7 +371,7 @@ ClientThread::SendVoteKick(bool doKick)
 		netVote->set_petitionid(m_curPetitionId);
 	}
 	netVote->set_votekick(doKick);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -385,7 +385,7 @@ ClientThread::SendShowMyCards()
 	GameEngineMessage *netEngine = netGame->mutable_gameenginemessage();
 	netEngine->set_messagetype(GameEngineMessage::Type_ShowMyCardsRequestMessage);
 	netEngine->mutable_showmycardsrequestmessage();
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -400,7 +400,7 @@ ClientThread::SendInvitePlayerToCurrentGame(unsigned playerId)
 	netManagement->set_messagetype(GameManagementMessage::Type_InvitePlayerToGameMessage);
 	InvitePlayerToGameMessage *netInvite = netManagement->mutable_inviteplayertogamemessage();
 	netInvite->set_playerid(playerId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -413,7 +413,7 @@ ClientThread::SendRejectGameInvitation(unsigned gameId, DenyGameInvitationReason
 	RejectGameInvitationMessage *netReject = netLobby->mutable_rejectgameinvitationmessage();
 	netReject->set_gameid(gameId);
 	netReject->set_myrejectreason(static_cast<RejectGameInvitationMessage::RejectGameInvReason>(reason));
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -429,7 +429,7 @@ ClientThread::SendReportAvatar(unsigned reportedPlayerId, const std::string &ava
 	if (tmpMD5.FromString(avatarHash) && !tmpMD5.IsZero()) {
 		netReport->set_reportedavatarhash(tmpMD5.GetData(), MD5_DATA_SIZE);
 
-		m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+		boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 	}
 }
 
@@ -442,7 +442,7 @@ ClientThread::SendReportGameName(unsigned reportedGameId)
 	netLobby->set_messagetype(LobbyMessage::Type_ReportGameMessage);
 	ReportGameMessage *netReport = netLobby->mutable_reportgamemessage();
 	netReport->set_reportedgameid(reportedGameId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -454,7 +454,7 @@ ClientThread::SendAdminRemoveGame(unsigned removeGameId)
 	netLobby->set_messagetype(LobbyMessage::Type_AdminRemoveGameMessage);
 	AdminRemoveGameMessage *netRemove = netLobby->mutable_adminremovegamemessage();
 	netRemove->set_removegameid(removeGameId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
@@ -466,7 +466,7 @@ ClientThread::SendAdminBanPlayer(unsigned playerId)
 	netLobby->set_messagetype(LobbyMessage::Type_AdminBanPlayerMessage);
 	AdminBanPlayerMessage *netBan = netLobby->mutable_adminbanplayermessage();
 	netBan->set_banplayerid(playerId);
-	m_ioService->post(boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
+	boost::asio::post(*m_ioService, boost::bind(&ClientThread::SendSessionPacket, shared_from_this(), packet));
 }
 
 void
