@@ -73,11 +73,11 @@ AsyncDBReportGame::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idMana
 void
 AsyncDBReportGame::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::ReportGameSuccess, &cb, GetId(), m_replyId));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::ReportGameSuccess, &cb, GetId(), m_replyId));
 }
 
 void
 AsyncDBReportGame::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::ReportGameFailed, &cb, GetId(), m_replyId));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::ReportGameFailed, &cb, GetId(), m_replyId));
 }

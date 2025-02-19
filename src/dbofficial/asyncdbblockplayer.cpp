@@ -61,11 +61,11 @@ AsyncDBBlockPlayer::HandleResult(mysqlpp::Query &/*query*/, DBIdManager &/*idMan
 void
 AsyncDBBlockPlayer::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager &/*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::BlockPlayerSuccess, &cb, GetId(), m_replyId));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::BlockPlayerSuccess, &cb, GetId(), m_replyId));
 }
 
 void
 AsyncDBBlockPlayer::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::BlockPlayerFailed, &cb, GetId(), m_replyId));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::BlockPlayerFailed, &cb, GetId(), m_replyId));
 }

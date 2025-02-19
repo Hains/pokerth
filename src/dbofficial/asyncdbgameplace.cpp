@@ -74,5 +74,5 @@ AsyncDBGamePlace::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idMan
 void
 AsyncDBGamePlace::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBGamePlace: Failure."));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBGamePlace: Failure."));
 }
