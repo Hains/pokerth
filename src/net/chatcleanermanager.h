@@ -59,8 +59,8 @@ public:
 
 protected:
 
-	void HandleResolve(const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
-	void HandleConnect(const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
+	void HandleResolve(const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::results_type endpoint_iterator);
+	void HandleConnect(const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::results_type endpoint_iterator);
 	void HandleRead(const boost::system::error_code &ec, size_t bytesRead);
 	bool HandleMessage(ChatCleanerMessage &msg);
 

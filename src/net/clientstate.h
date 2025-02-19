@@ -97,7 +97,7 @@ protected:
 	ClientStateStartResolve();
 
 	void HandleResolve(
-		const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::iterator endpoint_iterator,
+		const boost::system::error_code& ec, boost::asio::ip::tcp::resolver::results_type endpoint_iterator,
 		boost::shared_ptr<ClientThread> client);
 };
 
@@ -201,7 +201,7 @@ public:
 
 	virtual void HandlePacket(boost::shared_ptr<ClientThread> /*client*/, boost::shared_ptr<NetPacket> /*tmpPacket*/) {}
 
-	void SetRemoteEndpoint(boost::asio::ip::tcp::resolver::iterator endpointIterator);
+	void SetRemoteEndpoint(boost::asio::ip::tcp::resolver::results_type endpointIterator);
 
 protected:
 
@@ -209,13 +209,13 @@ protected:
 	ClientStateStartConnect();
 
 	void HandleConnect(const boost::system::error_code& ec,
-					   boost::asio::ip::tcp::resolver::iterator endpoint_iterator,
+					   boost::asio::ip::tcp::resolver::results_type endpoint_iterator,
 					   boost::shared_ptr<ClientThread> client);
 
 	void TimerTimeout(const boost::system::error_code& ec, boost::shared_ptr<ClientThread> client);
 
 private:
-	boost::asio::ip::tcp::resolver::iterator m_remoteEndpointIterator;
+	boost::asio::ip::tcp::resolver::results_type m_remoteEndpointIterator;
 };
 
 // Abstract State: Receiving
