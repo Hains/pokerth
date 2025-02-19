@@ -175,7 +175,7 @@ main(int argc, char *argv[])
 
 		// Connect to the PokerTH server.
 		boost::timers::portable::microsec_timer perfTimer;
-		boost::asio::io_service io_service;
+		boost::asio::io_context io_service;
 		tcp::resolver resolver(io_service);
 		tcp::resolver::query query(server, port);
 		tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);

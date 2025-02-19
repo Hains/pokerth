@@ -60,10 +60,10 @@ public:
     /// Type of a shared pointer to this connection socket component
     typedef lib::shared_ptr<type> ptr;
 
-    /// Type of a pointer to the ASIO io_service being used
-    typedef boost::asio::io_service* io_service_ptr;
-    /// Type of a pointer to the ASIO io_service strand being used
-    typedef lib::shared_ptr<boost::asio::io_service::strand> strand_ptr;
+    /// Type of a pointer to the ASIO io_context being used
+    typedef boost::asio::io_context* io_service_ptr;
+    /// Type of a pointer to the ASIO io_context strand being used
+    typedef lib::shared_ptr<boost::asio::io_context::strand> strand_ptr;
     /// Type of the ASIO socket being used
     typedef boost::asio::ip::tcp::socket socket_type;
     /// Type of a shared pointer to the socket being used.
@@ -154,9 +154,9 @@ protected:
     /// Perform one time initializations
     /**
      * init_asio is called once immediately after construction to initialize
-     * boost::asio components to the io_service
+     * boost::asio components to the io_context
      *
-     * @param service A pointer to the endpoint's io_service
+     * @param service A pointer to the endpoint's io_context
      * @param strand A shared pointer to the connection's asio strand
      * @param is_server Whether or not the endpoint is a server or not.
      */

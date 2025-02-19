@@ -85,10 +85,10 @@ public:
     typedef typename config::response_type response_type;
     typedef typename response_type::ptr response_ptr;
 
-    /// Type of a pointer to the ASIO io_service being used
-    typedef boost::asio::io_service* io_service_ptr;
-    /// Type of a pointer to the ASIO io_service::strand being used
-    typedef lib::shared_ptr<boost::asio::io_service::strand> strand_ptr;
+    /// Type of a pointer to the ASIO io_context being used
+    typedef boost::asio::io_context* io_service_ptr;
+    /// Type of a pointer to the ASIO io_context::strand being used
+    typedef lib::shared_ptr<boost::asio::io_context::strand> strand_ptr;
     /// Type of a pointer to the ASIO timer class
     typedef lib::shared_ptr<boost::asio::deadline_timer> timer_ptr;
 
@@ -97,7 +97,7 @@ public:
     // to the public api.
     friend class endpoint<config>;
 
-    // generate and manage our own io_service
+    // generate and manage our own io_context
     explicit connection(bool is_server, alog_type& alog, elog_type& elog)
       : m_is_server(is_server)
       , m_alog(alog)
@@ -350,7 +350,7 @@ protected:
     /// Initialize transport for reading
     /**
      * init_asio is called once immediately after construction to initialize
-     * boost::asio components to the io_service
+     * boost::asio components to the io_context
      *
      * The transport initialization sequence consists of the following steps:
      * - Pre-init: the underlying socket is initialized to the point where
@@ -408,18 +408,18 @@ protected:
     /// Finish constructing the transport
     /**
      * init_asio is called once immediately after construction to initialize
-     * boost::asio components to the io_service.
+     * boost::asio components to the io_context.
      *
-     * @param io_service A pointer to the io_service to register with this
+     * @param io_context A pointer to the io_context to register with this
      * connection
      *
      * @return Status code for the success or failure of the initialization
      */
-    lib::error_code init_asio (io_service_ptr io_service) {
-        m_io_service = io_service;
+    lib::error_code init_asio (io_service_ptr io_context) {
+        m_io_service = io_context;
 
         if (config::enable_multithreading) {
-            m_strand = lib::make_shared<boost::asio::io_service::strand>(*io_service);
+            m_strand = lib::make_shared<boost::asio::io_context::strand>(*io_context);
 
             m_async_read_handler = m_strand->wrap(lib::bind(
                 &type::handle_async_read, get_shared(),lib::placeholders::_1,
@@ -436,7 +436,7 @@ protected:
                 get_shared(), lib::placeholders::_1, lib::placeholders::_2);
         }
 
-        lib::error_code ec = socket_con_type::init_asio(io_service, m_strand,
+        lib::error_code ec = socket_con_type::init_asio(io_context, m_strand,
             m_is_server);
 
         if (ec) {

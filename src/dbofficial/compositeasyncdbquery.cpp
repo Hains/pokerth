@@ -70,19 +70,19 @@ CompositeAsyncDBQuery::SetParams(const std::list<std::string> &params)
 }
 
 void
-CompositeAsyncDBQuery::HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_service &service, ServerDBCallback &cb)
+CompositeAsyncDBQuery::HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	(*m_currentQuery)->HandleResult(query, idManager, result, service, cb);
 }
 
 void
-CompositeAsyncDBQuery::HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_service &service, ServerDBCallback &cb)
+CompositeAsyncDBQuery::HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	(*m_currentQuery)->HandleNoResult(query, idManager, service, cb);
 }
 
 void
-CompositeAsyncDBQuery::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+CompositeAsyncDBQuery::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	(*m_currentQuery)->HandleError(service, cb);
 	m_errorFlag = true;

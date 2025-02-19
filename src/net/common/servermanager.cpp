@@ -56,13 +56,13 @@ static GenericIrcCallback g_ircCallback;
 ServerManager::ServerManager(ConfigFile &config, GuiInterface &gui)
 	: m_playerConfig(config), m_gui(gui)
 {
-	m_ioService.reset(new boost::asio::io_service);
+	m_ioService.reset(new boost::asio::io_context);
 }
 
 ServerManager::ServerManager(ConfigFile &config, GuiInterface &gui, ServerMode mode, AvatarManager &avatarManager)
 	: m_playerConfig(config), m_gui(gui)
 {
-	m_ioService.reset(new boost::asio::io_service);
+	m_ioService.reset(new boost::asio::io_context);
 	m_lobbyThread.reset(new ServerLobbyThread(gui, mode, g_ircCallback, config, avatarManager, m_ioService));
 }
 

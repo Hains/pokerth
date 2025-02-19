@@ -46,20 +46,20 @@ AsyncDBLogin::~AsyncDBLogin()
 }
 
 void
-AsyncDBLogin::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBLogin::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBLogin::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBLogin::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	// No action required.
 }
 
 void
-AsyncDBLogin::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBLogin::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBLogin: Failure."));
 }

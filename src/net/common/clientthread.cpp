@@ -73,7 +73,7 @@ using namespace boost::chrono;
 #endif
 
 ClientThread::ClientThread(GuiInterface &gui, AvatarManager &avatarManager, Log *myLog)
-	: m_ioService(new boost::asio::io_service), m_clientLog(myLog), m_curState(NULL), m_gui(gui),
+	: m_ioService(new boost::asio::io_context), m_clientLog(myLog), m_curState(NULL), m_gui(gui),
 	  m_avatarManager(avatarManager), m_isServerSelected(false),
 	  m_curGameId(0), m_curGameNum(1), m_guiPlayerId(0), m_sessionEstablished(false),
 	  m_stateTimer(*m_ioService), m_avatarTimer(*m_ioService)
@@ -628,7 +628,7 @@ void
 ClientThread::Main()
 {
 	// Main loop.
-	boost::asio::io_service::work ioWork(*m_ioService);
+	boost::asio::io_context::work ioWork(*m_ioService);
 	try {
 		InitAuthContext();
 		// Start sub-threads.
@@ -637,7 +637,7 @@ ClientThread::Main()
 		SetState(CLIENT_INITIAL_STATE::Instance());
 		RegisterTimers();
 
-		boost::asio::io_service::work ioWork(*m_ioService);
+		boost::asio::io_context::work ioWork(*m_ioService);
 		m_ioService->run(); // Will only be aborted asynchronously.
 
 	} catch (const PokerTHException &e) {

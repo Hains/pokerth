@@ -62,8 +62,8 @@ class SessionData : public boost::enable_shared_from_this<SessionData>
 public:
 	enum State { Auth = 1, Init = 2, ReceivingAvatar = 4, Established = 8, Game = 16, Spectating = 32, SpectatorWaiting = 64, Closed = 128 };
 
-	SessionData(boost::shared_ptr<boost::asio::ip::tcp::socket> sock, SessionId id, SessionDataCallback &cb, boost::asio::io_service &ioService);
-	SessionData(boost::shared_ptr<WebSocketData> webData, SessionId id, SessionDataCallback &cb, boost::asio::io_service &ioService, int filler);
+	SessionData(boost::shared_ptr<boost::asio::ip::tcp::socket> sock, SessionId id, SessionDataCallback &cb, boost::asio::io_context &ioService);
+	SessionData(boost::shared_ptr<WebSocketData> webData, SessionId id, SessionDataCallback &cb, boost::asio::io_context &ioService, int filler);
 	~SessionData();
 
 	SessionId GetId() const;

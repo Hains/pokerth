@@ -52,7 +52,7 @@ class IrcThread;
 class ServerLobbyBot : public IrcCallback, public ServerIrcBotCallback, public boost::enable_shared_from_this<ServerLobbyBot>
 {
 public:
-	ServerLobbyBot(boost::shared_ptr<boost::asio::io_service> ioService);
+	ServerLobbyBot(boost::shared_ptr<boost::asio::io_context> ioService);
 	virtual ~ServerLobbyBot();
 
 	void Init(boost::shared_ptr<ServerLobbyThread> lobbyThread, boost::shared_ptr<IrcThread> ircLobbyThread);

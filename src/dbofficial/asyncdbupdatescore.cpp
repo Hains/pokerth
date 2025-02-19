@@ -61,20 +61,20 @@ AsyncDBUpdateScore::Init(DBIdManager& idManager)
 }
 
 void
-AsyncDBUpdateScore::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBUpdateScore::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBUpdateScore::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& idManager, boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBUpdateScore::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& idManager, boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	idManager.RemoveGameId(GetId());
 }
 
 void
-AsyncDBUpdateScore::HandleError(boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBUpdateScore::HandleError(boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	// Ignore errors for now (as nothing important is done).
 }
