@@ -886,8 +886,8 @@ protected:
         connect_handler callback, boost::system::error_code const & ec,
         boost::asio::ip::tcp::resolver::iterator iterator)
     {
-        if (ec == boost::asio::error::operation_aborted ||
-            dns_timer->expires_from_now().is_negative())
+        if (ec == boost::asio::error::operation_aborted ) // ||
+            // dns_timer->expires_from_now().is_negative())
         {
             m_alog->write(log::alevel::devel,"async_resolve cancelled");
             return;
@@ -994,8 +994,8 @@ protected:
     void handle_connect(transport_con_ptr tcon, timer_ptr con_timer,
         connect_handler callback, boost::system::error_code const & ec)
     {
-        if (ec == boost::asio::error::operation_aborted ||
-            con_timer->expires_from_now().is_negative())
+        if (ec == boost::asio::error::operation_aborted ) // ||
+            // con_timer->expires_from_now().is_negative())
         {
             m_alog->write(log::alevel::devel,"async_connect cancelled");
             return;
