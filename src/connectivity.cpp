@@ -177,8 +177,8 @@ main(int argc, char *argv[])
 		boost::timers::portable::microsec_timer perfTimer;
 		boost::asio::io_context io_service;
 		tcp::resolver resolver(io_service);
-		tcp::resolver::iterator endpoint_iterator = resolver.resolve(server, port);
-		tcp::resolver::iterator end;
+		tcp::resolver::results_type endpoint_iterator = resolver.resolve(server, port);
+		tcp::resolver::results_type end;
 		tcp::socket socket(io_service);
 		boost::system::error_code error = boost::asio::error::host_not_found;
 		while (error && endpoint_iterator != end) {
