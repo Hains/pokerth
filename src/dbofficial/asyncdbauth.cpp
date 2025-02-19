@@ -46,7 +46,7 @@ AsyncDBAuth::~AsyncDBAuth()
 }
 
 void
-AsyncDBAuth::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& result, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBAuth::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& result, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	if (result.num_rows() != 1) {
 		service.post(boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
@@ -78,13 +78,13 @@ AsyncDBAuth::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/,
 }
 
 void
-AsyncDBAuth::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBAuth::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	HandleError(service, cb);
 }
 
 void
-AsyncDBAuth::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBAuth::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
 }

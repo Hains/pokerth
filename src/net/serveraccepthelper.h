@@ -51,7 +51,7 @@ public:
 	typedef typename P::acceptor P_acceptor;
 	typedef typename P::endpoint P_endpoint;
 
-	ServerAcceptHelper(ServerCallback &serverCallback, boost::shared_ptr<boost::asio::io_service> ioService)
+	ServerAcceptHelper(ServerCallback &serverCallback, boost::shared_ptr<boost::asio::io_context> ioService)
 		: m_ioService(ioService), m_serverCallback(serverCallback)
 	{
 		m_acceptor.reset(new P_acceptor(*m_ioService));
@@ -155,7 +155,7 @@ protected:
 	}
 
 private:
-	boost::shared_ptr<boost::asio::io_service> m_ioService;
+	boost::shared_ptr<boost::asio::io_context> m_ioService;
 	boost::shared_ptr<P_acceptor> m_acceptor;
 	boost::shared_ptr<P_endpoint> m_endpoint;
 	ServerCallback &m_serverCallback;

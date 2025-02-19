@@ -75,7 +75,7 @@ struct DBConnectionData {
 	mysqlpp::Connection conn;
 };
 
-ServerDBThread::ServerDBThread(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_service> ioService)
+ServerDBThread::ServerDBThread(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_ioService(ioService), m_semaphore(0), m_callback(cb), m_isConnected(false), m_permanentError(false), m_previouslyConnected(false)
 {
 	m_connData.reset(new DBConnectionData);

@@ -58,20 +58,20 @@ AsyncDBEndGame::Init(DBIdManager& idManager)
 }
 
 void
-AsyncDBEndGame::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBEndGame::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBEndGame::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBEndGame::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	// Nothing to do.
 }
 
 void
-AsyncDBEndGame::HandleError(boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBEndGame::HandleError(boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	// Ignore errors for now (as nothing important is done).
 }

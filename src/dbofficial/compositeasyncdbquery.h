@@ -51,10 +51,10 @@ public:
 	virtual void GetParams(std::list<std::string> &params) const;
 	virtual void SetParams(const std::list<std::string> &params);
 
-	virtual void HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_service &service, ServerDBCallback &cb);
-	virtual void HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_service &service, ServerDBCallback &cb);
+	virtual void HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_context &service, ServerDBCallback &cb);
+	virtual void HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_context &service, ServerDBCallback &cb);
 	// One error will cancel the rest of the composite query.
-	virtual void HandleError(boost::asio::io_service &service, ServerDBCallback &cb);
+	virtual void HandleError(boost::asio::io_context &service, ServerDBCallback &cb);
 
 	virtual bool RequiresResultSet() const;
 	virtual bool Next();

@@ -40,7 +40,7 @@ using namespace std::chrono;
 using namespace boost::chrono;
 #endif
 
-ServerBanManager::ServerBanManager(boost::shared_ptr<boost::asio::io_service> ioService)
+ServerBanManager::ServerBanManager(boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_ioService(ioService), m_curBanId(0)
 {
 }

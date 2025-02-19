@@ -65,7 +65,7 @@ class ServerLobbyThread : public Thread, public boost::enable_shared_from_this<S
 {
 public:
 	ServerLobbyThread(GuiInterface &gui, ServerMode mode, ServerIrcBotCallback &ircBotCb, ConfigFile &serverConfig, AvatarManager &avatarManager,
-					  boost::shared_ptr<boost::asio::io_service> ioService);
+					  boost::shared_ptr<boost::asio::io_context> ioService);
 	virtual ~ServerLobbyThread();
 
 	void Init(const std::string &logDir);
@@ -125,7 +125,7 @@ public:
 	ServerMode GetServerMode() const;
 
 	SenderHelper &GetSender();
-	boost::asio::io_service &GetIOService();
+	boost::asio::io_context &GetIOService();
 	boost::shared_ptr<ServerDBInterface> GetDatabase();
 	ServerBanManager &GetBanManager();
 
@@ -227,7 +227,7 @@ protected:
 
 private:
 
-	boost::shared_ptr<boost::asio::io_service> m_ioService;
+	boost::shared_ptr<boost::asio::io_context> m_ioService;
 
 	boost::shared_ptr<InternalServerCallback> m_internalServerCallback;
 	boost::shared_ptr<SenderHelper> m_sender;

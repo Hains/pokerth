@@ -41,7 +41,7 @@
 class ServerDBGeneric : public ServerDBInterface
 {
 public:
-	ServerDBGeneric(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_service> ioService);
+	ServerDBGeneric(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_context> ioService);
 	virtual ~ServerDBGeneric();
 
 	virtual void Init(const std::string &host, const std::string &user, const std::string &pwd,
@@ -67,7 +67,7 @@ public:
 	virtual void AsyncBlockPlayer(unsigned requestId, unsigned replyId, DB_id playerId, int valid, int active);
 
 private:
-	boost::shared_ptr<boost::asio::io_service> m_ioService;
+	boost::shared_ptr<boost::asio::io_context> m_ioService;
 	ServerDBCallback &m_callback;
 };
 

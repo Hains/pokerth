@@ -59,20 +59,20 @@ AsyncDBGamePlace::Init(DBIdManager& idManager)
 }
 
 void
-AsyncDBGamePlace::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBGamePlace::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBGamePlace::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &/*service*/, ServerDBCallback &/*cb*/)
+AsyncDBGamePlace::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &/*service*/, ServerDBCallback &/*cb*/)
 {
 	// No action required.
 }
 
 void
-AsyncDBGamePlace::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBGamePlace::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBGamePlace: Failure."));
 }

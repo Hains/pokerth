@@ -37,7 +37,7 @@
 
 using namespace std;
 
-ServerAcceptWebHelper::ServerAcceptWebHelper(ServerCallback &serverCallback, boost::shared_ptr<boost::asio::io_service> ioService,
+ServerAcceptWebHelper::ServerAcceptWebHelper(ServerCallback &serverCallback, boost::shared_ptr<boost::asio::io_context> ioService,
 		const string &webSocketResource, const string &webSocketOrigin)
 	: m_ioService(ioService), m_serverCallback(serverCallback),
 	  m_webSocketResource(webSocketResource), m_webSocketOrigin(webSocketOrigin)

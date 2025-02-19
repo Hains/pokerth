@@ -64,20 +64,20 @@ AsyncDBReportGame::Init(DBIdManager& idManager)
 }
 
 void
-AsyncDBReportGame::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportGame::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBReportGame::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportGame::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::ReportGameSuccess, &cb, GetId(), m_replyId));
 }
 
 void
-AsyncDBReportGame::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportGame::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::ReportGameFailed, &cb, GetId(), m_replyId));
 }
