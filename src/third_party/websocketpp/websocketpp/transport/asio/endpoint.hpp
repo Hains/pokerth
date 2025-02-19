@@ -479,8 +479,8 @@ public:
     {
         using boost::asio::ip::tcp;
         tcp::resolver r(*m_io_service);
-        tcp::resolver::iterator endpoint_iterator = r.resolve(host, service);
-        tcp::resolver::iterator end;
+        tcp::resolver::results_type endpoint_iterator = r.resolve(host, service);
+        tcp::resolver::results_type end;
         if (endpoint_iterator == end) {
             m_elog->write(log::elevel::library,
                 "asio::listen could not resolve the supplied host or service");
@@ -884,7 +884,7 @@ protected:
 
     void handle_resolve(transport_con_ptr tcon, timer_ptr dns_timer,
         connect_handler callback, boost::system::error_code const & ec,
-        boost::asio::ip::tcp::resolver::iterator iterator)
+        boost::asio::ip::tcp::resolver::results_type iterator)
     {
         if (ec == boost::asio::error::operation_aborted ||
             dns_timer->expires_from_now().is_negative())
@@ -905,7 +905,7 @@ protected:
             std::stringstream s;
             s << "Async DNS resolve successful. Results: ";
 
-            boost::asio::ip::tcp::resolver::iterator it, end;
+            boost::asio::ip::tcp::resolver::results_type it, end;
             for (it = iterator; it != end; ++it) {
                 s << (*it).endpoint() << " ";
             }
