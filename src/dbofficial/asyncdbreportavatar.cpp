@@ -46,20 +46,20 @@ AsyncDBReportAvatar::~AsyncDBReportAvatar()
 }
 
 void
-AsyncDBReportAvatar::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportAvatar::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& /*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBReportAvatar::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportAvatar::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::ReportAvatarSuccess, &cb, GetId(), m_replyId));
 }
 
 void
-AsyncDBReportAvatar::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBReportAvatar::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::ReportAvatarFailed, &cb, GetId(), m_replyId));
 }

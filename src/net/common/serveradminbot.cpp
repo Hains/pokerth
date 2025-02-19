@@ -55,7 +55,7 @@ using namespace std::chrono;
 using namespace boost::chrono;
 #endif
 
-ServerAdminBot::ServerAdminBot(boost::shared_ptr<boost::asio::io_service> ioService)
+ServerAdminBot::ServerAdminBot(boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_notifyTimeoutMinutes(0), m_notifyIntervalMinutes(0), m_notifyCounter(0),
 	  m_notifyTimer(boost::posix_time::time_duration(0, 0, 0), boost::timers::portable::second_timer::manual_start),
 	  m_reconnectTimer(*ioService), m_notifyLoopTimer(*ioService), m_checkFileTimer(*ioService)

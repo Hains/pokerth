@@ -51,9 +51,9 @@ public:
 	virtual void GetParams(std::list<std::string> &params) const = 0;
 	virtual void SetParams(const std::list<std::string> &params) = 0;
 
-	virtual void HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_service &service, ServerDBCallback &cb) = 0;
-	virtual void HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_service &service, ServerDBCallback &cb) = 0;
-	virtual void HandleError(boost::asio::io_service &service, ServerDBCallback &cb) = 0;
+	virtual void HandleResult(mysqlpp::Query &query, DBIdManager& idManager, mysqlpp::StoreQueryResult& result, boost::asio::io_context &service, ServerDBCallback &cb) = 0;
+	virtual void HandleNoResult(mysqlpp::Query &query, DBIdManager& idManager, boost::asio::io_context &service, ServerDBCallback &cb) = 0;
+	virtual void HandleError(boost::asio::io_context &service, ServerDBCallback &cb) = 0;
 	virtual bool RequiresResultSet() const = 0;
 	virtual bool Next() = 0;
 };

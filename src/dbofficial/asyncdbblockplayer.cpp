@@ -52,20 +52,20 @@ AsyncDBBlockPlayer::Init(DBIdManager &/*idManager*/)
 }
 
 void
-AsyncDBBlockPlayer::HandleResult(mysqlpp::Query &/*query*/, DBIdManager &/*idManager*/, mysqlpp::StoreQueryResult &/*result*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBBlockPlayer::HandleResult(mysqlpp::Query &/*query*/, DBIdManager &/*idManager*/, mysqlpp::StoreQueryResult &/*result*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	// This query does not produce a result.
 	HandleError(service, cb);
 }
 
 void
-AsyncDBBlockPlayer::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager &/*idManager*/, boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBBlockPlayer::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager &/*idManager*/, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::BlockPlayerSuccess, &cb, GetId(), m_replyId));
 }
 
 void
-AsyncDBBlockPlayer::HandleError(boost::asio::io_service &service, ServerDBCallback &cb)
+AsyncDBBlockPlayer::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	service.post(boost::bind(&ServerDBCallback::BlockPlayerFailed, &cb, GetId(), m_replyId));
 }

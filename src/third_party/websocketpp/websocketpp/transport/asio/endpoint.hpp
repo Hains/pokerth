@@ -80,18 +80,18 @@ public:
     /// associated with this endpoint transport component
     typedef typename transport_con_type::ptr transport_con_ptr;
 
-    /// Type of a pointer to the ASIO io_service being used
-    typedef boost::asio::io_service* io_service_ptr;
+    /// Type of a pointer to the ASIO io_context being used
+    typedef boost::asio::io_context* io_service_ptr;
     /// Type of a shared pointer to the acceptor being used
     typedef lib::shared_ptr<boost::asio::ip::tcp::acceptor> acceptor_ptr;
     /// Type of a shared pointer to the resolver being used
     typedef lib::shared_ptr<boost::asio::ip::tcp::resolver> resolver_ptr;
     /// Type of timer handle
     typedef lib::shared_ptr<boost::asio::deadline_timer> timer_ptr;
-    /// Type of a shared pointer to an io_service work object
-    typedef lib::shared_ptr<boost::asio::io_service::work> work_ptr;
+    /// Type of a shared pointer to an io_context work object
+    typedef lib::shared_ptr<boost::asio::io_context::work> work_ptr;
 
-    // generate and manage our own io_service
+    // generate and manage our own io_context
     explicit endpoint()
       : m_io_service(NULL)
       , m_external_io_service(false)
@@ -103,7 +103,7 @@ public:
     }
 
     ~endpoint() {
-        // clean up our io_service if we were initialized with an internal one.
+        // clean up our io_context if we were initialized with an internal one.
         m_acceptor.reset();
         if (m_state != UNINITIALIZED && !m_external_io_service) {
             delete m_io_service;
@@ -167,7 +167,7 @@ public:
      * io_service object. asio_init must be called exactly once on any endpoint
      * that uses transport::asio before it can be used.
      *
-     * @param ptr A pointer to the io_service to use for asio events
+     * @param ptr A pointer to the io_context to use for asio events
      * @param ec Set to indicate what error occurred, if any.
      */
     void init_asio(io_service_ptr ptr, lib::error_code & ec) {
@@ -189,13 +189,13 @@ public:
         ec = lib::error_code();
     }
 
-    /// initialize asio transport with external io_service
+    /// initialize asio transport with external io_context
     /**
      * Initialize the ASIO transport policy for this endpoint using the provided
-     * io_service object. asio_init must be called exactly once on any endpoint
+     * io_context object. asio_init must be called exactly once on any endpoint
      * that uses transport::asio before it can be used.
      *
-     * @param ptr A pointer to the io_service to use for asio events
+     * @param ptr A pointer to the io_context to use for asio events
      */
     void init_asio(io_service_ptr ptr) {
         lib::error_code ec;
@@ -203,29 +203,29 @@ public:
         if (ec) { throw exception(ec); }
     }
 
-    /// Initialize asio transport with internal io_service (exception free)
+    /// Initialize asio transport with internal io_context (exception free)
     /**
      * This method of initialization will allocate and use an internally managed
-     * io_service.
+     * io_context.
      *
      * @see init_asio(io_service_ptr ptr)
      *
      * @param ec Set to indicate what error occurred, if any.
      */
     void init_asio(lib::error_code & ec) {
-        init_asio(new boost::asio::io_service(), ec);
+        init_asio(new boost::asio::io_context(), ec);
         m_external_io_service = false;
     }
 
-    /// Initialize asio transport with internal io_service
+    /// Initialize asio transport with internal io_context
     /**
      * This method of initialization will allocate and use an internally managed
-     * io_service.
+     * io_context.
      *
      * @see init_asio(io_service_ptr ptr)
      */
     void init_asio() {
-        init_asio(new boost::asio::io_service());
+        init_asio(new boost::asio::io_context());
         m_external_io_service = false;
     }
 
@@ -313,18 +313,18 @@ public:
         m_reuse_addr = value;
     }
 
-    /// Retrieve a reference to the endpoint's io_service
+    /// Retrieve a reference to the endpoint's io_context
     /**
-     * The io_service may be an internal or external one. This may be used to
-     * call methods of the io_service that are not explicitly wrapped by the
+     * The io_context may be an internal or external one. This may be used to
+     * call methods of the io_context that are not explicitly wrapped by the
      * endpoint.
      *
      * This method is only valid after the endpoint has been initialized with
      * `init_asio`. No error will be returned if it isn't.
      *
-     * @return A reference to the endpoint's io_service
+     * @return A reference to the endpoint's io_context
      */
-    boost::asio::io_service & get_io_service() {
+    boost::asio::io_context & get_io_service() {
         return *m_io_service;
     }
 
@@ -557,12 +557,12 @@ public:
         return (m_state == LISTENING);
     }
 
-    /// wraps the run method of the internal io_service object
+    /// wraps the run method of the internal io_context object
     std::size_t run() {
         return m_io_service->run();
     }
 
-    /// wraps the run_one method of the internal io_service object
+    /// wraps the run_one method of the internal io_context object
     /**
      * @since 0.3.0-alpha4
      */
@@ -570,27 +570,27 @@ public:
         return m_io_service->run_one();
     }
 
-    /// wraps the stop method of the internal io_service object
+    /// wraps the stop method of the internal io_context object
     void stop() {
         m_io_service->stop();
     }
 
-    /// wraps the poll method of the internal io_service object
+    /// wraps the poll method of the internal io_context object
     std::size_t poll() {
         return m_io_service->poll();
     }
 
-    /// wraps the poll_one method of the internal io_service object
+    /// wraps the poll_one method of the internal io_context object
     std::size_t poll_one() {
         return m_io_service->poll_one();
     }
 
-    /// wraps the reset method of the internal io_service object
+    /// wraps the reset method of the internal io_context object
     void reset() {
         m_io_service->reset();
     }
 
-    /// wraps the stopped method of the internal io_service object
+    /// wraps the stopped method of the internal io_context object
     bool stopped() const {
         return m_io_service->stopped();
     }
@@ -608,7 +608,7 @@ public:
      * @since 0.3.0
      */
     void start_perpetual() {
-        m_work = lib::make_shared<boost::asio::io_service::work>(*m_io_service);
+        m_work = lib::make_shared<boost::asio::io_context::work>(*m_io_service);
     }
 
     /// Clears the endpoint's perpetual flag, allowing it to exit when empty

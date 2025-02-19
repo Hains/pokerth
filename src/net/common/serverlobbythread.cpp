@@ -248,7 +248,7 @@ private:
 
 
 ServerLobbyThread::ServerLobbyThread(GuiInterface &gui, ServerMode mode, ServerIrcBotCallback &ircBotCb, ConfigFile &serverConfig,
-									 AvatarManager &avatarManager, boost::shared_ptr<boost::asio::io_service> ioService)
+									 AvatarManager &avatarManager, boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_ioService(ioService), m_authContext(NULL), m_gui(gui), m_ircBotCb(ircBotCb), m_avatarManager(avatarManager),
 	  m_mode(mode), m_serverConfig(serverConfig), m_curGameId(0), m_curUniquePlayerId(0), m_curSessionId(INVALID_SESSION + 1),
 	  m_statDataChanged(false), m_removeGameTimer(*ioService),
@@ -775,7 +775,7 @@ ServerLobbyThread::GetSender()
 	return *m_sender;
 }
 
-boost::asio::io_service &
+boost::asio::io_context &
 ServerLobbyThread::GetIOService()
 {
 	assert(m_ioService);
@@ -840,7 +840,7 @@ ServerLobbyThread::Main()
 		// Register all timers.
 		RegisterTimers();
 
-		boost::asio::io_service::work ioWork(*m_ioService);
+		boost::asio::io_context::work ioWork(*m_ioService);
 		m_ioService->run(); // Will only be aborted asynchronously.
 
 	} catch (const PokerTHException &e) {

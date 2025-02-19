@@ -44,7 +44,7 @@ namespace websocketpp {
 namespace transport {
 /// Transport policy that uses boost::asio
 /**
- * This policy uses a single boost::asio io_service to provide transport
+ * This policy uses a single boost::asio io_context to provide transport
  * services to a WebSocket++ endpoint.
  */
 namespace asio {

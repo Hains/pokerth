@@ -71,10 +71,10 @@ public:
     typedef boost::asio::ssl::stream<boost::asio::ip::tcp::socket> socket_type;
     /// Type of a shared pointer to the ASIO socket being used
     typedef lib::shared_ptr<socket_type> socket_ptr;
-    /// Type of a pointer to the ASIO io_service being used
-    typedef boost::asio::io_service* io_service_ptr;
-    /// Type of a pointer to the ASIO io_service strand being used
-    typedef lib::shared_ptr<boost::asio::io_service::strand> strand_ptr;
+    /// Type of a pointer to the ASIO io_context being used
+    typedef boost::asio::io_context* io_service_ptr;
+    /// Type of a pointer to the ASIO io_context strand being used
+    typedef lib::shared_ptr<boost::asio::io_context::strand> strand_ptr;
     /// Type of a shared pointer to the ASIO TLS context being used
     typedef lib::shared_ptr<boost::asio::ssl::context> context_ptr;
 
@@ -178,9 +178,9 @@ protected:
     /// Perform one time initializations
     /**
      * init_asio is called once immediately after construction to initialize
-     * boost::asio components to the io_service
+     * boost::asio components to the io_context
      *
-     * @param service A pointer to the endpoint's io_service
+     * @param service A pointer to the endpoint's io_context
      * @param strand A pointer to the connection's strand
      * @param is_server Whether or not the endpoint is a server or not.
      */

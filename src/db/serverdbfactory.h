@@ -44,7 +44,7 @@ public:
 	virtual ~ServerDBFactory();
 
 	virtual boost::shared_ptr<ServerDBInterface> CreateServerDBObject(
-		ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_service> ioService) = 0;
+		ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_context> ioService) = 0;
 };
 
 #endif

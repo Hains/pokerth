@@ -35,7 +35,7 @@
 using namespace std;
 
 
-ServerDBGeneric::ServerDBGeneric(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_service> ioService)
+ServerDBGeneric::ServerDBGeneric(ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_ioService(ioService), m_callback(cb)
 {
 }

@@ -45,7 +45,7 @@ public:
 	virtual ~ServerDBFactoryGeneric();
 
 	virtual boost::shared_ptr<ServerDBInterface> CreateServerDBObject(
-		ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_service> ioService);
+		ServerDBCallback &cb, boost::shared_ptr<boost::asio::io_context> ioService);
 };
 
 typedef ServerDBFactoryGeneric DBFactory;

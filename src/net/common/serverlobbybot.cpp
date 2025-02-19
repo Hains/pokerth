@@ -51,7 +51,7 @@ using namespace std::chrono;
 using namespace boost::chrono;
 #endif
 
-ServerLobbyBot::ServerLobbyBot(boost::shared_ptr<boost::asio::io_service> ioService)
+ServerLobbyBot::ServerLobbyBot(boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_reconnectTimer(*ioService)
 {
 }

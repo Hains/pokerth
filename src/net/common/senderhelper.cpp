@@ -40,7 +40,7 @@
 
 using namespace std;
 
-SenderHelper::SenderHelper(boost::shared_ptr<boost::asio::io_service> ioService)
+SenderHelper::SenderHelper(boost::shared_ptr<boost::asio::io_context> ioService)
 	: m_ioService(ioService)
 {
 }

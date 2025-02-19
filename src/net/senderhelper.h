@@ -42,7 +42,7 @@ class SendBuffer;
 class SenderHelper
 {
 public:
-	SenderHelper(boost::shared_ptr<boost::asio::io_service> ioService);
+	SenderHelper(boost::shared_ptr<boost::asio::io_context> ioService);
 	~SenderHelper();
 
 	void Send(boost::shared_ptr<SessionData> session, boost::shared_ptr<NetPacket> packet);
@@ -52,7 +52,7 @@ public:
 
 private:
 
-	boost::shared_ptr<boost::asio::io_service> m_ioService;
+	boost::shared_ptr<boost::asio::io_context> m_ioService;
 };
 
 #endif

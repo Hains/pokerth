@@ -75,7 +75,7 @@ protected:
 	{
 		return m_gui;
 	}
-	boost::shared_ptr<boost::asio::io_service> m_ioService;
+	boost::shared_ptr<boost::asio::io_context> m_ioService;
 	boost::shared_ptr<ServerLobbyThread> m_lobbyThread;
 
 private:
