@@ -49,12 +49,12 @@ void
 AsyncDBAuth::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/, mysqlpp::StoreQueryResult& result, boost::asio::io_context &service, ServerDBCallback &cb)
 {
 	if (result.num_rows() != 1) {
-		service.post(boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
+		boost::asio::post(service, boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
 	} else {
 		int blocked = result[0][2];
 		int active = result[0][7];
 		if ((active != 1) || (blocked != 0)) {
-			service.post(boost::bind(&ServerDBCallback::PlayerLoginBlocked, &cb, GetId()));
+			oost::asio::post(service, boost::bind(&ServerDBCallback::PlayerLoginBlocked, &cb, GetId()));
 		} else {
 			mysqlpp::String secret(result[0][1]);
 			mysqlpp::String country(result[0][3]);
@@ -72,7 +72,7 @@ AsyncDBAuth::HandleResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*/,
 			if (!last_ip.is_null())
 				last_ip.to_string(tmpData->last_ip);
 
-			service.post(boost::bind(&ServerDBCallback::PlayerLoginSuccess, &cb, GetId(), tmpData));
+			boost::asio::post(boost::bind(service, &ServerDBCallback::PlayerLoginSuccess, &cb, GetId(), tmpData));
 		}
 	}
 }
@@ -86,5 +86,5 @@ AsyncDBAuth::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager*
 void
 AsyncDBAuth::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::PlayerLoginFailed, &cb, GetId()));
 }

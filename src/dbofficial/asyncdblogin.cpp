@@ -61,5 +61,5 @@ AsyncDBLogin::HandleNoResult(mysqlpp::Query &/*query*/, DBIdManager& /*idManager
 void
 AsyncDBLogin::HandleError(boost::asio::io_context &service, ServerDBCallback &cb)
 {
-	service.post(boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBLogin: Failure."));
+	boost::asio::post(service, boost::bind(&ServerDBCallback::QueryError, &cb, "AsyncDBLogin: Failure."));
 }

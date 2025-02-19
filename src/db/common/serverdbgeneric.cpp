@@ -63,13 +63,13 @@ ServerDBGeneric::Stop()
 void
 ServerDBGeneric::AsyncPlayerLogin(unsigned requestId, const string &/*playerName*/)
 {
-	m_ioService->post(boost::bind(&ServerDBCallback::PlayerLoginFailed, &m_callback, requestId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerDBCallback::PlayerLoginFailed, &m_callback, requestId));
 }
 
 void
 ServerDBGeneric::AsyncCheckAvatarBlacklist(unsigned requestId, const std::string &/*avatarHash*/)
 {
-	m_ioService->post(boost::bind(&ServerDBCallback::AvatarIsBlacklisted, &m_callback, requestId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerDBCallback::AvatarIsBlacklisted, &m_callback, requestId));
 }
 
 void
@@ -85,7 +85,7 @@ ServerDBGeneric::PlayerLogout(DB_id /*playerId*/)
 void
 ServerDBGeneric::AsyncCreateGame(unsigned requestId, const string &/*gameName*/)
 {
-	m_ioService->post(boost::bind(&ServerDBCallback::CreateGameFailed, &m_callback, requestId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerDBCallback::CreateGameFailed, &m_callback, requestId));
 }
 
 void
@@ -106,13 +106,13 @@ ServerDBGeneric::EndGame(unsigned /*requestId*/)
 void
 ServerDBGeneric::AsyncReportAvatar(unsigned requestId, unsigned replyId, DB_id /*reportedPlayerId*/, const std::string &/*avatarHash*/, const std::string &/*avatarType*/, DB_id * /*byPlayerId*/)
 {
-	m_ioService->post(boost::bind(&ServerDBCallback::ReportAvatarFailed, &m_callback, requestId, replyId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerDBCallback::ReportAvatarFailed, &m_callback, requestId, replyId));
 }
 
 void
 ServerDBGeneric::AsyncReportGame(unsigned requestId, unsigned replyId, DB_id * /*creatorPlayerId*/, unsigned /*gameId*/, const std::string &/*gameName*/, DB_id * /*byPlayerId*/)
 {
-	m_ioService->post(boost::bind(&ServerDBCallback::ReportGameFailed, &m_callback, requestId, replyId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerDBCallback::ReportGameFailed, &m_callback, requestId, replyId));
 }
 
 void

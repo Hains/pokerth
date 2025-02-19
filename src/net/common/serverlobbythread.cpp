@@ -628,7 +628,7 @@ ServerLobbyThread::RemoveGameByPlayerName(const std::string &playerName)
 	if (session) {
 		boost::shared_ptr<ServerGame> game = session->GetGame();
 		if (game) {
-			m_ioService->post(boost::bind(&ServerLobbyThread::InternalRemoveGame, shared_from_this(), game));
+			boost::asio::post(*m_ioService, boost::bind(&ServerLobbyThread::InternalRemoveGame, shared_from_this(), game));
 			retVal = true;
 		}
 	}
@@ -667,13 +667,13 @@ ServerLobbyThread::GetPlayerNameFromId(unsigned playerId) const
 void
 ServerLobbyThread::RemovePlayer(unsigned playerId, unsigned errorCode)
 {
-	m_ioService->post(boost::bind(&ServerLobbyThread::InternalRemovePlayer, shared_from_this(), playerId, errorCode));
+	boost::asio::post(*m_ioService, boost::bind(&ServerLobbyThread::InternalRemovePlayer, shared_from_this(), playerId, errorCode));
 }
 
 void
 ServerLobbyThread::MutePlayerInGame(unsigned playerId)
 {
-	m_ioService->post(boost::bind(&ServerLobbyThread::InternalMutePlayerInGame, shared_from_this(), playerId));
+	boost::asio::post(*m_ioService, boost::bind(&ServerLobbyThread::InternalMutePlayerInGame, shared_from_this(), playerId));
 }
 
 void
