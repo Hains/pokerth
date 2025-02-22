@@ -89,7 +89,7 @@ public:
     /// Type of timer handle
     typedef lib::shared_ptr<boost::asio::deadline_timer> timer_ptr;
     /// Type of a shared pointer to an io_context work object
-    typedef lib::shared_ptr<boost::asio::io_context::work> work_ptr;
+    typedef lib::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> work_ptr;
 
     // generate and manage our own io_context
     explicit endpoint()
@@ -607,7 +607,7 @@ public:
      * @since 0.3.0
      */
     void start_perpetual() {
-        m_work = lib::make_shared<boost::asio::io_context::work>(*m_io_service);
+        m_work = lib::make_shared<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>>(m_io_service->get_executor());
     }
 
     /// Clears the endpoint's perpetual flag, allowing it to exit when empty
