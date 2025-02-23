@@ -840,7 +840,6 @@ ServerLobbyThread::Main()
 		// Register all timers.
 		RegisterTimers();
 
-		boost::asio::io_context::work ioWork(*m_ioService);
 		m_ioService->run(); // Will only be aborted asynchronously.
 
 	} catch (const PokerTHException &e) {

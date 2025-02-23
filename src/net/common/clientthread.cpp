@@ -628,7 +628,6 @@ void
 ClientThread::Main()
 {
 	// Main loop.
-	boost::asio::io_context::work ioWork(*m_ioService);
 	try {
 		InitAuthContext();
 		// Start sub-threads.
@@ -637,7 +636,6 @@ ClientThread::Main()
 		SetState(CLIENT_INITIAL_STATE::Instance());
 		RegisterTimers();
 
-		boost::asio::io_context::work ioWork(*m_ioService);
 		m_ioService->run(); // Will only be aborted asynchronously.
 
 	} catch (const PokerTHException &e) {
