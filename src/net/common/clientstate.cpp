@@ -473,13 +473,14 @@ ClientStateStartConnect::Enter(boost::shared_ptr<ClientThread> client)
 		boost::bind(
 			&ClientStateStartConnect::TimerTimeout, this, boost::asio::placeholders::error, client));
 
-	boost::asio::ip::tcp::endpoint endpoint = *m_remoteEndpointIterator;
+	boost::asio::ip::tcp::endpoint endpoint = *m_remoteEndpointIterator.begin();
 	client->GetContext().GetSessionData()->GetAsioSocket()->async_connect(
 		endpoint,
 		boost::bind(&ClientStateStartConnect::HandleConnect,
 					this,
 					boost::asio::placeholders::error,
-					++m_remoteEndpointIterator,
+					// ++m_remoteEndpointIterator, FIXME
+					m_remoteEndpointIterator,
 					client));
 }
 
@@ -508,13 +509,14 @@ ClientStateStartConnect::HandleConnect(const boost::system::error_code& ec, boos
 			ClientContext &context = client->GetContext();
 			boost::system::error_code ec;
 			context.GetSessionData()->GetAsioSocket()->close(ec);
-			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
+			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator.begin();
 			context.GetSessionData()->GetAsioSocket()->async_connect(
 				endpoint,
 				boost::bind(&ClientStateStartConnect::HandleConnect,
 							this,
 							boost::asio::placeholders::error,
-							++m_remoteEndpointIterator,
+							//  ++m_remoteEndpointIterator, FIXME
+							m_remoteEndpointIterator,
 							client));
 		} else {
 			if (ec != boost::asio::error::operation_aborted) {
