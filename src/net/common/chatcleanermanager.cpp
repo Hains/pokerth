@@ -120,13 +120,14 @@ ChatCleanerManager::HandleResolve(const boost::system::error_code& ec,
 								  boost::asio::ip::tcp::resolver::results_type endpoint_iterator)
 {
 	if (!ec) {
-		boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
+		boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator.begin();
 		m_socket->async_connect(
 			endpoint,
 			boost::bind(&ChatCleanerManager::HandleConnect,
 						shared_from_this(),
 						boost::asio::placeholders::error,
-						++endpoint_iterator));
+						// ++endpoint_iterator)); FIXME
+						endpoint_iterator));
 	} else if (ec != boost::asio::error::operation_aborted) {
 		LOG_ERROR("Could not resolve chat cleaner server.");
 	}
@@ -155,13 +156,14 @@ ChatCleanerManager::HandleConnect(const boost::system::error_code& ec,
 			// Try next resolve entry.
 			boost::system::error_code ec;
 			m_socket->close(ec);
-			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
+			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator.begin();
 			m_socket->async_connect(
 				endpoint,
 				boost::bind(&ChatCleanerManager::HandleConnect,
 							shared_from_this(),
 							boost::asio::placeholders::error,
-							++endpoint_iterator));
+							// ++endpoint_iterator)); FIXME
+							endpoint_iterator));
 		} else
 			LOG_ERROR("Could not connect to chat cleaner server.");
 	}
