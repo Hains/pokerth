@@ -78,10 +78,10 @@ ChatCleanerManager::ReInit()
 
 	ostringstream portStr;
 	portStr << m_serverPort;
-	boost::asio::ip::tcp::resolver::query q(m_serverAddr, portStr.str());
 
 	m_resolver->async_resolve(
-		q,
+		m_serverAddr,
+		portStr.str(),
 		boost::bind(&ChatCleanerManager::HandleResolve,
 					shared_from_this(),
 					boost::asio::placeholders::error,
