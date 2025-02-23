@@ -140,10 +140,10 @@ ClientStateStartResolve::Enter(boost::shared_ptr<ClientThread> client)
 	ClientContext &context = client->GetContext();
 	ostringstream portStr;
 	portStr << context.GetServerPort();
-	boost::asio::ip::tcp::resolver::query q(context.GetServerAddr(), portStr.str());
 
 	context.GetResolver()->async_resolve(
-		q,
+		context.GetServerAddr(),
+		portStr.str(),
 		boost::bind(&ClientStateStartResolve::HandleResolve,
 					this,
 					boost::asio::placeholders::error,
