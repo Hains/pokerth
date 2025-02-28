@@ -40,6 +40,7 @@
 #include <boost/asio.hpp>
 #include <boost/bind/bind.hpp>
 #include <boost/system/error_code.hpp>
+#include <boost/chrono.hpp>
 
 #include <sstream>
 #include <string>
@@ -87,7 +88,7 @@ public:
     /// Type of a shared pointer to the resolver being used
     typedef lib::shared_ptr<boost::asio::ip::tcp::resolver> resolver_ptr;
     /// Type of timer handle
-    typedef lib::shared_ptr<boost::asio::deadline_timer> timer_ptr;
+    typedef lib::shared_ptr<boost::asio::system_timer> timer_ptr;
     /// Type of a shared pointer to an io_context work object
     typedef lib::shared_ptr<boost::asio::executor_work_guard<boost::asio::io_context::executor_type>> work_ptr;
 
@@ -635,7 +636,7 @@ public:
      * needed.
      */
     timer_ptr set_timer(long duration, timer_handler callback) {
-        timer_ptr new_timer = lib::make_shared<boost::asio::deadline_timer>(
+        timer_ptr new_timer = lib::make_shared<boost::asio::system_timer>(
             *m_io_service,
             boost::posix_time::milliseconds(duration)
         );
@@ -886,8 +887,9 @@ protected:
         connect_handler callback, boost::system::error_code const & ec,
         boost::asio::ip::tcp::resolver::results_type iterator)
     {
+        boost::chrono::system_clock::time_point currTime = boost::chrono::system_clock::now();
         if (ec == boost::asio::error::operation_aborted ||
-            dns_timer->expires_from_now().is_negative())
+            dns_timer->expiry().time_since_epoch().count() <= currTime.time_since_epoch().count())
         {
             m_alog->write(log::alevel::devel,"async_resolve cancelled");
             return;
@@ -994,8 +996,9 @@ protected:
     void handle_connect(transport_con_ptr tcon, timer_ptr con_timer,
         connect_handler callback, boost::system::error_code const & ec)
     {
+        boost::chrono::system_clock::time_point currTime = boost::chrono::system_clock::now();
         if (ec == boost::asio::error::operation_aborted ||
-            con_timer->expires_from_now().is_negative())
+            con_timer->expiry().time_since_epoch().count() <= currTime.time_since_epoch().count())
         {
             m_alog->write(log::alevel::devel,"async_connect cancelled");
             return;
