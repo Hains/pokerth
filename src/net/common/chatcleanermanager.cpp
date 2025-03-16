@@ -119,23 +119,28 @@ void
 ChatCleanerManager::HandleResolve(const boost::system::error_code& ec,
 								  boost::asio::ip::tcp::resolver::results_type endpoint_iterator)
 {
+	for ( const auto& endpoint : endpoint_iterator) {
+
 	if (!ec) {
-		boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
 		m_socket->async_connect(
 			endpoint,
 			boost::bind(&ChatCleanerManager::HandleConnect,
 						shared_from_this(),
 						boost::asio::placeholders::error,
-						++endpoint_iterator));
-	} else if (ec != boost::asio::error::operation_aborted) {
-		LOG_ERROR("Could not resolve chat cleaner server.");
+						endpoint_iterator));
+		}
 	}
+	 if (ec != boost::asio::error::operation_aborted) {
+		LOG_ERROR("Could not resolve chat cleaner server.");
+		}
 }
 
 void
 ChatCleanerManager::HandleConnect(const boost::system::error_code& ec,
 								  boost::asio::ip::tcp::resolver::results_type endpoint_iterator)
 {
+	for ( const auto& endpoint : endpoint_iterator) {
+
 	if (!ec) {
 		boost::shared_ptr<ChatCleanerMessage> tmpInit(ChatCleanerMessage::default_instance().New());
 		tmpInit->set_messagetype(ChatCleanerMessage::Type_CleanerInitMessage);
@@ -151,20 +156,20 @@ ChatCleanerManager::HandleConnect(const boost::system::error_code& ec,
 				boost::asio::placeholders::error,
 				boost::asio::placeholders::bytes_transferred));
 	} else if (ec != boost::asio::error::operation_aborted) {
-		if (endpoint_iterator != boost::asio::ip::tcp::resolver::results_type()) {
 			// Try next resolve entry.
 			boost::system::error_code ec;
 			m_socket->close(ec);
-			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
 			m_socket->async_connect(
 				endpoint,
 				boost::bind(&ChatCleanerManager::HandleConnect,
 							shared_from_this(),
 							boost::asio::placeholders::error,
-							++endpoint_iterator));
-		} else
-			LOG_ERROR("Could not connect to chat cleaner server.");
+							endpoint_iterator));
+		}
 	}
+		if (ec != boost::asio::error::operation_aborted) {
+			LOG_ERROR("Could not connect to chat cleaner server.");
+			}
 }
 
 void
