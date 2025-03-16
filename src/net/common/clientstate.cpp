@@ -467,20 +467,22 @@ ClientStateStartConnect::~ClientStateStartConnect()
 void
 ClientStateStartConnect::Enter(boost::shared_ptr<ClientThread> client)
 {
+	for ( const auto& endpoint : m_remoteEndpointIterator) {
+
 	client->GetStateTimer().expires_from_now(
 		seconds(CLIENT_CONNECT_TIMEOUT_SEC));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateStartConnect::TimerTimeout, this, boost::asio::placeholders::error, client));
 
-	boost::asio::ip::tcp::endpoint endpoint = *m_remoteEndpointIterator;
 	client->GetContext().GetSessionData()->GetAsioSocket()->async_connect(
 		endpoint,
 		boost::bind(&ClientStateStartConnect::HandleConnect,
 					this,
 					boost::asio::placeholders::error,
-					++m_remoteEndpointIterator,
+					m_remoteEndpointIterator,
 					client));
+	}
 }
 
 void
@@ -500,23 +502,27 @@ ClientStateStartConnect::HandleConnect(const boost::system::error_code& ec, boos
 									   boost::shared_ptr<ClientThread> client)
 {
 	if (&client->GetState() == this) {
+
+		for ( const auto& endpoint : endpoint_iterator) {
+
 		if (!ec) {
 			client->GetCallback().SignalNetClientConnect(MSG_SOCK_CONNECT_DONE);
 			client->SetState(ClientStateStartSession::Instance());
-		} else if (endpoint_iterator != boost::asio::ip::tcp::resolver::results_type()) {
+		} else {
 			// Try next resolve entry.
 			ClientContext &context = client->GetContext();
 			boost::system::error_code ec;
 			context.GetSessionData()->GetAsioSocket()->close(ec);
-			boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
 			context.GetSessionData()->GetAsioSocket()->async_connect(
 				endpoint,
 				boost::bind(&ClientStateStartConnect::HandleConnect,
 							this,
 							boost::asio::placeholders::error,
-							++m_remoteEndpointIterator,
+							m_remoteEndpointIterator,
 							client));
-		} else {
+			}
+		}
+		if (ec) {
 			if (ec != boost::asio::error::operation_aborted) {
 				if (client->GetContext().GetAddrFamily() == AF_INET6) {
 					throw ClientException(__FILE__, __LINE__, ERR_SOCK_CONNECT_IPV6_FAILED, ec.value());
