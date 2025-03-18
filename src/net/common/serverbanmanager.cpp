@@ -131,7 +131,7 @@ ServerBanManager::GetBanList(list<string> &list) const
 			banText << (*i_nick).first << ": (nickStr) - " << (*i_nick).second.nameStr;
 
 		if ((*i_nick).second.timer)
-			banText << " duration: " << duration_cast<hours>((*i_nick).second.timer->expires_from_now()).count() << "h";
+			banText << " duration: " << duration_cast<hours>((*i_nick).second.timer->expiry().time_since_epoch()).count() << "h";
 		list.push_back(banText.str());
 		++i_nick;
 	}
@@ -141,7 +141,7 @@ ServerBanManager::GetBanList(list<string> &list) const
 		ostringstream banText;
 		banText << (*i_ip).first << ": (IP) - " << (*i_ip).second.ipAddress;
 		if ((*i_ip).second.timer)
-			banText << " duration: " << duration_cast<hours>((*i_ip).second.timer->expires_from_now()).count() << "h";
+			banText << " duration: " << duration_cast<hours>((*i_ip).second.timer->expiry().time_since_epoch()).count() << "h";
 		list.push_back(banText.str());
 		++i_ip;
 	}
