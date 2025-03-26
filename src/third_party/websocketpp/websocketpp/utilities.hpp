@@ -74,8 +74,7 @@ private:
  */
 struct ci_less {
     // case-independent (ci) compare_less binary function
-    struct nocase_compare
-    {
+    struct nocase_compare {
         bool operator() (unsigned char const & c1, unsigned char const & c2) const {
             return tolower (c1) < tolower (c2);
         }
