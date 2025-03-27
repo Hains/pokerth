@@ -246,8 +246,7 @@ ServerBanManager::InternalRegisterTimedBan(unsigned timerId, unsigned durationHo
 	boost::shared_ptr<boost::asio::steady_timer> tmpTimer;
 	if (durationHours) {
 		tmpTimer.reset(new boost::asio::steady_timer(*m_ioService));
-		tmpTimer->expires_from_now(
-			hours(durationHours));
+		tmpTimer->expires_at(time_point<steady_clock,duration<int, std::ratio<3600000, 1>>>(duration<int, std::ratio<3600000, 1>>(durationHours)));
 		tmpTimer->async_wait(
 			boost::bind(
 				&ServerBanManager::TimerRemoveBan, shared_from_this(), boost::asio::placeholders::error, timerId, tmpTimer));

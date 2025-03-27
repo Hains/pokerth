@@ -285,8 +285,8 @@ ServerGame::TimerVoteKick(const boost::system::error_code &ec)
 				// This petition has ended.
 				m_voteKickData.reset();
 			}
-			m_voteKickTimer.expires_from_now(
-				milliseconds(SERVER_CHECK_VOTE_KICK_INTERVAL_MSEC));
+			m_voteKickTimer.expires_at(time_point<steady_clock,duration<int>>(
+				duration<int>(SERVER_CHECK_VOTE_KICK_INTERVAL_MSEC)));
 			m_voteKickTimer.async_wait(
 				boost::bind(
 					&ServerGame::TimerVoteKick, shared_from_this(), boost::asio::placeholders::error));
@@ -529,8 +529,8 @@ ServerGame::InternalAskVoteKick(boost::shared_ptr<SessionData> byWhom, unsigned 
 					netStartPetition->set_numvotesneededtokick(m_voteKickData->numVotesToKick);
 					SendToAllPlayers(packet, SessionData::Game);
 
-					m_voteKickTimer.expires_from_now(
-						milliseconds(SERVER_CHECK_VOTE_KICK_INTERVAL_MSEC));
+					m_voteKickTimer.expires_at(time_point<steady_clock,duration<int>>(
+						duration<int>(SERVER_CHECK_VOTE_KICK_INTERVAL_MSEC)));
 					m_voteKickTimer.async_wait(
 						boost::bind(
 							&ServerGame::TimerVoteKick, shared_from_this(), boost::asio::placeholders::error));
