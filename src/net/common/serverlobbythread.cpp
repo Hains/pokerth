@@ -896,20 +896,20 @@ void
 ServerLobbyThread::RegisterTimers()
 {
 	// Remove closed games.
-	m_removeGameTimer.expires_from_now(
-		milliseconds(SERVER_REMOVE_GAME_INTERVAL_MSEC));
+	m_removeGameTimer.expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(SERVER_REMOVE_GAME_INTERVAL_MSEC)));
 	m_removeGameTimer.async_wait(
 		boost::bind(
 			&ServerLobbyThread::TimerRemoveGame, shared_from_this(), boost::asio::placeholders::error));
 	// Update the statistics file.
-	m_saveStatisticsTimer.expires_from_now(
-		seconds(SERVER_SAVE_STATISTICS_INTERVAL_SEC));
+	m_saveStatisticsTimer.expires_at(time_point<steady_clock,duration<int, std::ratio<1000, 1>>>(
+		duration<int, std::ratio<1000, 1>>(SERVER_SAVE_STATISTICS_INTERVAL_SEC)));
 	m_saveStatisticsTimer.async_wait(
 		boost::bind(
 			&ServerLobbyThread::TimerSaveStatisticsFile, shared_from_this(), boost::asio::placeholders::error));
 	// Update the avatar upload locks.
-	m_loginLockTimer.expires_from_now(
-		milliseconds(SERVER_UPDATE_LOGIN_LOCK_INTERVAL_MSEC));
+	m_loginLockTimer.expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(SERVER_UPDATE_LOGIN_LOCK_INTERVAL_MSEC)));
 	m_loginLockTimer.async_wait(
 		boost::bind(
 			&ServerLobbyThread::TimerUpdateClientLoginLock, shared_from_this(), boost::asio::placeholders::error));
@@ -1935,8 +1935,8 @@ ServerLobbyThread::TimerRemoveGame(const boost::system::error_code &ec)
 			i = next;
 		}
 		// Restart timer
-		m_removeGameTimer.expires_from_now(
-			milliseconds(SERVER_REMOVE_GAME_INTERVAL_MSEC));
+		m_removeGameTimer.expires_at(time_point<steady_clock,duration<int>>(
+			duration<int>(SERVER_REMOVE_GAME_INTERVAL_MSEC)));
 		m_removeGameTimer.async_wait(
 			boost::bind(
 				&ServerLobbyThread::TimerRemoveGame, shared_from_this(), boost::asio::placeholders::error));
@@ -1960,8 +1960,8 @@ ServerLobbyThread::TimerUpdateClientLoginLock(const boost::system::error_code &e
 			i = next;
 		}
 		// Restart timer
-		m_loginLockTimer.expires_from_now(
-			milliseconds(SERVER_UPDATE_LOGIN_LOCK_INTERVAL_MSEC));
+		m_loginLockTimer.expires_at(time_point<steady_clock,duration<int>>(
+			duration<int>(SERVER_UPDATE_LOGIN_LOCK_INTERVAL_MSEC)));
 		m_loginLockTimer.async_wait(
 			boost::bind(
 				&ServerLobbyThread::TimerUpdateClientLoginLock, shared_from_this(), boost::asio::placeholders::error));
@@ -2307,8 +2307,8 @@ ServerLobbyThread::TimerSaveStatisticsFile(const boost::system::error_code &ec)
 			}
 		}
 		// Restart timer
-		m_saveStatisticsTimer.expires_from_now(
-			seconds(SERVER_SAVE_STATISTICS_INTERVAL_SEC));
+		m_saveStatisticsTimer.expires_at(time_point<steady_clock,duration<int, std::ratio<1000, 1>>>(
+			duration<int, std::ratio<1000, 1>>(SERVER_SAVE_STATISTICS_INTERVAL_SEC)));
 		m_saveStatisticsTimer.async_wait(
 			boost::bind(
 				&ServerLobbyThread::TimerSaveStatisticsFile, shared_from_this(), boost::asio::placeholders::error));

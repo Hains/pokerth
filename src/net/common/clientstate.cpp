@@ -247,8 +247,8 @@ ClientStateDownloadingServerList::~ClientStateDownloadingServerList()
 void
 ClientStateDownloadingServerList::Enter(boost::shared_ptr<ClientThread> client)
 {
-	client->GetStateTimer().expires_from_now(
-		milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+	client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateDownloadingServerList::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -274,8 +274,8 @@ ClientStateDownloadingServerList::TimerLoop(const boost::system::error_code& ec,
 			m_downloadHelper.reset();
 			client->SetState(ClientStateReadingServerList::Instance());
 		} else {
-			client->GetStateTimer().expires_from_now(
-				milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+			client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+				duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 			client->GetStateTimer().async_wait(
 				boost::bind(
 					&ClientStateDownloadingServerList::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -433,8 +433,8 @@ ClientStateWaitChooseServer::~ClientStateWaitChooseServer()
 void
 ClientStateWaitChooseServer::Enter(boost::shared_ptr<ClientThread> client)
 {
-	client->GetStateTimer().expires_from_now(
-		milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+	client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateWaitChooseServer::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -456,8 +456,8 @@ ClientStateWaitChooseServer::TimerLoop(const boost::system::error_code& ec, boos
 			client->GetCallback().SignalNetClientConnect(MSG_SOCK_SERVER_LIST_DONE);
 			client->SetState(ClientStateStartResolve::Instance());
 		} else {
-			client->GetStateTimer().expires_from_now(
-				milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+			client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+				duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 			client->GetStateTimer().async_wait(
 				boost::bind(
 					&ClientStateWaitChooseServer::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -487,8 +487,8 @@ ClientStateStartConnect::Enter(boost::shared_ptr<ClientThread> client)
 {
 	for ( const auto& endpoint : m_remoteEndpointIterator) {
 
-	client->GetStateTimer().expires_from_now(
-		seconds(CLIENT_CONNECT_TIMEOUT_SEC));
+	client->GetStateTimer().expires_at(time_point<steady_clock,duration<int, std::ratio<1000, 1>>>(
+		duration<int, std::ratio<1000, 1>>(CLIENT_CONNECT_TIMEOUT_SEC)));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateStartConnect::TimerTimeout, this, boost::asio::placeholders::error, client));
@@ -1024,8 +1024,8 @@ ClientStateWaitEnterLogin::~ClientStateWaitEnterLogin()
 void
 ClientStateWaitEnterLogin::Enter(boost::shared_ptr<ClientThread> client)
 {
-	client->GetStateTimer().expires_from_now(
-		milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+	client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateWaitEnterLogin::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -1103,8 +1103,8 @@ ClientStateWaitEnterLogin::TimerLoop(const boost::system::error_code& ec, boost:
 				client->SetState(ClientStateWaitAuthChallenge::Instance());
 			}
 		} else {
-			client->GetStateTimer().expires_from_now(
-				milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+			client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+				duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 			client->GetStateTimer().async_wait(
 				boost::bind(
 					&ClientStateWaitEnterLogin::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -1437,8 +1437,8 @@ ClientStateSynchronizeStart::~ClientStateSynchronizeStart()
 void
 ClientStateSynchronizeStart::Enter(boost::shared_ptr<ClientThread> client)
 {
-	client->GetStateTimer().expires_from_now(
-		milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+	client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(CLIENT_WAIT_TIMEOUT_MSEC)));
 	client->GetStateTimer().async_wait(
 		boost::bind(
 			&ClientStateSynchronizeStart::TimerLoop, this, boost::asio::placeholders::error, client));
@@ -1467,8 +1467,8 @@ ClientStateSynchronizeStart::TimerLoop(const boost::system::error_code& ec, boos
 
 			client->SetState(ClientStateWaitStart::Instance());
 		} else {
-			client->GetStateTimer().expires_from_now(
-				milliseconds(CLIENT_WAIT_TIMEOUT_MSEC));
+			client->GetStateTimer().expires_at(time_point<steady_clock,duration<int>>(duration<int>(
+				CLIENT_WAIT_TIMEOUT_MSEC)));
 			client->GetStateTimer().async_wait(
 				boost::bind(
 					&ClientStateSynchronizeStart::TimerLoop, this, boost::asio::placeholders::error, client));

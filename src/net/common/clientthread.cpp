@@ -589,8 +589,8 @@ ClientThread::Main()
 void
 ClientThread::RegisterTimers()
 {
-	m_avatarTimer.expires_from_now(
-		milliseconds(CLIENT_AVATAR_LOOP_MSEC));
+	m_avatarTimer.expires_at(time_point<steady_clock,duration<int>>(
+		duration<int>(CLIENT_AVATAR_LOOP_MSEC)));
 	m_avatarTimer.async_wait(
 		boost::bind(
 			&ClientThread::TimerCheckAvatarDownloads, shared_from_this(), boost::asio::placeholders::error));
@@ -913,8 +913,8 @@ ClientThread::TimerCheckAvatarDownloads(const boost::system::error_code& ec)
 			tmpAvatar->reportedSize = tmpAvatar->fileData.size();
 			PassAvatarFileToManager(playerId, tmpAvatar);
 		}
-		m_avatarTimer.expires_from_now(
-			milliseconds(CLIENT_AVATAR_LOOP_MSEC));
+		m_avatarTimer.expires_at(time_point<steady_clock,duration<int>>(
+			duration<int>(CLIENT_AVATAR_LOOP_MSEC)));
 		m_avatarTimer.async_wait(
 			boost::bind(
 				&ClientThread::TimerCheckAvatarDownloads, shared_from_this(), boost::asio::placeholders::error));
