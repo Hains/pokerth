@@ -601,7 +601,7 @@ void gameLobbyDialogImpl::updateGameItem(QList <QStandardItem*> itemList, unsign
 	}
 
 	QString playerStr;
-	playerStr.asprintf("%u/%u", (unsigned)info.players.size(), (unsigned)info.data.maxNumberOfPlayers);
+	playerStr = QString::asprintf("%u/%u", (unsigned)info.players.size(), (unsigned)info.data.maxNumberOfPlayers);
 	itemList.at(1)->setData(playerStr, Qt::DisplayRole);
 	if((unsigned)info.players.size() == (unsigned)info.data.maxNumberOfPlayers) {
 		itemList.at(1)->setData("totalfull", 16);
