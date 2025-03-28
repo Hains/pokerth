@@ -176,7 +176,7 @@ unix : !mac {
 	#QMAKE_CXXFLAGS += -ffunction-sections -fdata-sections
 	#QMAKE_LFLAGS += -Wl,--gc-sections
 
-	LIBPATH += lib $${PREFIX}/lib /opt/gsasl/lib
+	LIBPATH += lib $${PREFIX}/lib $${PREFIX}/local/lib /opt/gsasl/lib
 	INCLUDEPATH += $${PREFIX}/include
 	# see issue https://github.com/pokerth/pokerth/issues/282
 	INCLUDEPATH += $${PREFIX}/include/libircclient

@@ -408,7 +408,7 @@ unix:!mac {
 	INCLUDEPATH += $${PREFIX}/include
 	QMAKE_LIBDIR += lib
 	!android{
-		LIBPATH += $${PREFIX}/lib /opt/gsasl/lib
+		LIBPATH += $${PREFIX}/lib $${PREFIX}/local/lib /opt/gsasl/lib
 		LIB_DIRS = $${PREFIX}/lib \
 			$${PREFIX}/lib64 \
                         $${PREFIX}/lib/x86_64-linux-gnu \
