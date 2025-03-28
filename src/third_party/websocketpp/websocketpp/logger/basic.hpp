@@ -58,57 +58,27 @@ namespace log {
 template <typename concurrency, typename names>
 class basic {
 public:
-    basic<concurrency,names>(channel_type_hint::value h =
+    basic(channel_type_hint::value h =
         channel_type_hint::access)
       : m_static_channels(0xffffffff)
       , m_dynamic_channels(0)
       , m_out(h == channel_type_hint::error ? &std::cerr : &std::cout) {}
 
-    basic<concurrency,names>(std::ostream * out)
+    basic(std::ostream * out)
       : m_static_channels(0xffffffff)
       , m_dynamic_channels(0)
       , m_out(out) {}
 
-    basic<concurrency,names>(level c, channel_type_hint::value h =
+    basic(level c, channel_type_hint::value h =
         channel_type_hint::access)
       : m_static_channels(c)
       , m_dynamic_channels(0)
       , m_out(h == channel_type_hint::error ? &std::cerr : &std::cout) {}
 
-    basic<concurrency,names>(level c, std::ostream * out)
+    basic(level c, std::ostream * out)
       : m_static_channels(c)
       , m_dynamic_channels(0)
       , m_out(out) {}
-
-    /// Destructor
-    ~basic<concurrency,names>() {}
-
-    /// Copy constructor
-    basic<concurrency,names>(basic<concurrency,names> const & other)
-     : m_static_channels(other.m_static_channels)
-     , m_dynamic_channels(other.m_dynamic_channels)
-     , m_out(other.m_out)
-    {}
-    
-#ifdef _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
-    // no copy assignment operator because of const member variables
-    basic<concurrency,names> & operator=(basic<concurrency,names> const &) = delete;
-#endif // _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
-
-#ifdef _WEBSOCKETPP_MOVE_SEMANTICS_
-    /// Move constructor
-    basic<concurrency,names>(basic<concurrency,names> && other)
-     : m_static_channels(other.m_static_channels)
-     , m_dynamic_channels(other.m_dynamic_channels)
-     , m_out(other.m_out)
-    {}
-
-#ifdef _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
-    // no move assignment operator because of const member variables
-    basic<concurrency,names> & operator=(basic<concurrency,names> &&) = delete;
-#endif // _WEBSOCKETPP_DEFAULT_DELETE_FUNCTIONS_
-
-#endif // _WEBSOCKETPP_MOVE_SEMANTICS_
 
     void set_ostream(std::ostream * out = &std::cout) {
         m_out = out;
@@ -179,13 +149,7 @@ private:
     static std::ostream & timestamp(std::ostream & os) {
         std::time_t t = std::time(NULL);
         std::tm lt = lib::localtime(t);
-        #ifdef _WEBSOCKETPP_PUTTIME_
-            return os << std::put_time(&lt,"%Y-%m-%d %H:%M:%S");
-        #else // Falls back to strftime, which requires a temporary copy of the string.
-            char buffer[20];
-            size_t result = std::strftime(buffer,sizeof(buffer),"%Y-%m-%d %H:%M:%S",&lt);
-            return os << (result == 0 ? "Unknown" : buffer);
-        #endif
+        return os << std::put_time(&lt,"%Y-%m-%d %H:%M:%S");
     }
 
     level const m_static_channels;

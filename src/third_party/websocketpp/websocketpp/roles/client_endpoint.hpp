@@ -29,7 +29,6 @@
 #define WEBSOCKETPP_CLIENT_ENDPOINT_HPP
 
 #include <websocketpp/endpoint.hpp>
-#include <websocketpp/uri.hpp>
 
 #include <websocketpp/logger/levels.hpp>
 
@@ -66,8 +65,6 @@ public:
 
     /// Type of the endpoint component of this server
     typedef endpoint<connection_type,config> endpoint_type;
-
-    friend class connection<config>;
 
     explicit client() : endpoint_type(false)
     {

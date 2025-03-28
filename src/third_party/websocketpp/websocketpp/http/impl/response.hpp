@@ -46,6 +46,12 @@ inline size_t response::consume(char const * buf, size_t len) {
         return this->process_body(buf,len);
     }
 
+    if (m_read + len > max_header_size) {
+        // exceeded max header size
+        throw exception("Maximum header size exceeded.",
+                        status_code::request_header_fields_too_large);
+    }
+
     // copy new header bytes into buffer
     m_buf->append(buf,len);
 
@@ -63,22 +69,13 @@ inline size_t response::consume(char const * buf, size_t len) {
             header_delimiter + sizeof(header_delimiter) - 1
         );
 
-        m_header_bytes += (end-begin+sizeof(header_delimiter));
-        
-        if (m_header_bytes > max_header_size) {
-            // exceeded max header size
-            throw exception("Maximum header size exceeded.",
-                status_code::request_header_fields_too_large);
-        }
-
         if (end == m_buf->end()) {
             // we are out of bytes. Discard the processed bytes and copy the
             // remaining unprecessed bytes to the beginning of the buffer
             std::copy(begin,end,m_buf->begin());
             m_buf->resize(static_cast<std::string::size_type>(end-begin));
 
-            m_read += len;
-            m_header_bytes -= m_buf->size();
+            m_read +=len;
 
             return len;
         }
@@ -94,7 +91,7 @@ inline size_t response::consume(char const * buf, size_t len) {
             // TODO: grab content-length
             std::string length = get_header("Content-Length");
 
-            if (length.empty()) {
+            if (length == "") {
                 // no content length found, read indefinitely
                 m_read = 0;
             } else {

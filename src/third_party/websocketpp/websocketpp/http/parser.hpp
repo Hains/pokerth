@@ -230,7 +230,7 @@ InputIterator extract_attributes(InputIterator begin, InputIterator end,
         cursor = http::parser::extract_all_lws(cursor,end);
         ret = http::parser::extract_token(cursor,end);
 
-        if (ret.first.empty()) {
+        if (ret.first == "") {
             // error: expected a token
             return begin;
         } else {
@@ -242,7 +242,7 @@ InputIterator extract_attributes(InputIterator begin, InputIterator end,
         if (cursor == end || *cursor != '=') {
             // if there is an equals sign, read the attribute value. Otherwise
             // record a blank value and continue
-            attributes[name].clear();
+            attributes[name] = "";
             continue;
         }
 
@@ -263,7 +263,7 @@ InputIterator extract_attributes(InputIterator begin, InputIterator end,
         }
 
         ret = http::parser::extract_token(cursor,end);
-        if (ret.first.empty()) {
+        if (ret.first == "") {
             // error : expected token or quoted string
             return begin;
         } else {
@@ -321,7 +321,7 @@ InputIterator extract_parameters(InputIterator begin, InputIterator end,
 
         ret = http::parser::extract_token(cursor,end);
 
-        if (ret.first.empty()) {
+        if (ret.first == "") {
             // error: expected a token
             return begin;
         } else {
@@ -381,13 +381,9 @@ inline std::string strip_lws(std::string const & input) {
     if (begin == input.end()) {
         return std::string();
     }
+    std::string::const_reverse_iterator end = extract_all_lws(input.rbegin(),input.rend());
 
-    std::string::const_reverse_iterator rbegin = extract_all_lws(input.rbegin(),input.rend());
-    if (rbegin == input.rend()) {
-        return std::string();
-    }
-
-    return std::string(begin,rbegin.base());
+    return std::string(begin,end.base());
 }
 
 /// Base HTTP parser
@@ -398,8 +394,7 @@ inline std::string strip_lws(std::string const & input) {
 class parser {
 public:
     parser()
-      : m_header_bytes(0)
-      , m_body_bytes_needed(0)
+      : m_body_bytes_needed(0)
       , m_body_bytes_max(max_body_size)
       , m_body_encoding(body_encoding::unknown) {}
     
@@ -601,8 +596,6 @@ protected:
 
     std::string m_version;
     header_list m_headers;
-    
-    size_t                  m_header_bytes;
     
     std::string             m_body;
     size_t                  m_body_bytes_needed;
