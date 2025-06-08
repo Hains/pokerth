@@ -135,7 +135,7 @@ target_link_libraries(pokerth_lib PUBLIC "${OPENSSL_LIBRARIES}")
 
 target_include_directories(pokerth_lib PRIVATE "${Boost_INCLUDE_DIRS}")
 
-target_compile_definitions(pokerth_lib PUBLIC ENABLE_IPV6 HAVE_OPENSSL TIXML_USE_STL BOOST_FILESYSTEM_DEPRECATED)
+target_compile_definitions(pokerth_lib PUBLIC ENABLE_IPV6 TIXML_USE_STL BOOST_FILESYSTEM_DEPRECATED)
 
 target_include_directories(pokerth_lib PUBLIC
     src

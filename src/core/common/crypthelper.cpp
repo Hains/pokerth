@@ -180,33 +180,23 @@ CryptHelper::MD5Sum(const std::string &fileName, MD5Buf &buf)
 		unsigned char *readBuf = new unsigned char[8192];
 		size_t numBytes;
 
-#ifdef HAVE_OPENSSL
-	#if OPENSSL_VERSION_NUMBER >= 0x30000000L
-		EVP_MD_CTX *context = EVP_MD_CTX_new();
-		unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
-		EVP_DigestInit_ex(context, EVP_md5(), NULL);
-		while ((numBytes = fread(readBuf, 1, sizeof(readBuf), file)) > 0) {
-			EVP_DigestUpdate(context, readBuf, numBytes);
-		}
-		EVP_DigestFinal_ex(context, buf.GetData(), &md5_digest_len);
-		EVP_MD_CTX_free(context);
-	#else
-		MD5_CTX context;
-		MD5_Init(&context);
-		while ((numBytes = fread(readBuf, 1, sizeof(readBuf), file)) > 0) {
-			MD5_Update(&context, readBuf, numBytes);
-		}
-		MD5_Final(buf.GetData(), &context);
-	#endif // OPENSSL_VERSION_NUMBER >= 0x30000000L
+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
+	EVP_MD_CTX *context = EVP_MD_CTX_new();
+	unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
+	EVP_DigestInit_ex(context, EVP_md5(), NULL);
+	while ((numBytes = fread(readBuf, 1, sizeof(readBuf), file)) > 0) {
+		EVP_DigestUpdate(context, readBuf, numBytes);
+	}
+	EVP_DigestFinal_ex(context, buf.GetData(), &md5_digest_len);
+	EVP_MD_CTX_free(context);
 #else
-		gcry_md_hd_t hash;
-		gcry_md_open(&hash, GCRY_MD_MD5, 0);
-		while ((numBytes = fread(readBuf, 1, sizeof(readBuf), file)) > 0) {
-			gcry_md_write(hash, readBuf, numBytes);
-		}
-		memcpy(buf.GetData(), gcry_md_read(hash, GCRY_MD_MD5), MD5_DATA_SIZE);
-		gcry_md_close(hash);
-#endif // HAVE_OPENSSL
+	MD5_CTX context;
+	MD5_Init(&context);
+	while ((numBytes = fread(readBuf, 1, sizeof(readBuf), file)) > 0) {
+		MD5_Update(&context, readBuf, numBytes);
+	}
+	MD5_Final(buf.GetData(), &context);
+#endif // OPENSSL_VERSION_NUMBER >= 0x30000000L
 
 		retVal = ferror(file) == 0;
 
@@ -220,14 +210,7 @@ bool
 CryptHelper::SHA1Hash(const unsigned char *data, unsigned dataSize, SHA1Buf &buf)
 {
 	bool retVal;
-#ifdef HAVE_OPENSSL
 	retVal = SHA1(data, dataSize, buf.GetData()) != NULL;
-#else
-	// We use the shortcut since we assume that the system supports SHA1.
-	// This call has no error return value.
-	gcry_md_hash_buffer(GCRY_MD_SHA1, buf.GetData(), data, dataSize);
-	retVal = true;
-#endif
 	return retVal;
 }
 
@@ -235,27 +218,9 @@ bool
 CryptHelper::HMACSha1(const unsigned char *keyData, unsigned keySize, const unsigned char *plainData, unsigned plainSize, SHA1Buf &buf)
 {
 	bool retVal;
-#ifdef HAVE_OPENSSL
 	unsigned hashLen = 0;
 	HMAC(EVP_sha1(), keyData, keySize, plainData, plainSize, buf.GetData(), &hashLen);
 	retVal = hashLen == (unsigned)buf.GetDataSize();
-#else
-	retVal = false;
-	gcry_md_hd_t hd;
-	gcry_error_t err = gcry_md_open(&hd, GCRY_MD_SHA1, GCRY_MD_FLAG_HMAC);
-	if (!err) {
-		err = gcry_md_setkey(hd, keyData, keySize);
-		if (!err) {
-			gcry_md_write(hd, plainData, plainSize);
-			unsigned char *hash = gcry_md_read(hd, 0);
-			if (hash) {
-				memcpy(buf.GetData(), hash, buf.GetDataSize());
-				retVal = true;
-			}
-		}
-		gcry_md_close(hd);
-	}
-#endif
 	return retVal;
 }
 
@@ -301,14 +266,13 @@ CryptHelper::AES128Encrypt(const unsigned char *keyData, unsigned keySize, const
 		int cipherSize = paddedPlainSize;
 		outCipher.resize(cipherSize);
 
-#ifdef HAVE_OPENSSL
-	#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 		EVP_CIPHER_CTX *encryptCtx = EVP_CIPHER_CTX_new();  
-	#else
+#else
 		EVP_CIPHER_CTX _encryptCtx; 
 		EVP_CIPHER_CTX *encryptCtx; 
 		encryptCtx = &_encryptCtx; 
-	#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
+#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
 
 		EVP_CIPHER_CTX_init(encryptCtx);
 		int outCipherSize = cipherSize;
@@ -326,25 +290,9 @@ CryptHelper::AES128Encrypt(const unsigned char *keyData, unsigned keySize, const
 		} else
 			outCipher.clear();
 		
-	#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 		EVP_CIPHER_CTX_free(encryptCtx);
-	#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
-#else
-		gcry_cipher_hd_t hd;
-		gcry_error_t err = gcry_cipher_open(&hd, GCRY_CIPHER_AES128, GCRY_CIPHER_MODE_CBC, 0);
-		if (!err) {
-			gcry_cipher_setkey(hd, key, sizeof(key));
-			gcry_cipher_setiv(hd, iv, sizeof(iv));
-			err = gcry_cipher_encrypt(hd, &outCipher[0], cipherSize, paddedPlainStr, paddedPlainSize);
-			if (!err)
-				retVal = true;
-			else
-				outCipher.clear();
-		} else
-			outCipher.clear();
-
-		gcry_cipher_close(hd);
-#endif
+#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
 		free(paddedPlainStr);
 	}
 	return retVal;
@@ -359,14 +307,13 @@ CryptHelper::AES128Decrypt(const unsigned char *keyData, unsigned keySize, const
 		unsigned char iv[AES_BLOCK_SIZE];
 		BytesToKey(keyData, keySize, key, iv);
 		outPlain.resize(cipherSize);
-#ifdef HAVE_OPENSSL
-	#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 		EVP_CIPHER_CTX *decryptCtx = EVP_CIPHER_CTX_new();  
-	#else
+#else
 		EVP_CIPHER_CTX _decryptCtx; 
 		EVP_CIPHER_CTX *decryptCtx; 
 		decryptCtx = &_decryptCtx; 
-	#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
+#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
 
 		EVP_CIPHER_CTX_init(decryptCtx);
 		int outPlainSize = cipherSize;
@@ -384,25 +331,9 @@ CryptHelper::AES128Decrypt(const unsigned char *keyData, unsigned keySize, const
 		} else
 			outPlain.clear();
 		
-	#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
 		EVP_CIPHER_CTX_free(decryptCtx);
-	#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L 
-#else
-		gcry_cipher_hd_t hd;
-		gcry_error_t err = gcry_cipher_open(&hd, GCRY_CIPHER_AES128, GCRY_CIPHER_MODE_CBC, 0);
-		if (!err) {
-			gcry_cipher_setkey(hd, key, sizeof(key));
-			gcry_cipher_setiv(hd, iv, sizeof(iv));
-			err = gcry_cipher_decrypt(hd, &outPlain[0], outPlain.size(), cipher, cipherSize);
-			if (!err)
-				retVal = true;
-			else
-				outPlain.clear();
-		} else
-			outPlain.clear();
-
-		gcry_cipher_close(hd);
-#endif
+#endif // OPENSSL_VERSION_NUMBER >= 0x10100000L
 		// Remove trailing zeroes (padding).
 		if (!outPlain.empty()) {
 			size_t pos = outPlain.find_first_of('\0');

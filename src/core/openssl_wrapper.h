@@ -67,20 +67,12 @@ typedef int pid_t;
 // "2. Can I use OpenSSL with GPL software?"
 // http://www.openssl.org/support/faq.html#LEGAL2
 //
-#if defined(__APPLE__) || defined(__OpenBSD__) || defined(__FreeBSD__) || defined(__NetBSD__)
-#define HAVE_OPENSSL
-#endif
 
-#ifdef HAVE_OPENSSL
 #include <openssl/ssl.h>
 #include <openssl/md5.h>
 #include <openssl/sha.h>
 #include <openssl/hmac.h>
 #include <openssl/rand.h>
 #include <openssl/evp.h>
-#else
-// For all other systems, we use gcrypt.
-#include <gcrypt.h>
-#endif
 
 #endif
