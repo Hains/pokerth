@@ -16,6 +16,7 @@ endif()
 option(BUILD_PROTOCOL "" ON)
 option(GUI_800_480 "" OFF)
 option(BUILD_DB "" ON)
+option(CMAKE_AUTOMOC "" ON)
 
 if(BUILD_CLIENT)
     option(CMAKE_AUTORCC "" ON)
@@ -23,7 +24,6 @@ endif()
 
 if(NOT BUILD_QML_CLIENT AND BUILD_CLIENT)
     option(CMAKE_AUTOUIC "" ON)
-    option(CMAKE_AUTOMOC "" ON)
     list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS "uics/")
     list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS "src/gui/qt")
     list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS "src/gui/qt/gui_800x480")
@@ -461,16 +461,16 @@ if(BUILD_CLIENT)
         target_link_libraries(pokerth_qml-client PUBLIC pokerth_lib)
         target_link_libraries(pokerth_qml-client PUBLIC pokerth_protocol)
         target_link_libraries(pokerth_qml-client PUBLIC LibCurl)
-        target_link_libraries(pokerth_qml-client PRIVATE "${Qt6Core_LIBRARIES}")
-        target_link_libraries(pokerth_qml-client PRIVATE "${Qt6WebSockets_LIBRARIES}")
-        target_link_libraries(pokerth_qml-client PRIVATE "${Qt6Network_LIBRARIES}")
+        # target_link_libraries(pokerth_qml-client PRIVATE "${Qt6Core_LIBRARIES}")
+        # target_link_libraries(pokerth_qml-client PRIVATE "${Qt6WebSockets_LIBRARIES}")
+        # target_link_libraries(pokerth_qml-client PRIVATE "${Qt6Network_LIBRARIES}")
         target_link_libraries(pokerth_qml-client PRIVATE Qt6::Gui Qt6::Quick Qt6::Qml Qt6::Sql Qt6::Xml Qt6::Svg Qt6::QuickControls2 Qt6::Widgets)
 
         install(TARGETS pokerth_qml-client DESTINATION /usr/bin)
         install(DIRECTORY data DESTINATION /usr/share/pokerth)
     endif()
 else()
-    # build deicated server
+    # build dedicated server
     add_definitions(-DPOKERTH_DEDICATED_SERVER)
     find_package(Qt6 REQUIRED COMPONENTS Xml REQUIRED)
     find_package(CURL REQUIRED)
@@ -487,6 +487,7 @@ else()
 
     set(POKERTH_SERVER_SRC src/pokerth_server.cpp
         "${DBOFFICIAL_FILES}"
+        src/worker.cpp
         src/gui/qt/qttools/nonqttoolswrapper.cpp
         src/gui/qt/qttools/nonqthelper/nonqthelper.cpp
         src/net/common/net_helper_server.cpp
@@ -496,17 +497,13 @@ else()
         src/net/common/servermanagerfactoryserver.cpp
         src/core/linux/convhelper.cpp)
 
-
-    add_executable(pokerth_server "${POKERTH_SERVER_SRC}" )
+    qt_add_executable(pokerth_server WIN32 MACOSX_BUNDLE "${POKERTH_SERVER_SRC}")
 
     target_include_directories(pokerth_server PRIVATE "${Qt6Core_INCLUDE_DIRS}")
     target_include_directories(pokerth_server PRIVATE "${Qt6Xml_INCLUDE_DIRS}")
     target_include_directories(pokerth_server PRIVATE "${Qt6WebSockets_INCLUDE_DIRS}")
     target_include_directories(pokerth_server PRIVATE "${Boost_INCLUDE_DIRS}")
-
-    # target_link_libraries(pokerth_server PUBLIC "${Qt6Core_LIBRARIES}")
-    target_link_libraries(pokerth_server PUBLIC "${Qt6Xml_LIBRARIES}")
-    # target_link_libraries(pokerth_server PUBLIC "${Qt6WebSockets_LIBRARIES}")
+    target_link_libraries(pokerth_server PUBLIC Qt6::Core Qt6::Xml Qt6::WebSockets)
     target_link_libraries(pokerth_server PUBLIC LibCurl)
     target_link_libraries(pokerth_server PUBLIC -lircclient)
 

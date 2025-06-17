@@ -29,6 +29,8 @@
  * as that of the covered work.                                              *
  *****************************************************************************/
 
+#include <QtCore>
+#include "worker.h"
 #include <net/netpacket.h>
 #include "session.h"
 #include "configfile.h"
@@ -87,111 +89,131 @@ int daemon(int, int);
 int
 main(int argc, char *argv[])
 {
+	QCoreApplication app(argc, argv);
+
 	ENABLE_LEAK_CHECK();
 
 	//_CrtSetBreakAlloc(10260);
 
-	bool readonlyConfig = false;
-	string pidFile;
-	int logLevel = 1;
-	{
-		// Check command line options.
-		po::options_description desc("Allowed options");
-		desc.add_options()
-		("help,h", "produce help message")
-		("version,v", "print version string")
-		("log-level,l", po::value<int>(), "set log level (0=minimal, 1=default, 2=verbose)")
-		("pid-file,p", po::value<string>(), "create pid-file in different location")
-		("readonly-config", "treat config file as read-only")
-		;
+	QThread *serverThread = new QThread();
+	Worker *serverWorker = new Worker();
+	serverWorker->moveToThread(serverThread);
+	// QObject::connect(serverWorker, &Worker::error, &app, [](QString error)
+	// 		{ 
+	// 			//qDebug() << "worker error:" << error; 
+	// 		});
+	QObject::connect(serverThread, &QThread::started, serverWorker, [argc, argv, serverWorker]()
+			{
+				bool readonlyConfig = false;
+				string pidFile;
+				int logLevel = 1;
+				{
+					// Check command line options.
+					po::options_description desc("Allowed options");
+					desc.add_options()
+					("help,h", "produce help message")
+					("version,v", "print version string")
+					("log-level,l", po::value<int>(), "set log level (0=minimal, 1=default, 2=verbose)")
+					("pid-file,p", po::value<string>(), "create pid-file in different location")
+					("readonly-config", "treat config file as read-only")
+					;
 
-		po::variables_map vm;
-		po::store(po::parse_command_line(argc, argv, desc), vm);
-		po::notify(vm);
+					po::variables_map vm;
+					po::store(po::parse_command_line(argc, argv, desc), vm);
+					po::notify(vm);
 
-		if (vm.count("help")) {
-			cout << desc << endl;
-			return 1;
-		}
-		if (vm.count("version")) {
-			cout << "PokerTH server version   " << POKERTH_BETA_RELEASE_STRING << endl
-				 << "Network protocol version " << NET_VERSION_MAJOR << "." << NET_VERSION_MINOR << endl;
-			return 1;
-		}
-		if (vm.count("log-level")) {
-			logLevel = vm["log-level"].as<int>();
-			if (logLevel < 0 || logLevel > 2) {
-				cout << "Invalid log-level: \"" << logLevel << "\", allowed range 0-2." << endl;
-				return 1;
-			}
-		}
-		if (vm.count("pid-file"))
-			pidFile = vm["pid-file"].as<string>();
-		if (vm.count("readonly-config"))
-			readonlyConfig = true;
-	}
+					if (vm.count("help")) {
+						cout << desc << endl;
+						return 1;
+					}
+					if (vm.count("version")) {
+						cout << "PokerTH server version   " << POKERTH_BETA_RELEASE_STRING << endl
+							<< "Network protocol version " << NET_VERSION_MAJOR << "." << NET_VERSION_MINOR << endl;
+						return 1;
+					}
+					if (vm.count("log-level")) {
+						logLevel = vm["log-level"].as<int>();
+						if (logLevel < 0 || logLevel > 2) {
+							cout << "Invalid log-level: \"" << logLevel << "\", allowed range 0-2." << endl;
+							return 1;
+						}
+					}
+					if (vm.count("pid-file"))
+						pidFile = vm["pid-file"].as<string>();
+					if (vm.count("readonly-config"))
+						readonlyConfig = true;
+				}
 
-	boost::shared_ptr<QtToolsInterface> myQtToolsInterface(CreateQtToolsWrapper());
-	//create defaultconfig
-	boost::shared_ptr<ConfigFile> myConfig(new ConfigFile(argv[0], readonlyConfig));
-	loghelper_init(myQtToolsInterface->stringFromUtf8(myConfig->readConfigString("LogDir")), logLevel);
+				boost::shared_ptr<QtToolsInterface> myQtToolsInterface(CreateQtToolsWrapper());
+				//create defaultconfig
+				boost::shared_ptr<ConfigFile> myConfig(new ConfigFile(argv[0], readonlyConfig));
+				loghelper_init(myQtToolsInterface->stringFromUtf8(myConfig->readConfigString("LogDir")), logLevel);
 
-	// TODO: Hack
-#ifndef _WIN32
-#ifdef QT_NO_DEBUG
-	if (daemon(0, 0) != 0) {
-		cout << "Failed to start daemon." << endl;
-		return 1;
-	}
-#endif
-#endif
+				// TODO: Hack
+			#ifndef _WIN32
+			#ifdef QT_NO_DEBUG
+				if (daemon(0, 0) != 0) {
+					cout << "Failed to start daemon." << endl;
+					return 1;
+				}
+			#endif
+			#endif
 
-	signal(SIGTERM, TerminateHandler);
-	signal(SIGINT, TerminateHandler);
+				signal(SIGTERM, TerminateHandler);
+				signal(SIGINT, TerminateHandler);
 
-	socket_startup();
+				socket_startup();
 
-	LOG_MSG("Starting PokerTH dedicated server. Availability: IPv6 "
-			<< socket_has_ipv6() << ", SCTP " << socket_has_sctp() << ", Dual Stack " << socket_has_dual_stack() << ".");
+				LOG_MSG("Starting PokerTH dedicated server. Availability: IPv6 "
+						<< socket_has_ipv6() << ", SCTP " << socket_has_sctp() << ", Dual Stack " << socket_has_dual_stack() << ".");
 
-	// Store pid in file.
-	if (pidFile.empty()) {
-		path tmpPidPath(myConfig->readConfigString("LogDir"));
-		tmpPidPath /= "pokerth.pid";
-#if BOOST_VERSION < 108500
-		pidFile = tmpPidPath.directory_string();
-#else
-		pidFile = tmpPidPath.string();
-#endif
-	}
-	{
-		std::ofstream pidStream(pidFile.c_str(), ios_base::out | ios_base::trunc);
-		if (!pidStream.fail())
-			pidStream << getpid();
-		else
-			LOG_ERROR("Could not create process id file \"" << pidFile << "\"!");
-	}
+				// Store pid in file.
+				if (pidFile.empty()) {
+					path tmpPidPath(myConfig->readConfigString("LogDir"));
+					tmpPidPath /= "pokerth.pid";
+			#if BOOST_VERSION < 108500
+					pidFile = tmpPidPath.directory_string();
+			#else
+					pidFile = tmpPidPath.string();
+			#endif
+				}
+				{
+					std::ofstream pidStream(pidFile.c_str(), ios_base::out | ios_base::trunc);
+					if (!pidStream.fail())
+						pidStream << getpid();
+					else
+						LOG_ERROR("Could not create process id file \"" << pidFile << "\"!");
+				}
 
-	// Create pseudo Gui Wrapper for the server.
-	boost::shared_ptr<GuiInterface> myServerGuiInterface(new ServerGuiWrapper(myConfig.get(), NULL, NULL, NULL));
-	boost::shared_ptr<Session> session(new Session(myServerGuiInterface.get(), myConfig.get(), NULL));
-	if (!session->init())
-		LOG_ERROR("Missing files - please check your directory settings!");
-	myServerGuiInterface->setSession(session);
+				// Create pseudo Gui Wrapper for the server.
+				boost::shared_ptr<GuiInterface> myServerGuiInterface(new ServerGuiWrapper(myConfig.get(), NULL, NULL, NULL));
+				boost::shared_ptr<Session> session(new Session(myServerGuiInterface.get(), myConfig.get(), NULL));
+				if (!session->init())
+					LOG_ERROR("Missing files - please check your directory settings!");
+				myServerGuiInterface->setSession(session);
 
-	myServerGuiInterface->getSession()->startNetworkServer(true);
-	while (!g_pokerthTerminate) {
-		Thread::Msleep(100);
-		if (myServerGuiInterface->getSession()->pollNetworkServerTerminated())
-			g_pokerthTerminate = true;
-	}
-	myServerGuiInterface->getSession()->terminateNetworkServer();
-	session.reset();
-	myServerGuiInterface.reset();
-	myConfig.reset();
+				myServerGuiInterface->getSession()->startNetworkServer(true);
+				while (!g_pokerthTerminate) {
+					Thread::Msleep(100);
+					if (myServerGuiInterface->getSession()->pollNetworkServerTerminated())
+						g_pokerthTerminate = true;
+				}
+				myServerGuiInterface->getSession()->terminateNetworkServer();
+				session.reset();
+				myServerGuiInterface.reset();
+				myConfig.reset();
 
-	LOG_MSG("Terminating PokerTH dedicated server." << endl);
-	socket_cleanup();
-	return 0;
+				LOG_MSG("Terminating PokerTH dedicated server." << endl);
+				socket_cleanup();
+				emit serverWorker->finished();
+				return 0;
+			});
+	QObject::connect(serverWorker, &Worker::finished, serverThread, &QThread::quit);
+	QObject::connect(serverWorker, &Worker::finished, serverWorker, &Worker::deleteLater);
+	QObject::connect(serverThread, &QThread::finished, serverThread, &QThread::deleteLater);
+	QObject::connect(serverThread, &QThread::finished, &app, &QCoreApplication::quit);
+	serverThread->start();
+
+	return app.exec();
 }
 
