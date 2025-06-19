@@ -38,6 +38,7 @@
 #include <net/websocketdata.h>
 #include <gsasl.h>
 
+
 using namespace std;
 using boost::asio::ip::tcp;
 
@@ -125,6 +126,7 @@ SessionData::CreateServerAuthSession(Gsasl *context)
 	boost::mutex::scoped_lock lock(m_dataMutex);
 	InternalClearAuthSession();
 	int errorCode;
+	// @INFO: gsasl_server_start
 	errorCode = gsasl_server_start(context, "SCRAM-SHA-1", &m_authSession);
 	return errorCode == GSASL_OK;
 }
@@ -136,6 +138,9 @@ SessionData::CreateClientAuthSession(Gsasl *context, const string &userName, con
 	boost::mutex::scoped_lock lock(m_dataMutex);
 	InternalClearAuthSession();
 	int errorCode;
+	// @INFO: gsasl_client_start
+	sasl = new QCA::SASL();
+
 	errorCode = gsasl_client_start(context, "SCRAM-SHA-1", &m_authSession);
 	if (errorCode == GSASL_OK) {
 		gsasl_property_set(m_authSession, GSASL_AUTHID, userName.c_str());
@@ -155,6 +160,7 @@ SessionData::AuthStep(int stepNum, const std::string &inData)
 		m_curAuthStep = stepNum;
 		char *tmpOut;
 		size_t tmpOutSize;
+		// @INFO: gsasl auth done here
 		int errorCode = gsasl_step(m_authSession, inData.c_str(), inData.length(), &tmpOut, &tmpOutSize);
 		if (errorCode == GSASL_NEEDS_MORE) {
 			m_nextGsaslMsg = string(tmpOut, tmpOutSize);

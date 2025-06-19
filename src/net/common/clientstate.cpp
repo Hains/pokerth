@@ -1080,6 +1080,7 @@ ClientStateWaitEnterLogin::TimerLoop(const boost::system::error_code& ec, boost:
 				netInit->set_login(InitMessage::authenticatedLogin);
 				// Send authentication user data for challenge/response in init.
 				boost::shared_ptr<SessionData> tmpSession = context.GetSessionData();
+				// @INFO: gsasl pre-auth process here
 				tmpSession->CreateClientAuthSession(client->GetAuthContext(), context.GetPlayerName(), context.GetPassword());
 				if (!tmpSession->AuthStep(1, ""))
 					throw ClientException(__FILE__, __LINE__, ERR_NET_INVALID_PASSWORD, 0);
@@ -1139,6 +1140,7 @@ ClientStateWaitAuthChallenge::InternalHandlePacket(boost::shared_ptr<ClientThrea
 		const AuthServerChallengeMessage &netAuth = tmpPacket->GetMsg()->authserverchallengemessage();
 		string challengeStr(netAuth.serverchallenge());
 		boost::shared_ptr<SessionData> tmpSession = client->GetContext().GetSessionData();
+		// @INFO: gsasl auth challenge here
 		if (!tmpSession->AuthStep(2, challengeStr.c_str()))
 			throw ClientException(__FILE__, __LINE__, ERR_NET_INVALID_PASSWORD, 0);
 		string outUserData(tmpSession->AuthGetNextOutMsg());
@@ -1187,6 +1189,7 @@ ClientStateWaitAuthVerify::InternalHandlePacket(boost::shared_ptr<ClientThread> 
 		const AuthServerVerificationMessage &netAuth = tmpPacket->GetMsg()->authserververificationmessage();
 		string verificationStr(netAuth.serververification());
 		boost::shared_ptr<SessionData> tmpSession = client->GetContext().GetSessionData();
+		// @INFO: gsasl auth process here
 		if (!tmpSession->AuthStep(3, verificationStr.c_str()))
 			throw ClientException(__FILE__, __LINE__, ERR_NET_INVALID_PASSWORD, 0);
 

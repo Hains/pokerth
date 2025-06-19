@@ -42,6 +42,7 @@ typedef unsigned SessionId;
 #include <string>
 #include <vector>
 
+#include <QtCrypto>
 #include <net/socket_helper.h>
 #include <net/sessiondatacallback.h>
 
@@ -161,6 +162,8 @@ private:
 	boost::shared_ptr<PlayerData>	m_playerData;
 
 	mutable boost::mutex			m_dataMutex;
+
+	QCA::SASL  						*sasl;
 };
 
 #endif

@@ -41,12 +41,14 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(FindBoost)
 include(FindGSasl)
 include(FindTinyXML)
+include(FindQCA)
 
 find_package(Boost REQUIRED COMPONENTS iostreams random thread filesystem program_options)
 find_package(GSasl REQUIRED)
 find_package(SQLite3 REQUIRED)
 find_package(TinyXML)
 find_package(OpenSSL REQUIRED)
+find_package(Qca-qt6 REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Core Xml WebSockets)
 
 # POKERTH.lib
@@ -142,10 +144,12 @@ target_link_libraries(pokerth_lib PUBLIC "${SQLite3_LIBRARIES}")
 target_link_libraries(pokerth_lib PUBLIC "${GSASL_LIBRARIES}")
 target_link_libraries(pokerth_lib PUBLIC "${Boost_LIBRARIES}")
 target_link_libraries(pokerth_lib PUBLIC "${OPENSSL_LIBRARIES}")
-target_link_libraries(pokerth_lib PUBLIC "${Qt6Xml_LIBRARIES}")
+target_link_libraries(pokerth_lib PUBLIC "${QCA_LIBRARY}")
+target_link_libraries(pokerth_lib PRIVATE Qt6::Xml)
 
 target_include_directories(pokerth_lib PRIVATE "${Qt6Xml_INCLUDE_DIRS}")
 target_include_directories(pokerth_lib PRIVATE "${Boost_INCLUDE_DIRS}")
+target_include_directories(pokerth_lib PRIVATE "${QCA_INCLUDE_DIR}")
 
 target_compile_options(pokerth_lib PUBLIC -fexceptions -frtti)
 target_compile_definitions(pokerth_lib PUBLIC ENABLE_IPV6 HAVE_OPENSSL TIXML_USE_STL BOOST_FILESYSTEM_DEPRECATED MYSQLPP_MYSQL_HEADERS_BURIED)
