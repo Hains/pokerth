@@ -375,8 +375,7 @@ set(TS_FILES
     src/gui/qt6-qml/i18n/pokerth_en_US.ts
 )
 
-qt_add_translations(pokerth_qml-client
-    TS_FILES        ${TS_FILES}
+qt_create_translation(TS_FILES ${TS_FILES}
     SOURCES         ${POKERTH_QML_CLIENT_SRC} ${QML_FILES}
     RESOURCE_PREFIX "/i18n"
 )
